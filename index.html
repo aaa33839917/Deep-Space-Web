@@ -3,119 +3,93 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  ★ 曝光开关：
+     现在页面能打开、能发给朋友，但搜索引擎不收（noindex）。
+     要真正对外宣传时，把下面这一行整个删掉即可 —— 这是唯一的开关。
+-->
 <meta name="robots" content="noindex, nofollow">
-<title>深空加速器 · 下载</title>
-<style>
-  :root { --bg:#0B1E3F; --card:#12294f; --fg:#eef2f9; --dim:#8fa3c4; --acc:#ffffff; }
-  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-  body { margin:0; padding:28px 16px 56px; background:var(--bg); color:var(--fg);
-         font:16px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
-         display:flex; justify-content:center; min-height:100vh; }
-  .wrap { width:100%; max-width:560px; }
-
-  /* 品牌区：和 App 内的排版保持一致 */
-  .brand { text-align:center; margin-bottom:26px; }
-  .brand__name { font-size:24px; font-weight:600; letter-spacing:.08em; opacity:.95; }
-  .brand__sub { margin-top:8px; font-size:13px; opacity:.6; letter-spacing:.02em; }
-
-  /* 深空之环：用 CSS 画一个，省得依赖外部图片 */
-  .ring { width:96px; height:96px; margin:0 auto 18px; position:relative; }
-  .ring::before { content:""; position:absolute; inset:18px; border-radius:50%;
-                  background:var(--acc); }
-  .ring::after { content:""; position:absolute; left:0; right:0; top:50%; height:2px;
-                 background:var(--acc); transform:translateY(-50%) rotate(-18deg);
-                 border-radius:2px; opacity:.9; }
-
-  .btn { display:block; text-align:center; text-decoration:none; color:#0B1E3F; font-weight:700;
-         font-size:19px; padding:20px; border-radius:14px; margin:22px 0 10px;
-         background:var(--acc); box-shadow:0 8px 26px rgba(255,255,255,.16); }
-  .btn:active { transform:translateY(1px); }
-  .meta { text-align:center; color:var(--dim); font-size:13px; margin-bottom:28px; }
-
-  .card { background:var(--card); border-radius:14px; padding:18px 20px; margin-bottom:16px; }
-  .card h2 { font-size:16px; margin:0 0 12px; }
-  ol { margin:0; padding-left:22px; }
-  ol li { margin-bottom:9px; }
-  .tip { color:var(--dim); font-size:14px; }
-  code { background:rgba(0,0,0,.35); padding:2px 7px; border-radius:5px; font-size:13px;
-         color:#a5d6ff; word-break:break-all; }
-  .warn { border-left:3px solid #f59e0b; padding-left:14px; color:#fcd34d; font-size:14px; }
-  .ok { border-left:3px solid #4ade80; padding-left:14px; color:#86efac; font-size:14px; }
-  a.plain { color:#a5d6ff; }
-</style>
+<title>深空 · DEEP SPACE</title>
+<meta name="description" content="深空 —— 游戏服务器、网络加速与学习工具。">
+<meta name="theme-color" content="#0B1E3F">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <div class="wrap">
 
   <div class="brand">
     <div class="ring"></div>
-    <div class="brand__name">深空加速器</div>
-    <div class="brand__sub">用于深空旗下的游戏服务器加速以及其他服务加速</div>
+    <div class="brand__name">深空</div>
+    <div class="brand__en">Deep Space</div>
+    <div class="brand__sub">游戏服务器 · 网络加速 · 学习工具</div>
   </div>
 
-  <!-- ★ 下载按钮指向飞牛分享（第三方平台托管，不是自建网站） -->
-  <a class="btn"
-     href="https://share.fnnas.net/s/164559750bf04aefaf"
-     target="_blank" rel="noopener">⬇️ 下载安装包</a>
-  <div class="meta">
-    v2.7.5 · 约 25 MB · arm64（支持绝大多数安卓手机）
-  </div>
-
-  <div class="card">
-    <h2>怎么装（三步）</h2>
-    <ol>
-      <li>点上面的按钮，会打开飞牛的分享页，再点一次<b>下载</b>。</li>
-      <li>下载完点开它，手机会提示「不允许安装未知应用」——<b>选择允许</b>。
-          这是自己打包的，不在应用商店里。</li>
-      <li>装好后打开 App，<b>点那个大按钮</b>。第一次会弹「VPN 连接请求」，选<b>允许</b>。</li>
-    </ol>
-  </div>
-
-  <div class="card">
-    <h2>已经装过官方 EasyTier 的</h2>
-    <div class="ok">直接覆盖安装就行，<b>不用先卸载</b>，以前的配置也不会丢。</div>
-  </div>
-
-  <div class="card">
-    <h2>连不上怎么办</h2>
-    <ol>
-      <li>确认 App 里的按钮是<b>已连接</b>状态，通知栏应该有 VPN 图标。</li>
-      <li>如果一直转圈，换一下网络试试（WiFi 换流量，或反过来）。</li>
-      <li>还不行就把 App 界面截图发群里。</li>
-    </ol>
-    <div class="tip" style="margin-top:12px">
-      装不上 / 打不开的话，可能是手机太老（32 位）——找服主要另一个版本。
+  <!-- ① 梦之国度 -->
+  <a class="entry" href="mzgd/">
+    <div class="entry__top">
+      <div class="ring ring--sm"></div>
+      <div>
+        <div class="entry__title">梦之国度</div>
+        <div class="entry__en">Minecraft Server</div>
+      </div>
     </div>
-  </div>
-
-  <div class="card">
-    <h2>连着的时候能干嘛</h2>
-    <div class="tip">
-      连上后，在 Minecraft 里添加服务器：<br>
-      <b>地址</b> <code>10.144.144.1</code>　<b>端口</b> <code>19132</code><br>
-      <span style="font-size:13px">（基岩版服务器，端口是 UDP；客户端请保持最新版本）</span>
+    <div class="entry__desc">
+      生存 · 生电 · 机器 · 建筑 · 工业 —— 纯公益、不删档。
+      Java 版 <b>1.21.10</b> 已开放，基岩版正在开发。
     </div>
-  </div>
-
-  <!--
-    校验值由 publish.sh 自动维护（它同时更新 www/index.html 与这里）。
-    如果两边不一致，说明有人手工改了页面 —— 以 www/EasyTier-MC.apk 的实际 sha256 为准。
-  -->
-  <div class="card">
-    <h2>校验（可选）</h2>
-    <div class="tip" style="margin-bottom:8px">
-      当前版本 <b>v2.7.5</b>。想确认下载的文件没坏，可以核对这一串：
+    <div class="tagline">
+      <span class="tag tag--live">Java 已开放</span>
+      <span class="tag tag--dev">基岩版开发中</span>
+      <span class="tag">500 人上限</span>
     </div>
-    <code>33845fa298dd48ea59bb41f37f3f1406d15ae0ef35dc269e4f4969279fd5adc5</code>
-  </div>
+    <div class="entry__go">查看服务器详情 →</div>
+  </a>
 
-  <div class="warn" style="margin-top:22px">
-    这个安装包只能发给信得过的朋友。它相当于一张「内网通行证」——
-    连上之后就能看到 NAS 上的其它服务。
-  </div>
+  <!-- ② 深空加速器 -->
+  <a class="entry" href="accelerator/">
+    <div class="entry__top">
+      <div class="ring ring--sm"></div>
+      <div>
+        <div class="entry__title">深空加速器</div>
+        <div class="entry__en">Deep Space Accelerator</div>
+      </div>
+    </div>
+    <div class="entry__desc">
+      一键组网。连上之后，手机和电脑就像在同一个局域网里 ——
+      在外面也能连回服务器。配置内置，不用导入任何文件。
+    </div>
+    <div class="tagline">
+      <span class="tag">安卓</span>
+      <span class="tag">Windows</span>
+      <span class="tag">应用内自动更新</span>
+    </div>
+    <div class="entry__go">下载与安装说明 →</div>
+  </a>
 
-  <div class="tip" style="margin-top:26px;text-align:center;font-size:12px">
-    本页为静态页面，不收集任何信息。
+  <!-- ③ 电子背单词卡片 -->
+  <a class="entry" href="wordcard/">
+    <div class="entry__top">
+      <div class="ring ring--sm"></div>
+      <div>
+        <div class="entry__title">电子背单词卡片</div>
+        <div class="entry__en">Word Card</div>
+      </div>
+    </div>
+    <div class="entry__desc">
+      主动回忆式背单词：看着单词自己想意思，<b>不做选择题</b>。
+      免数据库、免 AI 服务，查词走免费词典接口。
+    </div>
+    <div class="tagline">
+      <span class="tag">网页版</span>
+      <span class="tag">安卓版</span>
+      <span class="tag">不限学段</span>
+    </div>
+    <div class="entry__go">了解与访问 →</div>
+  </a>
+
+  <div class="foot">
+    深空 · DEEP SPACE<br>
+    本站为静态页面，不收集任何信息。
   </div>
 
 </div>
