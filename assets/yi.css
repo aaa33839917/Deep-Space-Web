@@ -67,3 +67,8 @@ ol.plain b{color:var(--fg)}
 .yi-brands img{width:30px;height:30px;display:block;opacity:.9}
 .yi-brands i{font-style:normal;font-size:12.5px;color:var(--dim2);letter-spacing:.08em}
 .yi-brands .sep{color:var(--dim2);font-size:13px;opacity:.7}
+/* logo 可点击（跳到各自工作室官网）—— 悬停时才给反馈，平时保持低调 */
+.yi-brands a.b{text-decoration:none;border-radius:10px;padding:4px 8px;margin:-4px -8px;
+               transition:background .16s}
+.yi-brands a.b:hover{background:rgba(255,255,255,.07)}
+.yi-brands a.b:hover i{color:var(--dim)}
