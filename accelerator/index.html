@@ -5,13 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="../favicon.svg?v=7cb4466a" type="image/svg+xml">
-<title>深空加速器 · 下载</title>
+<title>深空加速器 · 介绍</title>
 <meta name="theme-color" content="#2B2B2B">
-<link rel="stylesheet" href="../assets/style.css?v=3bfcac46">
-<meta name="dsv" content="61af0beef9de">
+<link rel="stylesheet" href="../assets/style.css?v=292060c6">
+<meta name="dsv" content="a0a7f755a3f5">
 </head>
 <body>
-
 <!-- CARD-META:START -->
 <script type="application/json" data-card-meta>
 {
@@ -35,7 +34,7 @@
       "text": "应用内自动更新"
     }
   ],
-  "cta": "下载与安装说明 →",
+  "cta": "了解详情 →",
   "home_desc": "组网客户端 —— 安卓 / Windows，应用内自动更新",
   "about": "一个让玩家从外网连回服务器的组网客户端「深空加速器」"
 }
@@ -61,66 +60,34 @@
     <div class="brand__sub">用于深空旗下游戏服务器及其他服务的网络接入</div>
   </div>
 
-  <!-- ================= 安卓版 ================= -->
+  <nav class="subnav">
+    <a href="../accelerator/" class="on">介绍</a>
+    <a href="../accelerator/tutorial/" >使用教程</a>
+    <a href="../accelerator/download/" >下载</a>
+  </nav>
+
   <div class="card">
-    <h2>安卓版</h2>
+    <h2>这是什么</h2>
+    <p style="margin:0">
+      深空加速器是一个<b>一键组网客户端</b>。点一下连接，你的手机或电脑就和服务器
+      处在<b>同一个局域网</b>里 —— 哪怕人在外面，也能像在家里一样连回服务器。
+      配置已经内置，<b>不需要导入任何文件，也不需要懂网络设置</b>。
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>它能做什么</h2>
     <table>
-      <tr><th>版本</th><td><b>v2.7.5</b></td></tr>
-      <tr><th>大小</th><td>约 25 MB · arm64（支持绝大多数安卓手机）</td></tr>
-      <tr><th>文件名</th><td><code>EasyTier-MC.apk</code></td></tr>
-      <tr><th>更新方式</th><td>应用内自动更新</td></tr>
+      <tr><th>一键连接</th><td>打开应用点一下即可，无需填任何参数</td></tr>
+      <tr><th>跨网络访问</th><td>手机流量、外面的 Wi-Fi 都能连回服务器</td></tr>
+      <tr><th>局域网体验</th><td>连上之后，设备之间就像在同一个局域网里</td></tr>
+      <tr><th>自动更新</th><td>应用内直接升级到最新版，不用手动来下载页</td></tr>
+      <tr><th>支持平台</th><td>安卓（arm64）· Windows（64 位）</td></tr>
     </table>
-    <a class="btn" href="https://share.fnnas.net/s/164559750bf04aefaf"
-       target="_blank" rel="noopener">⬇️ 下载安卓版</a>
   </div>
 
   <div class="card">
-    <h2>安卓版安装步骤</h2>
-    <ol class="plain">
-      <li>点击上方按钮，进入文件分享页后再次点击<b>下载</b>。</li>
-      <li>下载完成后打开安装包，系统会提示「不允许安装未知应用」，请<b>选择允许</b>。</li>
-      <li>安装完成后打开应用，点击主界面的<b>连接按钮</b>；首次连接时系统会弹出
-          「VPN 连接请求」，请选择<b>允许</b>。</li>
-    </ol>
-    <div class="note note--ok">
-      已安装官方 EasyTier 的用户可直接覆盖安装，<b>无需先行卸载</b>，原有配置不会丢失。
-    </div>
-  </div>
-
-  <!-- ================= Windows 版 ================= -->
-  <div class="card">
-    <h2>Windows 版</h2>
-    <table>
-      <tr><th>版本</th><td><b>v1.0.0</b></td></tr>
-      <tr><th>大小</th><td>约 2.9 MB · 64 位单文件</td></tr>
-      <tr><th>文件名</th><td><code>DeepSpace.exe</code></td></tr>
-      <tr><th>更新方式</th><td>启动时自动检查更新</td></tr>
-    </table>
-    <a class="btn" href="https://share.fnnas.net/s/05ee89f7670c45d592"
-       target="_blank" rel="noopener">⬇️ 下载 Windows 版</a>
-    <div class="note note--warn" style="margin-top:18px">
-      <b>使用前提</b>：本程序<b>不含</b> EasyTier 核心。
-      请把官方 EasyTier Windows 版与本程序解压到<b>同一个文件夹</b>，再双击运行。
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Windows 版使用步骤</h2>
-    <ol class="plain">
-      <li>解压官方 EasyTier Windows 版，把 <code>DeepSpace.exe</code> 放进同一个文件夹。</li>
-      <li>双击 <code>DeepSpace.exe</code>，Windows 会弹出提权（UAC）请求，选择<b>是</b>。</li>
-      <li>窗口中显示 <b>easytier-core 已启动</b> 即为连接成功；
-          之后每次打开都会自动检查并安装新版本。</li>
-    </ol>
-    <div class="note note--warn">
-      本程序<b>没有代码签名</b>，首次运行 Windows 可能提示「已保护你的电脑」。
-      确认来源可靠后，可点「更多信息」→「仍要运行」。
-    </div>
-  </div>
-
-  <!-- ================= 通用 ================= -->
-  <div class="card">
-    <h2>连接后可访问的服务</h2>
+    <h2>连接后可访问</h2>
     <div class="tip">
       连接后在 Minecraft 中添加服务器：<br>
       <b>地址</b> <code>10.144.144.1</code>　<b>端口</b> <code>25565</code>（Java 版）／
@@ -130,28 +97,11 @@
   </div>
 
   <div class="card">
-    <h2>常见问题</h2>
-    <ol class="plain">
-      <li>请确认已处于连接状态（安卓端通知栏应显示 VPN 图标）。</li>
-      <li>若长时间处于连接中，请尝试切换网络环境。</li>
-      <li>若仍无法连接，请附界面截图通过 QQ 群反馈。</li>
-    </ol>
+    <h2>下一步</h2>
+    <p class="tip" style="margin:0 0 16px">第一次用，先看使用教程；已经装过，直接去下载页拿最新版。</p>
+    <a class="btn btn--ghost" style="margin:0 0 10px" href="../tutorial/">📖 看使用教程</a>
+    <a class="btn" style="margin:0" href="../download/">⬇️ 去下载</a>
   </div>
-
-  <!--
-    校验值：安卓端由 publish.sh 写进 www/index.html，本页需手工同步。
-    Windows 端 sha256 与 www/version-win.json 一致（2026-09-29 核对）。
-  -->
-  <div class="card">
-    <h2>文件校验</h2>
-    <div class="tip" style="margin-bottom:14px">如需确认文件完整性，可核对以下校验值：</div>
-    <!-- 不用表格：sha256 有 64 个字符，放表格里会被挤到第二行掉一个字符 -->
-    <div class="tip small" style="margin-bottom:5px">安卓版 v2.7.5</div>
-    <code style="display:block;padding:8px 10px">33845fa298dd48ea59bb41f37f3f1406d15ae0ef35dc269e4f4969279fd5adc5</code>
-    <div class="tip small" style="margin:16px 0 5px">Windows 版 v1.0.0</div>
-    <code style="display:block;padding:8px 10px">637df7237a73449606502ae15d29c0bb42aa0156cb4fdd354a8ae308d78d8e5d</code>
-  </div>
-
 </div>
 
 <footer class="foot">

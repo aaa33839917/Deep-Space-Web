@@ -259,3 +259,13 @@ tr:last-child th, tr:last-child td { border-bottom: none; }
   th { width: 38%; }
   .thanks-links img { width: 100%; max-width: 320px; }
 }
+
+/* ── 加速器的子导航（介绍 / 使用教程 / 下载）── */
+.subnav { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 0 0 30px; }
+.subnav a {
+  text-decoration: none; color: var(--nav-dim); font-size: 15px; line-height: 1;
+  padding: 11px 20px; border-radius: 11px;
+  background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.30);
+}
+.subnav a:hover { background: rgba(255,255,255,.24); color: #fff; }
+.subnav a.on { background: rgba(255,255,255,.90); color: var(--key); font-weight: 700; border-color: transparent; }

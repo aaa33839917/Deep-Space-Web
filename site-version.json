@@ -1,4 +1,4 @@
 {
-  "build": "61af0beef9de",
+  "build": "a0a7f755a3f5",
   "_说明": "构建号 = 去掉本自检代码后所有页面内容的 sha256 前 12 位。页面上的 <meta name=\"dsv\"> 与它不一致时，assets/cache-check.js 会自动刷新一次。"
 }
