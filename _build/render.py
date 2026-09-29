@@ -1,37 +1,40 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-从 _data/site.json 生成页面里可编辑的区块。
-
-由 deploy.sh 在每次发布前自动调用；_admin/ 后台保存后也会调用它。
-手动跑也行：
+生成页面里可编辑的区块。
 
     python3 _build/render.py
 
-原理：页面里被一对标记包住的区块会被整段重写
+★ 数据从哪来（用户 2026-09-29 定的规则）：
+   **没有配置文件。** 每个项目的卡片信息写在它自己的详情页里
+   （`<script type="application/json" data-card-meta>`，见 _build/cardmeta.py）。
+   本脚本扫一遍站点，把各页面里的卡片信息收集起来，再生成：
 
-    <!-- PRODUCTS:START -->   ...自动生成，不要手改...   <!-- PRODUCTS:END -->
-    <!-- PRODUCTS_TABLE:START --> ... <!-- PRODUCTS_TABLE:END -->
+     · products/index.html 的卡片区      ← 只放 visible 的项目
+     · products/index.html 的副标题      ← 同上
+     · index.html  的「我们在做的东西」表 ← 同上
+     · index.html  的「关于深空」产品句   ← 同上
 
-★ 要改产品，改 _data/site.json（或用 _admin/ 后台），不要改生成出来的那段。
+   隐藏的项目：详情页照常上传、URL 照常能访问，只是**不列出来**。
+
+由 deploy.sh 在每次发布前自动调用；_admin/ 后台保存后也会调用它。
 """
-import html
-import json
 import os
 import re
 import sys
+import html
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import cardmeta  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
-
-DATA = "_data/site.json"
 
 TAG_CLASS = {"": "tag", "live": "tag tag--live", "dev": "tag tag--dev"}
 
 
 def esc(s):
-    """转义纯文本字段。"""
-    return html.escape(str(s or ""), quote=True)
+    return html.escape(str(s if s is not None else ""), quote=True)
 
 
 def safe_href(h):
@@ -42,20 +45,20 @@ def safe_href(h):
     return "#"
 
 
-def render_cards(products, prefix):
-    """产品页的入口卡片。"""
+def render_cards(projects, prefix):
     out = []
-    for p in products:
+    for it in projects:
+        p = it["meta"]
         tags = "".join(
             '      <span class="%s">%s</span>\n'
             % (TAG_CLASS.get(t.get("kind", ""), "tag"), esc(t.get("text", "")))
-            for t in p.get("tags", [])
+            for t in (p.get("tags") or [])
         )
         desc = "<br>\n      ".join(
             ln.strip() for ln in str(p.get("desc", "")).split("\n") if ln.strip()
         )
         out.append(
-            "  <!-- product: %s -->\n"
+            "  <!-- project: %s -->\n"
             '  <a class="entry" href="%s%s">\n'
             '    <div class="entry__top">\n'
             '      <img class="brandmark--sm" src="%sassets/mark-navy.svg" alt="" width="42" height="42">\n'
@@ -73,47 +76,42 @@ def render_cards(products, prefix):
             '    <div class="entry__go">%s</div>\n'
             "  </a>"
             % (
-                esc(p.get("id", "")),
+                esc(it["id"]),
                 prefix,
-                safe_href(p.get("href", "")),
+                safe_href(p.get("href") or (it["id"] + "/")),
                 prefix,
-                esc(p.get("name", "")),
-                esc(p.get("en", "")),
+                esc(p.get("name")),
+                esc(p.get("en")),
                 desc,
                 tags,
-                esc(p.get("cta", "")),
+                esc(p.get("cta")),
             )
         )
     if not out:
-        out.append(
-            '  <div class="card"><div class="tip">暂无产品。</div></div>'
-        )
+        out.append('  <div class="card"><div class="tip">暂无项目。</div></div>')
     return "\n\n".join(out)
 
 
-def render_table(products):
-    """首页「我们在做的东西」表格行。"""
+def render_names(projects):
+    names = [esc(it["meta"].get("name")) for it in projects if it["meta"].get("name")]
+    return " · ".join(names) if names else "暂未添加"
+
+
+def render_table(projects):
     rows = [
         "      <tr><th>%s</th><td>%s</td></tr>"
-        % (esc(p.get("name", "")), esc(p.get("home_desc", "")))
-        for p in products
+        % (esc(it["meta"].get("name")), esc(it["meta"].get("home_desc")))
+        for it in projects
     ]
     return "\n".join(rows) if rows else "      <tr><td>暂无内容</td></tr>"
 
 
-def render_names(products):
-    """产品页顶部副标题：产品名用 · 连起来。"""
-    names = [esc(p.get("name", "")) for p in products if p.get("name")]
-    return " · ".join(names) if names else "暂未添加"
+def render_about(projects):
+    """首页「关于深空」里列项目的那一句。
 
-
-def render_about(products):
-    """首页「关于深空」里列产品的那一句。
-
-    隐藏某个产品时，它对应的半句会一起消失 —— 否则「隐藏」只藏了卡片，
-    正文里还提着一个已经下线的产品。
+    隐藏某个项目时，它对应的半句会一起消失 —— 否则「隐藏」只藏了一半。
     """
-    clauses = [str(p.get("about", "")).strip() for p in products]
+    clauses = [str(it["meta"].get("about", "")).strip() for it in projects]
     clauses = [c for c in clauses if c]
     if not clauses:
         return "目前还没有对外提供的内容。"
@@ -141,21 +139,14 @@ def inject(path, start, end, body):
 
 
 def main():
-    if not os.path.exists(DATA):
-        raise SystemExit("❌ 找不到内容文件：%s" % DATA)
-    try:
-        data = json.load(open(DATA, encoding="utf-8"))
-    except json.JSONDecodeError as e:
-        raise SystemExit("❌ %s 不是合法 JSON：%s" % (DATA, e))
+    allp = cardmeta.scan(ROOT)
+    shown = [it for it in allp if it["meta"].get("visible", True)]
 
-    products = data.get("products") or []
-    ids = [p.get("id") for p in products]
-    dup = {i for i in ids if ids.count(i) > 1}
-    if dup:
-        raise SystemExit("❌ 产品 id 重复：%s" % ", ".join(sorted(dup)))
-
-    shown = [p for p in products if p.get("visible", True)]
-    print("   数据：%d 个产品，%d 个显示 / %d 个隐藏" % (len(products), len(shown), len(products) - len(shown)))
+    print("   扫描到 %d 个项目：%d 个显示 / %d 个隐藏"
+          % (len(allp), len(shown), len(allp) - len(shown)))
+    for it in allp:
+        if not it["meta"].get("visible", True):
+            print("     · 隐藏：%s（详情页仍可访问 /%s）" % (it["id"], it["meta"].get("href")))
 
     changed = []
     if inject("products/index.html", "<!-- PRODUCTS:START -->", "<!-- PRODUCTS:END -->",

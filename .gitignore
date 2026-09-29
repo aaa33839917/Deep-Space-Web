@@ -14,6 +14,11 @@ _admin/
 # Python 编译缓存
 __pycache__/
 
-# 内容文件 _data/site.json 与构建脚本 _build/ 是**要**版本化的：
-#   · _data/ 是内容真源（内容本来就会渲染进公开页面）
-#   · _build/ 是构建必需；下划线开头 ⇒ Jekyll 不会把它们公开到站点上（已实测 404）
+# 构建脚本 _build/ 是**要**版本化的（下划线开头 ⇒ Jekyll 不会把它们公开到站点上，已实测 404）：
+#   _build/cardmeta.py   卡片信息的读写与扫描
+#   _build/render.py     生成器
+#   _build/sync-nav.py   导航注入器
+#   _build/nav.html      导航唯一真源
+#   _build/newpage.html  新增项目时的页面模板
+#
+# ★ 没有内容配置文件 —— 每个项目的「卡片信息」就写在它自己的详情页里（CARD-META 块）。
