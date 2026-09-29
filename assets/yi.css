@@ -1,0 +1,61 @@
+/* ============================================================================
+   异次元 —— 独立的中性皮肤
+   ★ 为什么不用 assets/style.css：
+     异次元是两个工作室联合运营的项目，它的官方页**不应该长得像任何一家的站**。
+     所以这里刻意用一套中性的灰阶，不带品牌色、不带背景图、不做毛玻璃特效。
+     （2026-09-29 用户要求：「介绍页面写的中性一点，不要突出任何一个工作室，
+       还有网页风格也要中性一点」）
+   ========================================================================== */
+:root{
+  --bg:#17181C;        /* 中性深灰，不偏蓝 */
+  --card:#1E2026;
+  --line:rgba(255,255,255,.12);
+  --fg:#E9E9EC;
+  --dim:#9A9AA2;
+  --dim2:#6E6E78;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--bg); color:var(--fg);
+  font:16px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+
+.yi-top{border-bottom:1px solid var(--line);background:var(--card)}
+.yi-top .in{max-width:760px;margin:0 auto;padding:20px 24px;display:flex;align-items:center;gap:11px}
+.yi-top .dot{width:9px;height:9px;border-radius:50%;background:var(--fg);opacity:.85}
+.yi-top .nm{font-size:15px;font-weight:700;letter-spacing:.26em}
+.yi-top .en{font-size:11px;color:var(--dim2);letter-spacing:.22em}
+
+.yi-wrap{max-width:760px;margin:0 auto;padding:52px 24px 80px}
+.yi-wrap h1{font-size:clamp(30px,6vw,42px);margin:0 0 12px;letter-spacing:.1em;font-weight:700}
+.yi-sub{color:var(--dim);font-size:15px;margin:0 0 44px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+      padding:22px 24px;margin-bottom:16px}
+.card h2{font-size:15px;margin:0 0 16px;letter-spacing:.12em;font-weight:700;color:var(--fg)}
+.card p{margin:0 0 12px}
+.card p:last-child{margin-bottom:0}
+
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:11px 0;border-bottom:1px solid var(--line);vertical-align:top;font-size:14.5px}
+tr:last-child th,tr:last-child td{border-bottom:0}
+th{color:var(--dim);font-weight:400;width:168px;letter-spacing:.04em;
+   padding-right:16px;line-height:1.6}
+code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:5px;
+     font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px}
+
+ol.plain{margin:0;padding-left:1.35em}
+ol.plain li{margin-bottom:9px;color:var(--dim)}
+ol.plain li:last-child{margin-bottom:0}
+ol.plain b{color:var(--fg)}
+
+.tagline{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;padding:3px 11px;border-radius:20px;border:1px solid var(--line);color:var(--dim)}
+
+.note{font-size:13.5px;color:var(--dim2);border-left:2px solid var(--line);padding-left:13px;margin-top:14px}
+
+.yi-foot{border-top:1px solid var(--line);padding:30px 24px 46px;color:var(--dim2);
+         font-size:13px;text-align:center}
