@@ -1,32 +1,38 @@
 /* ============================================================================
-   深空 · 品牌站
-   风格沿用 `/opt/mcsmanager/.../upload_files/thank.html`（鸣谢页）的毛玻璃风：
-     · 全屏背景大图（Minecraft 光影截图）+ 固定
-     · 半透明白卡片 + backdrop-filter 模糊
-     · 顶部深色半透明导航条、底部半透明页脚
-     · 粉色辉光作点缀（原鸣谢页里 logo / hover 的粉色 text-shadow）
-   修掉了原页面的三处问题：
-     1) `box-shadow:0010px` 是笔误 → 写成正常的柔和投影
-     2) `* { border-radius:50px }` 会把图片压成胶囊 → 只圆角容器
-     3) 白底配白字对比度不足 → 卡片内一律深色文字
+   工作室官网 · 共用样式
+   配色**严格照搬**鸣谢页（thank.html）的原有色板 —— 黑白灰，不加任何彩色：
+
+     导航条   rgb(55,55,55,.8)      半透明深灰 + 白字   ← 原页原值
+     卡片     rgb(255,255,255,.7)   半透明白 + blur(15px) + 15px 圆角  ← 原页原值
+     页脚     rgba(0,0,0,.1) + blur(20px)              ← 原页原值
+     文字     卡片内近黑 #1A1A1A ／ 深色条上纯白
+     强调     近黑 #2B2B2B（唯一的"强调色"，仍是灰阶）
+     链接     卡片内近黑＋下划线；深色条上白色＋白色辉光
+
+   ⛔ 全站禁止出现：蓝色、粉色、紫罗兰、彩色渐变。
+      原页里那两处粉色（.logo 的 text-shadow / 输入框 hover 边框）也未沿用。
+
+   修掉的原有问题：
+     1) `box-shadow:0010px` 笔误 → 正常柔和投影
+     2) `* { border-radius:50px }` 把图片压成胶囊 → 只圆角容器
+     3) 白底卡片 + 白字链接读不清 → 卡片内一律近黑文字
    ========================================================================== */
 
 :root {
-  --r:        15px;                       /* 卡片圆角，沿用原页面的 15px */
-  --glass:    rgba(255,255,255,.72);      /* 毛玻璃卡片底 */
+  --r:        15px;                      /* 原页圆角 */
+  --glass:    rgba(255,255,255,.70);     /* 原页卡片底 */
   --glass-2:  rgba(255,255,255,.86);
-  --bar:      rgba(38,38,42,.78);         /* 顶部/底部条 */
-  --ink:      #1B2433;                    /* 卡片内正文 */
-  --ink-dim:  #56637A;
-  --ink-line: rgba(27,36,51,.12);
+  --bar:      rgba(55,55,55,.80);        /* 原页导航条 */
+  --bar-2:    rgba(45,45,45,.90);
+  --ink:      #1A1A1A;
+  --ink-dim:  #5A5A5A;
+  --ink-line: rgba(0,0,0,.12);
   --nav-ink:  #FFFFFF;
-  --nav-dim:  rgba(255,255,255,.72);
-  --pink:     #FF7AB6;                    /* 原鸣谢页的粉色辉光 */
-  --blue:     #2E5BFF;                    /* 深空蓝，作链接色 */
+  --nav-dim:  rgba(255,255,255,.74);
+  --key:      #2B2B2B;                   /* 唯一强调色：近黑 */
 }
 
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-* { transition: .1s; }                    /* 原页面就是 .1s 过渡，保留手感 */
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; transition: .1s; }
 
 html { scroll-behavior: smooth; }
 
@@ -35,7 +41,7 @@ body {
   padding: 0;
   font-family: Arial, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
   color: var(--ink);
-  background-color: #2a3346;                       /* 图片加载前的兜底底色 */
+  background-color: #3a3a3a;                        /* 图片加载前兜底 */
   background-image: url(bg.jpg);
   background-size: cover;
   background-position: center;
@@ -46,16 +52,16 @@ body {
   flex-direction: column;
 }
 
-/* 背景上压一层暗罩：保证任何一张背景图下文字都读得清 */
+/* 背景压一层中性暗罩：保证任何背景图下文字都读得清 */
 body::before {
   content: "";
   position: fixed; inset: 0;
-  background: linear-gradient(180deg, rgba(8,14,28,.42) 0%, rgba(8,14,28,.30) 55%, rgba(8,14,28,.52) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,.46) 0%, rgba(0,0,0,.32) 55%, rgba(0,0,0,.56) 100%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* ---------- 顶部导航（沿用原鸣谢页的深色半透明条） ---------- */
+/* ---------- 顶部导航（原页：深灰半透明 + 白字） ---------- */
 .topbar {
   position: sticky; top: 0; z-index: 20;
   display: flex; align-items: center; gap: 10px;
@@ -63,22 +69,20 @@ body::before {
   background: var(--bar);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 2px 18px rgba(0,0,0,.22);
+  box-shadow: 0 2px 18px rgba(0,0,0,.25);
 }
 .topbar__logo {
   font-size: 19px; font-weight: 700; letter-spacing: .16em;
-  color: var(--nav-ink); text-decoration: none;
-  text-shadow: var(--pink) 0 0 12px;               /* 原页面的粉色辉光 */
-  white-space: nowrap;
+  color: var(--nav-ink); text-decoration: none; white-space: nowrap;
 }
-.topbar__logo:hover { text-shadow: var(--pink) 0 0 20px; }
+.topbar__logo:hover { text-shadow: rgba(255,255,255,.5) 0 0 10px; }   /* 原页 a:hover 的白色辉光 */
 .topbar__links { margin-left: auto; display: flex; align-items: center; gap: 4px; overflow-x: auto; }
 .topbar__links a {
   color: var(--nav-dim); text-decoration: none; font-size: 14.5px;
   padding: 8px 13px; border-radius: 999px; white-space: nowrap;
 }
 .topbar__links a:hover { color: #fff; text-shadow: rgba(255,255,255,.5) 0 0 10px; }
-.topbar__links a.on { color: #fff; background: rgba(255,255,255,.14); }
+.topbar__links a.on { color: #fff; background: rgba(255,255,255,.16); }
 
 /* ---------- 布局 ---------- */
 .wrap {
@@ -93,24 +97,24 @@ body::before {
 .brand { text-align: center; margin: 6px 0 30px; color: #fff; }
 .brand__name {
   font-size: 34px; font-weight: 700; letter-spacing: .22em; text-indent: .22em;
-  text-shadow: 0 2px 20px rgba(0,0,0,.5);
+  text-shadow: 0 2px 20px rgba(0,0,0,.55);
 }
 .brand__en {
   margin-top: 7px; font-size: 11px; letter-spacing: .4em; text-indent: .4em;
-  color: rgba(255,255,255,.8); text-transform: uppercase;
+  color: rgba(255,255,255,.82); text-transform: uppercase;
 }
-.brand__sub { margin-top: 13px; font-size: 14.5px; color: rgba(255,255,255,.86); }
+.brand__sub { margin-top: 13px; font-size: 14.5px; color: rgba(255,255,255,.88); }
 
-/* 深空之环：纯 CSS，白星球 + −20° 轨道环 */
+/* 环标：深色底上用白，白色卡片上用近黑 —— 全程灰阶 */
 .ring { width: 84px; height: 84px; margin: 0 auto 18px; position: relative; }
-.ring::before { content: ""; position: absolute; inset: 16px; border-radius: 50%; background: #fff;
-                box-shadow: 0 0 24px rgba(255,255,255,.45); }
+.ring::before { content: ""; position: absolute; inset: 16px; border-radius: 50%;
+                background: #fff; box-shadow: 0 0 22px rgba(255,255,255,.42); }
 .ring::after  { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px;
                 background: #fff; transform: translateY(-50%) rotate(-20deg);
                 border-radius: 2px; opacity: .95; }
 .ring--sm { width: 42px; height: 42px; margin: 0; flex: none; }
-.ring--sm::before { inset: 8px; box-shadow: none; background: var(--blue); }
-.ring--sm::after  { height: 1.5px; background: var(--blue); }
+.ring--sm::before { inset: 8px; box-shadow: none; background: #2B2B2B; }
+.ring--sm::after  { height: 1.5px; background: #2B2B2B; }
 
 /* ---------- 毛玻璃卡片 ---------- */
 .card {
@@ -119,7 +123,7 @@ body::before {
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid var(--ink-line);
   border-radius: var(--r);
-  box-shadow: 0 8px 28px rgba(0,0,0,.20);
+  box-shadow: 0 8px 28px rgba(0,0,0,.22);
   padding: 22px 24px;
   margin: 0 0 16px;
 }
@@ -127,7 +131,7 @@ body::before {
 .card h3 { font-size: 14.5px; margin: 17px 0 8px; }
 .card > :last-child { margin-bottom: 0; }
 
-/* ---------- 首页三个入口 ---------- */
+/* ---------- 首页入口 ---------- */
 .entry {
   display: block; text-decoration: none; color: inherit;
   background: var(--glass);
@@ -135,59 +139,62 @@ body::before {
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid var(--ink-line);
   border-radius: var(--r);
-  box-shadow: 0 8px 28px rgba(0,0,0,.20);
+  box-shadow: 0 8px 28px rgba(0,0,0,.22);
   padding: 22px 24px; margin-bottom: 15px;
 }
 .entry:hover {
   background: var(--glass-2);
   transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(0,0,0,.30);
-  border-color: rgba(255,122,182,.55);
+  box-shadow: 0 16px 40px rgba(0,0,0,.32);
+  border-color: rgba(0,0,0,.34);
 }
 .entry__top { display: flex; align-items: center; gap: 14px; }
 .entry__title { font-size: 19px; font-weight: 700; letter-spacing: .02em; }
 .entry__en { font-size: 10.5px; letter-spacing: .28em; color: var(--ink-dim); text-transform: uppercase; margin-top: 3px; }
 .entry__desc { margin-top: 13px; font-size: 14.5px; color: var(--ink-dim); }
-.entry__go { margin-top: 14px; font-size: 13.5px; color: var(--blue); font-weight: 600; }
-.entry:hover .entry__go { color: var(--pink); }
+.entry__go { margin-top: 14px; font-size: 13.5px; color: var(--ink); font-weight: 700; }
+.entry:hover .entry__go { text-decoration: underline; }
 
-/* 页内标题（子页面顶部） */
-.page-title { font-size: 27px; margin: 0 0 7px; color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.55); letter-spacing: .04em; }
-.page-sub { color: rgba(255,255,255,.86); font-size: 14.5px; margin: 0 0 24px; }
+/* 页内标题 */
+.page-title { font-size: 27px; margin: 0 0 7px; color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.58); letter-spacing: .04em; }
+.page-sub { color: rgba(255,255,255,.88); font-size: 14.5px; margin: 0 0 24px; }
 
-/* ---------- 标签 ---------- */
+/* ---------- 标签（灰阶区分状态） ---------- */
 .tagline { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
 .tag {
   font-size: 12px; padding: 3px 11px; border-radius: 999px;
-  background: rgba(46,91,255,.10); color: #2A4A8F;
-  border: 1px solid rgba(46,91,255,.22);
+  background: rgba(0,0,0,.05); color: #4A4A4A;
+  border: 1px solid rgba(0,0,0,.16);
 }
-.tag--live { background: rgba(22,163,74,.13); color: #11663A; border-color: rgba(22,163,74,.30); }
-.tag--dev  { background: rgba(217,119,6,.14);  color: #8A4B00; border-color: rgba(217,119,6,.30); }
+/* 已开放：实心近黑 + 白字 */
+.tag--live { background: var(--key); color: #fff; border-color: var(--key); }
+/* 开发中：仅虚线描边，最弱 */
+.tag--dev  { background: transparent; color: #6B6B6B; border: 1px dashed rgba(0,0,0,.30); }
 
 /* ---------- 排版 ---------- */
 ul.plain, ol.plain { margin: 0; padding-left: 21px; }
 ul.plain li, ol.plain li { margin-bottom: 9px; font-size: 15px; }
 .tip { color: var(--ink-dim); font-size: 14px; }
 .small { font-size: 13px; }
-a.plain { color: var(--blue); }
+a.plain { color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+a.plain:hover { text-decoration-thickness: 2px; }
 
 code {
-  background: rgba(27,36,51,.09); padding: 2px 7px; border-radius: 6px;
-  font-size: 13px; color: #0E2B6B; word-break: break-all;
+  background: rgba(0,0,0,.07); padding: 2px 7px; border-radius: 6px;
+  font-size: 13px; color: var(--ink); word-break: break-all;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 pre {
-  background: rgba(27,36,51,.08); border: 1px solid var(--ink-line);
+  background: rgba(0,0,0,.06); border: 1px solid var(--ink-line);
   border-radius: 10px; padding: 14px 16px; overflow-x: auto; font-size: 13px; line-height: 1.7;
 }
 pre code { background: none; padding: 0; }
 
-/* ---------- 提示条 ---------- */
+/* ---------- 提示条（用线宽/深浅区分，不用颜色） ---------- */
 .note { border-left: 3px solid; padding: 2px 0 2px 14px; font-size: 14px; margin: 14px 0; }
-.note--ok   { border-color: #16A34A; color: #11663A; }
-.note--warn { border-color: #D97706; color: #8A4B00; }
-.note--dim  { border-color: rgba(27,36,51,.25); color: var(--ink-dim); }
+.note--ok   { border-color: rgba(0,0,0,.40); color: #333; }
+.note--warn { border-color: var(--key); border-left-width: 4px; color: #1A1A1A; font-weight: 600; }
+.note--dim  { border-color: rgba(0,0,0,.16); color: var(--ink-dim); }
 
 /* ---------- 表格 ---------- */
 table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
@@ -195,48 +202,48 @@ th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--in
 th { color: var(--ink-dim); font-weight: 600; font-size: 13px; white-space: nowrap; width: 34%; }
 tr:last-child th, tr:last-child td { border-bottom: none; }
 
-/* ---------- 按钮 ---------- */
+/* ---------- 按钮：纯近黑实心，无渐变 ---------- */
 .btn {
   display: block; width: 100%; text-align: center; text-decoration: none;
   color: #fff; font-weight: 700; font-size: 18px;
   padding: 18px; border-radius: 12px; margin: 20px 0 10px;
-  background: linear-gradient(135deg, #2E5BFF, #7A4BFF);
-  box-shadow: 0 10px 26px rgba(46,91,255,.35);
+  background: var(--key);
+  box-shadow: 0 10px 26px rgba(0,0,0,.42);
   border: none; cursor: pointer; font-family: inherit;
 }
-.btn:hover { box-shadow: 0 14px 34px rgba(46,91,255,.48); transform: translateY(-2px); }
+.btn:hover { background: #1A1A1A; box-shadow: 0 14px 34px rgba(0,0,0,.52); transform: translateY(-2px); }
 .btn--ghost {
   background: rgba(255,255,255,.16); color: #fff;
-  border: 1px solid rgba(255,255,255,.4); box-shadow: none;
+  border: 1px solid rgba(255,255,255,.42); box-shadow: none;
   font-size: 15px; padding: 14px;
 }
 .btn--ghost:hover { background: rgba(255,255,255,.26); }
 
-/* ---------- 底部页脚（沿用原鸣谢页的半透明 + 模糊） ---------- */
+/* ---------- 页脚 ---------- */
 .foot {
   position: relative; z-index: 1;
   background: var(--bar);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  color: rgba(255,255,255,.82);
+  color: rgba(255,255,255,.84);
   text-align: center; font-size: 12.5px; line-height: 2;
   padding: 26px 18px;
 }
-.foot a { color: rgba(255,255,255,.86); text-decoration: none; }
+.foot a { color: rgba(255,255,255,.88); text-decoration: none; }
 .foot a:hover { color: #fff; text-shadow: rgba(255,255,255,.5) 0 0 10px; }
 
-/* ---------- 鸣谢页专用 ---------- */
+/* ---------- 鸣谢页 ---------- */
 .thanks-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; }
 .thanks-links a { display: block; }
 .thanks-links img {
   display: block; width: 250px; max-width: 100%; height: auto;
-  border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,.22);
+  border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,.24);
 }
-.thanks-links img:hover { box-shadow: 0 12px 30px rgba(255,122,182,.42); }
+.thanks-links img:hover { box-shadow: 0 12px 30px rgba(0,0,0,.40); }
 .name-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin-top: 6px; }
 .name-list span {
-  background: rgba(46,91,255,.10); border: 1px solid rgba(46,91,255,.18);
-  color: #2A4A8F; border-radius: 999px; padding: 5px 15px; font-size: 14.5px;
+  background: rgba(0,0,0,.05); border: 1px solid rgba(0,0,0,.16);
+  color: #3A3A3A; border-radius: 999px; padding: 5px 15px; font-size: 14.5px;
 }
 
 /* ---------- 窄屏 ---------- */
