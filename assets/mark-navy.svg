@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108">
+  <!-- 深空之环 · 深蓝版（浅色背景用）—— 几何照搬 brand/svg/mark-navy.svg -->
+  <circle cx="54" cy="54" r="15.5" fill="#0B1E3F"/>
+  <ellipse cx="54" cy="54" rx="30" ry="22.5" fill="none"
+           stroke="#0B1E3F" stroke-width="5.4" transform="rotate(-20 54 54)"/>
+</svg>

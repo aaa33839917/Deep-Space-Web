@@ -77,9 +77,11 @@ body::before {
   box-shadow: 0 2px 18px rgba(0,0,0,.25);
 }
 .topbar__logo {
+  display: inline-flex; align-items: center; gap: 9px;
   font-size: 19px; font-weight: 700; letter-spacing: .16em;
   color: #fff; text-decoration: none; white-space: nowrap;
 }                                                    /* 纯白，不用粉色 */
+.topbar__logo img { display: block; width: 26px; height: 26px; }
 .topbar__logo:hover { text-shadow: rgba(255,255,255,.55) 0 0 10px; }
 .topbar__links { margin-left: auto; display: flex; align-items: center; gap: 4px; overflow-x: auto; }
 .topbar__links a {
@@ -103,27 +105,18 @@ body::before {
              color: rgba(255,255,255,.82); text-transform: uppercase; }
 .brand__sub { margin-top: 13px; font-size: 14.5px; color: rgba(255,255,255,.88); }
 
-/* ---------- 环标 ----------
-   大环（深色背景上）：纯白 + 白色柔光
-   小环（白色卡片上）：纯白 + 一圈黑边，否则白色压白色会"看不见"  */
-.ring { width: 84px; height: 84px; margin: 0 auto 18px; position: relative; }
-.ring::before { content: ""; position: absolute; inset: 16px; border-radius: 50%;
-                background: #fff; box-shadow: 0 0 22px rgba(255,255,255,.42); }
-.ring::after  { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 3px;
-                background: #fff; transform: translateY(-50%) rotate(-20deg);
-                border-radius: 2px; opacity: .95; }
-
-.ring--sm { width: 42px; height: 42px; margin: 0; flex: none; }
-.ring--sm::before {                       /* 白星球 + 黑边 */
-  inset: 8px; background: #fff; box-shadow: none;
-  border: 2px solid var(--ink);
+/* ---------- 品牌标志「深空之环」 ----------
+   几何完全来自 brand/logo-source.svg：
+     球 r=15.5 · 椭圆环 rx=30 ry=22.5 描边 5.4 · 旋转 −20° · 环不穿过球体
+   ★ 深色背景（首页大标志、导航栏）→ mark-white.svg（白色版）
+   ★ 白色卡片 → mark-navy.svg（深蓝版）
+     ⚠️ 试过"白色 + 黑边"：白填充在白卡片上不可见，只剩描边 ⇒ 变成同心圆，
+        标志识别性全失。实测见 README §8.5，故改用官方浅底版。 */
+.brandmark {
+  display: block; width: 96px; height: 96px; margin: 0 auto 18px;
+  filter: drop-shadow(0 0 16px rgba(255,255,255,.30));
 }
-.ring--sm::after {                        /* 白轨道 + 上下黑边 */
-  height: 4px; background: #fff; opacity: 1;
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
-  border-radius: 2px;
-}
+.brandmark--sm { width: 42px; height: 42px; margin: 0; flex: none; filter: none; }
 
 /* ---------- 毛玻璃卡片 ---------- */
 .card {
