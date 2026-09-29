@@ -72,3 +72,9 @@ ol.plain b{color:var(--fg)}
                transition:background .16s}
 .yi-brands a.b:hover{background:rgba(255,255,255,.07)}
 .yi-brands a.b:hover i{color:var(--dim)}
+
+/* 下载按钮（绿 —— 与全站规范一致） */
+.btn{display:block;width:100%;text-align:center;text-decoration:none;color:#fff;
+     font-weight:700;font-size:16px;padding:16px;border-radius:11px;margin:16px 0 0;
+     background:#16A34A;border:none;font-family:inherit}
+.btn:hover{background:#12833C}
