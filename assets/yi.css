@@ -78,3 +78,8 @@ ol.plain b{color:var(--fg)}
      font-weight:700;font-size:16px;padding:16px;border-radius:11px;margin:16px 0 0;
      background:#16A34A;border:none;font-family:inherit}
 .btn:hover{background:#12833C}
+
+/* 次级按钮（描边款）—— 用于「说明」类入口，不抢绿按钮的视觉重心 */
+.btn--ghost{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.32);
+            color:var(--fg);box-shadow:none;font-size:15px;padding:14px;margin-top:10px}
+.btn--ghost:hover{background:rgba(255,255,255,.18)}
