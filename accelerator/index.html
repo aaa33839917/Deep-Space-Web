@@ -6,48 +6,23 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <title>深空加速器 · 下载</title>
-<style>
-  :root { --bg:#0B1E3F; --card:#12294f; --fg:#eef2f9; --dim:#8fa3c4; --acc:#ffffff; }
-  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-  body { margin:0; padding:28px 16px 56px; background:var(--bg); color:var(--fg);
-         font:16px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
-         display:flex; justify-content:center; min-height:100vh; }
-  .wrap { width:100%; max-width:560px; }
-
-  /* 品牌区：和 App 内的排版保持一致 */
-  .brand { text-align:center; margin-bottom:26px; }
-  .brand__name { font-size:24px; font-weight:600; letter-spacing:.08em; opacity:.95; }
-  .brand__sub { margin-top:8px; font-size:13px; opacity:.6; letter-spacing:.02em; }
-
-  /* 深空之环：用 CSS 画一个，省得依赖外部图片 */
-  .ring { width:96px; height:96px; margin:0 auto 18px; position:relative; }
-  .ring::before { content:""; position:absolute; inset:18px; border-radius:50%;
-                  background:var(--acc); }
-  .ring::after { content:""; position:absolute; left:0; right:0; top:50%; height:2px;
-                 background:var(--acc); transform:translateY(-50%) rotate(-18deg);
-                 border-radius:2px; opacity:.9; }
-
-  .btn { display:block; text-align:center; text-decoration:none; color:#0B1E3F; font-weight:700;
-         font-size:19px; padding:20px; border-radius:14px; margin:22px 0 10px;
-         background:var(--acc); box-shadow:0 8px 26px rgba(255,255,255,.16); }
-  .btn:active { transform:translateY(1px); }
-  .meta { text-align:center; color:var(--dim); font-size:13px; margin-bottom:28px; }
-
-  .card { background:var(--card); border-radius:14px; padding:18px 20px; margin-bottom:16px; }
-  .card h2 { font-size:16px; margin:0 0 12px; }
-  ol { margin:0; padding-left:22px; }
-  ol li { margin-bottom:9px; }
-  .tip { color:var(--dim); font-size:14px; }
-  code { background:rgba(0,0,0,.35); padding:2px 7px; border-radius:5px; font-size:13px;
-         color:#a5d6ff; word-break:break-all; }
-  .warn { border-left:3px solid #f59e0b; padding-left:14px; color:#fcd34d; font-size:14px; }
-  .ok { border-left:3px solid #4ade80; padding-left:14px; color:#86efac; font-size:14px; }
-  a.plain { color:#a5d6ff; }
-</style>
+<meta name="theme-color" content="#1B2433">
+<link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-<div class="wrap">
-  <a href="../" style="display:inline-block;margin-bottom:22px;color:#8fa3c4;text-decoration:none;font-size:14px">← 返回首页</a>
+
+<header class="topbar">
+  <a class="topbar__logo" href="../">深空</a>
+  <nav class="topbar__links">
+    <a href="../">首页</a>
+    <a href="../mzgd/">梦之国度</a>
+    <a class="on" href="./">加速器</a>
+    <a href="../wordcard/">背单词</a>
+    <a href="../thanks/">鸣谢</a>
+  </nav>
+</header>
+
+<div class="wrap narrow">
 
   <div class="brand">
     <div class="ring"></div>
@@ -56,16 +31,15 @@
   </div>
 
   <!-- ★ 下载按钮指向飞牛分享（第三方平台托管，不是自建网站） -->
-  <a class="btn"
-     href="https://share.fnnas.net/s/164559750bf04aefaf"
+  <a class="btn" href="https://share.fnnas.net/s/164559750bf04aefaf"
      target="_blank" rel="noopener">⬇️ 下载安装包</a>
-  <div class="meta">
+  <div style="text-align:center;color:rgba(255,255,255,.86);font-size:13px;margin-bottom:26px">
     v2.7.5 · 约 25 MB · arm64（支持绝大多数安卓手机）
   </div>
 
   <div class="card">
     <h2>怎么装（三步）</h2>
-    <ol>
+    <ol class="plain">
       <li>点上面的按钮，会打开飞牛的分享页，再点一次<b>下载</b>。</li>
       <li>下载完点开它，手机会提示「不允许安装未知应用」——<b>选择允许</b>。
           这是自己打包的，不在应用商店里。</li>
@@ -75,12 +49,12 @@
 
   <div class="card">
     <h2>已经装过官方 EasyTier 的</h2>
-    <div class="ok">直接覆盖安装就行，<b>不用先卸载</b>，以前的配置也不会丢。</div>
+    <div class="note note--ok">直接覆盖安装就行，<b>不用先卸载</b>，以前的配置也不会丢。</div>
   </div>
 
   <div class="card">
     <h2>连不上怎么办</h2>
-    <ol>
+    <ol class="plain">
       <li>确认 App 里的按钮是<b>已连接</b>状态，通知栏应该有 VPN 图标。</li>
       <li>如果一直转圈，换一下网络试试（WiFi 换流量，或反过来）。</li>
       <li>还不行就把 App 界面截图发群里。</li>
@@ -94,13 +68,14 @@
     <h2>连着的时候能干嘛</h2>
     <div class="tip">
       连上后，在 Minecraft 里添加服务器：<br>
-      <b>地址</b> <code>10.144.144.1</code>　<b>端口</b> <code>19132</code><br>
-      <span style="font-size:13px">（基岩版服务器，端口是 UDP；客户端请保持最新版本）</span>
+      <b>地址</b> <code>10.144.144.1</code>　<b>端口</b> <code>19132</code>（基岩版）／
+      <code>25565</code>（Java 版）<br>
+      <span style="font-size:13px">（基岩版端口是 UDP；客户端请保持最新版本）</span>
     </div>
   </div>
 
   <!--
-    校验值由 publish.sh 自动维护（它同时更新 www/index.html 与这里）。
+    校验值由 publish.sh 自动维护（它只更新 www/index.html，本页需手工同步）。
     如果两边不一致，说明有人手工改了页面 —— 以 www/EasyTier-MC.apk 的实际 sha256 为准。
   -->
   <div class="card">
@@ -111,15 +86,19 @@
     <code>33845fa298dd48ea59bb41f37f3f1406d15ae0ef35dc269e4f4969279fd5adc5</code>
   </div>
 
-  <div class="warn" style="margin-top:22px">
-    这个安装包只能发给信得过的朋友。它相当于一张「内网通行证」——
-    连上之后就能看到 NAS 上的其它服务。
-  </div>
-
-  <div class="tip" style="margin-top:26px;text-align:center;font-size:12px">
-    本页为静态页面，不收集任何信息。
+  <div class="card">
+    <div class="note note--warn" style="margin:0">
+      这个安装包只能发给信得过的朋友。它相当于一张「内网通行证」——
+      连上之后就能看到 NAS 上的其它服务。
+    </div>
   </div>
 
 </div>
+
+<footer class="foot">
+  深空加速器 · 深空旗下网络工具　|　<a href="../thanks/">鸣谢</a><br>
+  本页为静态页面，不收集任何信息。
+</footer>
+
 </body>
 </html>

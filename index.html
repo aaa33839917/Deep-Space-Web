@@ -3,19 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--
-  ★ 曝光开关：
-     现在页面能打开、能发给朋友，但搜索引擎不收（noindex）。
-     要真正对外宣传时，把下面这一行整个删掉即可 —— 这是唯一的开关。
--->
+<!-- ★ 曝光开关：删掉下面这一行，搜索引擎才会收录本页 -->
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <title>深空 · DEEP SPACE</title>
 <meta name="description" content="深空 —— 游戏服务器、网络加速与学习工具。">
-<meta name="theme-color" content="#0B1E3F">
+<meta name="theme-color" content="#1B2433">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+
+<header class="topbar">
+  <a class="topbar__logo" href="./">深空</a>
+  <nav class="topbar__links">
+    <a class="on" href="./">首页</a>
+    <a href="mzgd/">梦之国度</a>
+    <a href="accelerator/">加速器</a>
+    <a href="wordcard/">背单词</a>
+    <a href="thanks/">鸣谢</a>
+  </nav>
+</header>
+
 <div class="wrap">
 
   <div class="brand">
@@ -88,11 +96,27 @@
     <div class="entry__go">了解与访问 →</div>
   </a>
 
-  <div class="foot">
-    深空 · DEEP SPACE<br>
-    本站为静态页面，不收集任何信息。
+  <div class="card">
+    <h2>关于深空</h2>
+    <p style="margin:0" class="tip">
+      「深空」是一套自己动手搭起来的东西：一台上网的小主机、几个 Minecraft 服务器、
+      一个把人连回来的组网工具，顺手还写了个背单词的网页。
+      没有云服务账单，也没有广告 —— 都是给朋友玩的。
+    </p>
+    <div class="tagline" style="margin-top:16px">
+      <span class="tag">自建</span>
+      <span class="tag">无广告</span>
+      <span class="tag">纯公益</span>
+      <span class="tag">静态页面 · 不收集任何信息</span>
+    </div>
   </div>
 
 </div>
+
+<footer class="foot">
+  深空 · DEEP SPACE　|　<a href="thanks/">鸣谢</a><br>
+  本站为静态页面，不收集任何信息。
+</footer>
+
 </body>
 </html>
