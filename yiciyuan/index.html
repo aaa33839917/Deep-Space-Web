@@ -8,8 +8,8 @@
 <title>异次元 · Minecraft 基岩版服务器</title>
 <meta name="description" content="异次元 —— Minecraft 基岩版服务器，以料理与农业玩法为主，全中文。">
 <meta name="theme-color" content="#17181C">
-<link rel="stylesheet" href="../assets/yi.css?v=d9d158a9">
-<meta name="dsv" content="158cd0a9de4c">
+<link rel="stylesheet" href="../assets/yi.css?v=60161f80">
+<meta name="dsv" content="7bd465d5fed6">
 </head>
 <body>
 
@@ -83,11 +83,18 @@
       <li>地址和端口照下面填（点「复制」可以直接抄走）：</li>
     </ol>
     <div class="codebox">
-      <code id="yi-addr">10.144.144.1:19132</code>
-      <button class="copybtn" type="button" onclick="yiCopyAddr(this)">复制</button>
+      <div class="coderow">
+        <span class="k">服务器地址</span>
+        <code id="yi-addr">10.144.144.1</code>
+        <button class="copybtn" type="button" onclick="yiCopyAddr(this,'yi-addr')">复制</button>
+      </div>
+      <div class="coderow">
+        <span class="k">端口</span>
+        <code id="yi-port">19132</code>
+        <button class="copybtn" type="button" onclick="yiCopyAddr(this,'yi-port')">复制</button>
+      </div>
     </div>
-    <div class="note">地址填冒号前面那串，端口填 <code>19132</code>；
-      同一局域网内的设备可直接连接，无需启用加速器。</div>
+    <div class="note">游戏里是<b>两个框</b>，分别粘进去就行。同一局域网内的设备可直接连接，无需启用加速器。</div>
   </div>
 
   <div class="card">
@@ -131,8 +138,8 @@
 <script>
 /* 复制服务器地址。微信/QQ 内置浏览器里 navigator.clipboard 常常不可用，
    所以保留 execCommand 兜底 —— 这是移动端最实际的做法。 */
-function yiCopyAddr(btn) {
-  var el = document.getElementById('yi-addr');
+function yiCopyAddr(btn, targetId) {
+  var el = document.getElementById(targetId || 'yi-addr');
   if (!el) return;
   var text = el.textContent.trim();
   var ok = function () {
