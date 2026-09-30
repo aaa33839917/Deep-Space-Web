@@ -8,8 +8,8 @@
 <title>异次元 · Minecraft 基岩版服务器</title>
 <meta name="description" content="异次元 —— Minecraft 基岩版服务器，以料理与农业玩法为主，全中文。">
 <meta name="theme-color" content="#17181C">
-<link rel="stylesheet" href="../assets/yi.css?v=5c3feb83">
-<meta name="dsv" content="0f15a096b547">
+<link rel="stylesheet" href="../assets/yi.css?v=d9d158a9">
+<meta name="dsv" content="158cd0a9de4c">
 </head>
 <body>
 
@@ -80,9 +80,14 @@
     <ol class="plain">
       <li>安装 <b>深空加速器</b>，点击连接按钮建立连接。</li>
       <li>打开 Minecraft <b>基岩版</b>，选择 <b>添加服务器</b>。</li>
-      <li>地址填写 <code>10.144.144.1</code>，端口 <code>19132</code>，保存后进入。</li>
+      <li>地址和端口照下面填（点「复制」可以直接抄走）：</li>
     </ol>
-    <div class="note">同一局域网内的设备可直接连接，无需启用加速器。</div>
+    <div class="codebox">
+      <code id="yi-addr">10.144.144.1:19132</code>
+      <button class="copybtn" type="button" onclick="yiCopyAddr(this)">复制</button>
+    </div>
+    <div class="note">地址填冒号前面那串，端口填 <code>19132</code>；
+      同一局域网内的设备可直接连接，无需启用加速器。</div>
   </div>
 
   <div class="card">
@@ -123,6 +128,41 @@
   本页为静态页面，不收集任何信息。
 </footer>
 
+<script>
+/* 复制服务器地址。微信/QQ 内置浏览器里 navigator.clipboard 常常不可用，
+   所以保留 execCommand 兜底 —— 这是移动端最实际的做法。 */
+function yiCopyAddr(btn) {
+  var el = document.getElementById('yi-addr');
+  if (!el) return;
+  var text = el.textContent.trim();
+  var ok = function () {
+    btn.textContent = '已复制'; btn.className = 'copybtn done';
+    setTimeout(function () { btn.textContent = '复制'; btn.className = 'copybtn'; }, 1800);
+  };
+  var fallback = function () {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { ta.setSelectionRange(0, text.length); } catch (e) {}
+    var good = false;
+    try { good = document.execCommand('copy'); } catch (e) { good = false; }
+    document.body.removeChild(ta);
+    if (good) { ok(); }
+    else {
+      btn.textContent = '请长按选择'; btn.className = 'copybtn err';
+      setTimeout(function () { btn.textContent = '复制'; btn.className = 'copybtn'; }, 2200);
+    }
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(ok).catch(fallback);
+  } else {
+    fallback();
+  }
+}
+</script>
 <script src="../assets/cache-check.js"></script>
 </body>
 </html>
