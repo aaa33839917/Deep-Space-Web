@@ -8,7 +8,7 @@
 <title>深空加速器 · 使用教程</title>
 <meta name="theme-color" content="#2B2B2B">
 <link rel="stylesheet" href="../../assets/style.css?v=292060c6">
-<meta name="dsv" content="83fe40fb2173">
+<meta name="dsv" content="478614ddbc11">
 </head>
 <body>
 
@@ -41,7 +41,7 @@
     <h2>先拿到安装包</h2>
     <p style="margin:0 0 16px" class="tip">
       安装包在<b>下载</b>页。安卓是 <code>EasyTier-MC.apk</code>，
-      Windows 是 <code>DeepSpace.exe</code>（需要配合官方 EasyTier 使用，见下）。
+      Windows 是 <code>DeepSpace-Setup.exe</code>（双击一路下一步就行，见下）。
     </p>
     <a class="btn btn--ghost" style="margin:0" href="../download/">⬇️ 去下载页</a>
   </div>
@@ -60,19 +60,23 @@
   </div>
 
   <div class="card">
-    <h2>Windows 版使用步骤</h2>
-    <div class="note note--warn" style="margin-top:0">
-      <b>使用前提</b>：本程序<b>不含</b> EasyTier 核心。
-      请把官方 EasyTier Windows 版与本程序解压到<b>同一个文件夹</b>，再双击运行。
-    </div>
+    <h2>Windows 版安装步骤</h2>
     <ol class="plain">
-      <li>解压官方 EasyTier Windows 版，把 <code>DeepSpace.exe</code> 放进同一个文件夹。</li>
-      <li>双击 <code>DeepSpace.exe</code>，Windows 会弹出提权（UAC）请求，选择<b>是</b>。</li>
-      <li>窗口中显示 <b>easytier-core 已启动</b> 即为连接成功；
-          之后每次打开都会自动检查并安装新版本。</li>
+      <li>在下载页点击按钮，进入文件分享页后再次点击<b>下载</b>，得到
+          <code>DeepSpace-Setup.exe</code>。</li>
+      <li>双击它，一路「下一步」装完。安装这一步会弹一次提权（UAC）请求，选择<b>是</b>。</li>
+      <li>装完桌面上会出现「深空加速器」图标，双击打开 —— <b>这次不弹 UAC，秒开</b>。</li>
+      <li>点窗口里的大按钮<b>「开启加速」</b>，<b>这时才弹一次 UAC</b>（后台组网进程要管理员权限），
+          选择<b>是</b>。</li>
+      <li>界面显示<b>「连接成功，可以进游戏了」</b>，就可以开游戏进服了。</li>
     </ol>
+    <div class="note note--ok">
+      安装包已经<b>自带</b> EasyTier 核心、网卡驱动和界面文件 ——
+      <b>不用</b>再单独下载官方 EasyTier，也<b>不用</b>把几个文件凑到同一个文件夹。
+      以后有新版本，它会自动下载新的安装包并<b>校验签名</b>后升级。
+    </div>
     <div class="note note--warn">
-      本程序<b>没有代码签名</b>，首次运行 Windows 可能提示「已保护你的电脑」。
+      本程序<b>没有购买代码签名证书</b>，首次运行 Windows 可能提示「已保护你的电脑」。
       确认来源可靠后，可点「更多信息」→「仍要运行」。
     </div>
   </div>
