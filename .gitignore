@@ -5,6 +5,9 @@
 # 内部部署文档：写了 NAS 地址、面板信息、内部路径
 README.md
 
+# ★ 交接文档：内部资料，与 README.md 同级敏感
+交接文档.md
+
 # 发布脚本：写了 token 文件路径
 deploy.sh
 
