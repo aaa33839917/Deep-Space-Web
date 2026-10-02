@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>深空 · 群公告海报</title>
+<style>
+/* ============================================================================
+   深空 · 群公告海报（1080 x 1440）
+   观感刻意照搬 **FreeCloud 官网** 那一套：深色 + 玻璃拟态 + 蓝紫光斑；
+   主色 #5B8CFF / #7AD9FF 直接取自 FreeCloud/site/assets/site.css 的 :root。
+   ---------------------------------------------------------------------------
+   ⚠️ 这是 FreeCloud 的配色，**不是**深空官网的配色规范（深空官网禁渐变）。
+      服主点名要的是 FreeCloud 这一版观感，所以这里按 FreeCloud 走。
+   ========================================================================== */
+:root{
+  --bg:#070B16; --bg-2:#0C1424;
+  --ink:#E9EFFA; --ink-dim:#96A3C0; --ink-dim2:#6B7794;
+  --line:rgba(255,255,255,.09); --card:rgba(255,255,255,.045); --card-2:rgba(255,255,255,.07);
+  --accent:#5B8CFF; --accent-2:#7AD9FF; --ok:#38D39F;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1440px;overflow:hidden}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:"Noto Sans CJK SC","Source Han Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* 背景层：光斑 + 品牌水印，一起关进固定画布，绝不撑大文档 */
+.canvas{position:fixed; inset:0; width:1080px; height:1440px; overflow:hidden; z-index:0}
+.canvas .bg{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(760px 460px at 12% -8%, rgba(91,140,255,.30), transparent 62%),
+    radial-gradient(640px 400px at 90% 3%,  rgba(122,217,255,.17), transparent 60%),
+    radial-gradient(760px 540px at 50% 112%, rgba(91,140,255,.13), transparent 62%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 48%, var(--bg) 100%);
+}
+/* 品牌水印：深空之环（几何照搬 assets/mark-white.svg） */
+.canvas .mark{
+  position:absolute; right:-170px; bottom:-190px; width:680px; height:680px; opacity:.055;
+}
+
+.stage{
+  position:relative; z-index:1;
+  height:1440px; padding:64px 62px 54px;
+  display:flex; flex-direction:column;
+}
+
+/* ---------- 头部 ---------- */
+.brand{display:flex; align-items:center; gap:14px}
+.brand img{width:44px; height:44px; display:block}
+.brand b{font-size:34px; font-weight:900; letter-spacing:.5px}
+.brand span{
+  font-size:20px; color:var(--ink-dim2); letter-spacing:3.4px; font-weight:600;
+  padding-left:14px; margin-left:4px; border-left:1px solid var(--line);
+}
+.badge{
+  align-self:flex-start; display:inline-flex; align-items:center; gap:12px;
+  margin-top:30px; padding:11px 24px; border-radius:999px;
+  background:var(--card); border:1px solid var(--line);
+  font-size:23px; color:var(--ink-dim);
+}
+.dot{width:13px;height:13px;border-radius:50%;background:var(--ok);box-shadow:0 0 14px rgba(56,211,159,.9);flex:none}
+
+h1{margin-top:22px; font-size:88px; line-height:1.12; font-weight:900; letter-spacing:-2px}
+h1 em{
+  font-style:normal;
+  background:linear-gradient(96deg,var(--accent) 6%,var(--accent-2) 94%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.sub{margin-top:20px; font-size:27px; color:var(--ink-dim); letter-spacing:.4px}
+.sub b{color:var(--ink); font-weight:700}
+
+/* ---------- 卡片 ---------- */
+.cards{margin-top:30px; display:flex; flex-direction:column; gap:17px}
+.card{
+  display:flex; align-items:center; gap:30px;
+  background:var(--card); border:1px solid var(--line); border-radius:22px;
+  padding:23px 30px;
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+}
+.card__body{flex:1; min-width:0}
+.card__hd{display:flex; align-items:center; gap:14px; margin-bottom:12px}
+.num{
+  width:42px; height:42px; border-radius:50%; flex:none;
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(140deg,var(--accent),var(--accent-2));
+  color:#05101F; font-weight:900; font-size:23px;
+}
+.card__t{font-size:31px; font-weight:800; letter-spacing:.3px}
+.url{
+  display:block; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:24px; line-height:1.42; color:var(--accent-2);
+  word-break:break-all; letter-spacing:.2px;
+}
+.desc{margin-top:11px; font-size:22.5px; color:var(--ink-dim); line-height:1.5}
+.tags{display:flex; gap:10px; flex-wrap:wrap; margin-top:13px}
+.tag{
+  font-size:20.5px; color:var(--ink-dim); background:var(--card-2);
+  border:1px solid var(--line); border-radius:999px; padding:6px 16px;
+}
+
+/* ---------- 二维码 ----------
+   图按 PNG 原始像素显示（每模组 4px，1:1），不做缩放 ——
+   缩放会把模组边缘压成灰边，扫码识别率会掉。 */
+.qr{flex:none; text-align:center}
+.qr__box{background:#fff; border-radius:16px; padding:14px; line-height:0}
+.qr__box img{display:block; width:auto; height:auto; image-rendering:pixelated}
+.qr__cap{margin-top:10px; font-size:20px; color:var(--ink-dim2)}
+
+/* ---------- 三步 ---------- */
+.steps{display:flex; align-items:flex-start; gap:14px}
+.step{flex:1; text-align:center}
+.step i{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:46px; height:46px; border-radius:50%; font-style:normal; font-weight:900;
+  font-size:24px; color:#05101F;
+  background:linear-gradient(140deg,var(--accent),var(--accent-2));
+}
+.step p{margin-top:10px; font-size:22px; color:var(--ink-dim); line-height:1.42}
+.step p b{color:var(--ink); font-weight:700}
+.arrow{align-self:center; margin-top:-24px; font-size:26px; color:var(--ink-dim2)}
+
+.addr{
+  margin-top:14px; display:flex; align-items:center; gap:20px;
+  background:rgba(91,140,255,.10); border-left:5px solid var(--accent);
+  border-radius:0 14px 14px 0; padding:13px 22px;
+}
+.addr__k{font-size:22px; color:var(--ink-dim)}
+.addr__v{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:40px; font-weight:700; color:var(--ink); letter-spacing:.5px;
+}
+
+/* ---------- 页脚 ---------- */
+.grow{flex:1}
+.foot{
+  display:flex; align-items:center; justify-content:space-between;
+  border-top:1px solid var(--line); padding-top:22px;
+  font-size:22px; color:var(--ink-dim2);
+}
+.foot b{color:var(--ink-dim); font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <div class="bg"></div>
+  <svg class="mark" viewBox="0 0 108 108" aria-hidden="true">
+    <circle cx="54" cy="54" r="15.5" fill="#FFFFFF"/>
+    <ellipse cx="54" cy="54" rx="30" ry="22.5" fill="none" stroke="#FFFFFF"
+             stroke-width="5.4" transform="rotate(-20 54 54)"/>
+  </svg>
+</div>
+
+<div class="stage">
+
+  <!-- ===== 头部 ===== -->
+  <div class="brand">
+    <!-- 品牌图引用唯一真源（不复制副本，见 项目规则.md R2.4） -->
+    <img src="../../assets/mark-white.svg" alt="">
+    <b>深空</b>
+    <span>DEEP SPACE</span>
+  </div>
+
+  <div class="badge"><span class="dot"></span>已上线 · 长期维护</div>
+
+  <h1>官网<em>正式上线</em></h1>
+  <div class="sub">深空加速器 · <b>梦之国度</b>（Java）—— 一个入口，全都能进</div>
+
+  <!-- ===== 三件事 ===== -->
+  <div class="cards">
+
+    <div class="card">
+      <div class="card__body">
+        <div class="card__hd"><div class="num">一</div><div class="card__t">官网正式上线</div></div>
+        <span class="url">https://aaa33839917.github.io/Deep-Space-Web/</span>
+        <div class="desc">手机、电脑都能打开；产品介绍与公告都在这儿。</div>
+      </div>
+      <div class="qr">
+        <div class="qr__box"><img src="qr-site.png" alt="官网二维码"></div>
+        <div class="qr__cap">扫码打开官网</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__body">
+        <div class="card__hd"><div class="num">二</div><div class="card__t">深空加速器</div></div>
+        <span class="url">https://aaa33839917.github.io/Deep-Space-Web/accelerator/download/</span>
+        <div class="tags">
+          <span class="tag">支持：安卓 / Windows</span>
+          <span class="tag">一键连接</span>
+          <span class="tag">应用内自动更新</span>
+        </div>
+      </div>
+      <div class="qr">
+        <div class="qr__box"><img src="qr-download.png" alt="加速器下载二维码"></div>
+        <div class="qr__cap">扫码下载加速器</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__body">
+        <div class="card__hd"><div class="num">三</div><div class="card__t">梦之国度（Java）· 进服三步</div></div>
+        <div class="steps">
+          <div class="step"><i>1</i><p>安装加速器<br><b>并连接</b></p></div>
+          <div class="arrow">→</div>
+          <div class="step"><i>2</i><p>游戏中<br><b>「添加服务器」</b></p></div>
+          <div class="arrow">→</div>
+          <div class="step"><i>3</i><p>填入下面的<br><b>服务器地址</b></p></div>
+        </div>
+        <div class="addr">
+          <span class="addr__k">服务器地址</span>
+          <span class="addr__v">10.144.144.1:25565</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="grow"></div>
+
+  <div class="foot">
+    <span>深空 · DEEP SPACE　|　交流群 QQ 716121482</span>
+    <span><b>纯公益 · 不收费 · 不删档</b></span>
+  </div>
+
+</div>
+</body>
+</html>
