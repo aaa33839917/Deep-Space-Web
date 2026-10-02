@@ -2,15 +2,18 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<title>深空 · 群公告海报</title>
+<title>深空工作室 · 群公告海报</title>
 <style>
 /* ============================================================================
-   深空 · 群公告海报（1080 x 1440）
-   观感刻意照搬 **FreeCloud 官网** 那一套：深色 + 玻璃拟态 + 蓝紫光斑；
-   主色 #5B8CFF / #7AD9FF 直接取自 FreeCloud/site/assets/site.css 的 :root。
+   深空工作室 · 群公告海报（1080 x 1620）
+   观感照搬 **FreeCloud 官网** 那一套：深色 + 玻璃拟态 + 蓝紫光斑；
+   主色 #5B8CFF / #7AD9FF 取自 FreeCloud/site/assets/site.css 的 :root。
    ---------------------------------------------------------------------------
    ⚠️ 这是 FreeCloud 的配色，**不是**深空官网的配色规范（深空官网禁渐变）。
-      服主点名要的是 FreeCloud 这一版观感，所以这里按 FreeCloud 走。
+      服主点名要 FreeCloud 这一版观感，所以这里按 FreeCloud 走。
+
+   文案唯一真源 = 服主 2026-10-03 00:16 发的那四条；
+   海报里出现的每条链接/地址/名称都由 verify-poster.py 对着权威清单复查。
    ========================================================================== */
 :root{
   --bg:#070B16; --bg-2:#0C1424;
@@ -19,7 +22,7 @@
   --accent:#5B8CFF; --accent-2:#7AD9FF; --ok:#38D39F;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1080px;height:1440px;overflow:hidden}
+html,body{width:1080px;height:1620px;overflow:hidden}
 body{
   background:var(--bg); color:var(--ink);
   font-family:"Noto Sans CJK SC","Source Han Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
@@ -27,7 +30,7 @@ body{
 }
 
 /* 背景层：光斑 + 品牌水印，一起关进固定画布，绝不撑大文档 */
-.canvas{position:fixed; inset:0; width:1080px; height:1440px; overflow:hidden; z-index:0}
+.canvas{position:fixed; inset:0; width:1080px; height:1620px; overflow:hidden; z-index:0}
 .canvas .bg{
   position:absolute; inset:0;
   background:
@@ -43,7 +46,7 @@ body{
 
 .stage{
   position:relative; z-index:1;
-  height:1440px; padding:64px 62px 54px;
+  height:1620px; padding:64px 62px 54px;
   display:flex; flex-direction:column;
 }
 
@@ -52,12 +55,12 @@ body{
 .brand img{width:44px; height:44px; display:block}
 .brand b{font-size:34px; font-weight:900; letter-spacing:.5px}
 .brand span{
-  font-size:20px; color:var(--ink-dim2); letter-spacing:3.4px; font-weight:600;
+  font-size:19px; color:var(--ink-dim2); letter-spacing:2.6px; font-weight:600;
   padding-left:14px; margin-left:4px; border-left:1px solid var(--line);
 }
 .badge{
   align-self:flex-start; display:inline-flex; align-items:center; gap:12px;
-  margin-top:30px; padding:11px 24px; border-radius:999px;
+  margin-top:28px; padding:11px 24px; border-radius:999px;
   background:var(--card); border:1px solid var(--line);
   font-size:23px; color:var(--ink-dim);
 }
@@ -69,11 +72,22 @@ h1 em{
   background:linear-gradient(96deg,var(--accent) 6%,var(--accent-2) 94%);
   -webkit-background-clip:text; background-clip:text; color:transparent;
 }
-.sub{margin-top:20px; font-size:27px; color:var(--ink-dim); letter-spacing:.4px}
+.sub{margin-top:18px; font-size:27px; color:var(--ink-dim); letter-spacing:.4px}
 .sub b{color:var(--ink); font-weight:700}
 
+/* ---------- 变更提示条（FreeCloud 的 .note 观感） ---------- */
+.notice{
+  margin-top:22px; border-left:5px solid var(--accent); border-radius:0 16px 16px 0;
+  background:rgba(91,140,255,.10); padding:18px 24px;
+}
+.notice p{display:flex; gap:16px; font-size:24px; line-height:1.55; color:var(--ink-dim)}
+.notice p + p{margin-top:7px}
+.notice b{color:var(--ink); font-weight:700}
+.notice i{font-style:normal; flex:none; color:var(--accent-2); font-weight:700; min-width:112px}
+.arrowh{color:var(--accent-2); padding:0 6px}
+
 /* ---------- 卡片 ---------- */
-.cards{margin-top:30px; display:flex; flex-direction:column; gap:17px}
+.cards{margin-top:26px; display:flex; flex-direction:column; gap:17px}
 .card{
   display:flex; align-items:center; gap:30px;
   background:var(--card); border:1px solid var(--line); border-radius:22px;
@@ -160,14 +174,19 @@ h1 em{
   <div class="brand">
     <!-- 品牌图引用唯一真源（不复制副本，见 项目规则.md R2.4） -->
     <img src="../../assets/mark-white.svg" alt="">
-    <b>深空</b>
-    <span>DEEP SPACE</span>
+    <b>深空工作室</b>
+    <span>DEEPSPACESTUDIO</span>
   </div>
 
-  <div class="badge"><span class="dot"></span>已上线 · 长期维护</div>
+  <div class="badge"><span class="dot"></span>重要公告 · 请所有玩家阅读</div>
 
-  <h1>官网<em>正式上线</em></h1>
-  <div class="sub">深空加速器 · <b>梦之国度</b>（Java）—— 一个入口，全都能进</div>
+  <h1>进服方式<em>变了</em></h1>
+  <div class="sub">梦之国度网络架构发生巨大变革</div>
+
+  <div class="notice">
+    <p><i>入服方式</i><span>服务端内网穿透<span class="arrowh">→</span><b>客户端加速器组网连接</b></span></p>
+    <p><i>工作室</i><span>正式更名为 <b>深空工作室（DeepSpaceStudio）</b></span></p>
+  </div>
 
   <!-- ===== 三件事 ===== -->
   <div class="cards">
@@ -222,7 +241,7 @@ h1 em{
   <div class="grow"></div>
 
   <div class="foot">
-    <span>深空 · DEEP SPACE　|　交流群 QQ 716121482</span>
+    <span>深空工作室 DeepSpaceStudio　|　交流群 QQ 716121482</span>
     <span><b>纯公益 · 不收费 · 不删档</b></span>
   </div>
 
