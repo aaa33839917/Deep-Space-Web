@@ -90,6 +90,34 @@ def remove_meta(page_path):
     return True
 
 
+def validate_meta(meta, pid, allids):
+    """校验卡片信息。★ 2026-10-02：从 `_admin/server.py` 挪到这里 ——
+    控制台（DeepSpaceConsole）也要用它写卡片，规则**必须只有一处**，
+    否则迟早出现"后台放行、控制台拦下"这种两套真相。
+    返回 None 表示通过，否则返回一句人能看懂的错误。"""
+    if not isinstance(meta, dict):
+        return "数据格式不对"
+    if not str(meta.get("name", "")).strip():
+        return "名称不能为空"
+    if not re.fullmatch(r"[A-Za-z0-9_\-]+", pid or ""):
+        return "id 只能用字母 / 数字 / 下划线 / 连字符"
+    if pid in allids:
+        return "id「%s」已经被另一个项目占用" % pid
+    tags = meta.get("tags") or []
+    if not isinstance(tags, list):
+        return "标签必须是数组"
+    for t in tags:
+        if not isinstance(t, dict):
+            return "标签格式不对"
+        if t.get("kind", "") not in ("", "live", "dev"):
+            return "标签类型只能是 普通/已开放/开发中"
+    try:
+        int(meta.get("order", 99))
+    except (TypeError, ValueError):
+        return "排序值必须是整数"
+    return None
+
+
 def scan(root, skip=("products",)):
     """扫出全站所有项目。返回 [{id, dir, page, meta}, ...]，按 order 排序。"""
     out = []
