@@ -60,6 +60,13 @@ ol.plain b{color:var(--fg)}
 .yi-foot{border-top:1px solid var(--line);padding:30px 24px 46px;color:var(--dim2);
          font-size:13px;text-align:center}
 
+/* ── 页脚里的「协议入口」条 · **中性版**（异次元专用，唯一真源 _build/footer-neutral.html）
+      只放两个协议链接、**不带任何一方署名** —— 这一页是两家联合运营的中性页。 ── */
+.yi-foot__legal{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);
+                font-size:12.5px;letter-spacing:.02em}
+.yi-foot__legal a{color:var(--dim);text-decoration:none}
+.yi-foot__legal a:hover{color:var(--fg)}
+
 /* ── 两家工作室的 logo（并列 ⇒ 谁也不突出谁，保持中性）── */
 .yi-brands{display:flex;align-items:center;gap:20px;flex-wrap:wrap;
            margin:26px 0 44px}
