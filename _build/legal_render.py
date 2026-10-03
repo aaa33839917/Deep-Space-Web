@@ -331,12 +331,11 @@ PAGE_HEAD = """<!DOCTYPE html>
 
   <h1 class="page-title">{name}</h1>
   <p class="legal-meta">{version}</p>
-  <p class="legal-status">{status}</p>
-{notes}
+{status_block}{notes}
   <div class="card legal">
 
 <!-- LEGAL:START -->
-<!-- 本块由 _build/render-legal.py 从 {src} 生成 —— 不要手改，改源稿再跑 deploy.sh -->
+<!-- 本页正文由构建流程生成，请勿手改；需要改动请在源稿侧进行并重新构建。 -->
 {body}
 <!-- LEGAL:END -->
 
@@ -364,13 +363,16 @@ def build(doc):
     if info["notes"]:
         notes = ('  <div class="legal-note">%s</div>\n' %
                  "".join("<p>%s</p>" % inline(t, doc["page"], warn) for t in info["notes"]))
+    # 状态行只在源稿**确实有**时渲染（v1.1 源稿已把"状态：已定稿（服主…拍定）"搬去不发布的内部文件；
+    # 那时若还照模板输出，页面上会留一个空的 <p class="legal-status"></p>）
+    status_block = ('  <p class="legal-status">%s</p>\n' % inline(info["status"], doc["page"], warn)
+                    if info["status"].strip() else "")
     page_html = PAGE_HEAD.format(
         title=html.escape(doc["title"], quote=True),
         name=html.escape(info["title_zh"]),
         version=inline(info["version"], doc["page"], warn),
-        status=inline(info["status"], doc["page"], warn),
+        status_block=status_block,
         notes=notes,
-        src=info["src_path"].replace(os.sep, "/"),
         body=body,
     )
     return page_html, {"sec": n_sec, "src_sha": info["src_sha"],
