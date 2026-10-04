@@ -25,7 +25,7 @@ from PIL import Image, ImageDraw              # noqa: E402
 from pyzbar.pyzbar import decode              # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DEFAULT_PNG = os.path.join(HERE, "group-announce-2026-10-03.png")
+DEFAULT_PNG = os.path.join(HERE, "group-announce-2026-10-04.png")
 HTML = os.path.join(HERE, "group-announce.html")
 
 W, H = 1080, 1620
@@ -44,12 +44,16 @@ CANONICAL_URLS = [
     "https://aaa33839917.github.io/Deep-Space-Web/accelerator/download/",
 ]
 ADDRESS = "10.144.144.1:25565"
+# ★ 改名后新加的**反向**断言：玩家可见文案里一个字都不许再出现「加速器」
+#   （注意只查中文词；下载地址路径里的英文 accelerator 是技术标识，URL 不动）
+MUST_NOT_APPEAR = ["加速器"]
 MUST_APPEAR = [
     "梦之国度网络架构发生巨大变革",
     "服务端内网穿透",
-    "客户端加速器组网连接",
+    "客户端「深空联机工具」组网连接",
     "深空工作室（DeepSpaceStudio）",
     "支持：安卓 / Windows",
+    "仅限本服玩家",
     "梦之国度（Java）",
 ]
 
@@ -113,6 +117,11 @@ def main():
         print(f"   {'✅' if good else '❌'} 文案「{key}」")
         if not good:
             fails.append(f"关键文案缺失: {key}")
+    for bad in MUST_NOT_APPEAR:
+        clean = bad not in text
+        print(f"   {'✅' if clean else '❌'} 不该出现「{bad}」（改名前的旧产品名）")
+        if not clean:
+            fails.append(f"文案里还残留旧名: {bad}")
 
     print()
     if fails:
@@ -121,7 +130,7 @@ def main():
             print("   -", f)
         sys.exit(1)
     print(f"✅ 自检通过：画布 {W}x{H}；二维码 {ok_qr}/{len(QR_BOXES)} 可扫且指向正确链接；"
-          f"正文 {len(shown)} 条链接 + 1 条地址 + {len(MUST_APPEAR)} 条关键文案全部对上。")
+          f"正文 {len(shown)} 条链接 + 1 条地址 + {len(MUST_APPEAR)} 条关键文案全部对上，且已无旧名「{'/'.join(MUST_NOT_APPEAR)}」。")
 
 
 if __name__ == "__main__":
