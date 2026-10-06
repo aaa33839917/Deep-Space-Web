@@ -6,14 +6,20 @@
 用法：
     python3 verify-poster.py [海报.png]
 
-查三件事：
-  ① 画布尺寸是不是 1080x1620（发出去就是这一张图，尺寸不能飘）；
+查四件事：
+  ① 画布尺寸是不是 1080x1440（发出去就是这一张图，尺寸不能飘）；
   ② **从"要发出去的那张 PNG"里把两个二维码抠出来真解一遍** ——
      二维码是这张海报里唯一"错了也看不出来"的东西；
-  ③ 海报正文里的链接 / 地址 / 关键文案，逐条对着权威清单比。
+  ③ 海报正文里的链接 / 地址 / 关键文案，逐条对着权威清单比；
+  ④ 反向断言：玩家可见文案里**一个字都不许再出现**改名前的旧产品名。
 
 依赖：
     pip install --target /vol1/.dsh-tmp/pylibs pyzbar
+
+★ 这条规矩是 2026-10-03 定的：**二维码不靠"看着像"验收**。
+  试过"用另一个二维码库逐格比对矩阵" —— 那是错的判据：两个库各自选的最优掩码不同、
+  但都是合法二维码，矩阵不一致说明不了谁错。唯一说了算的判据是：
+  **扫出来是不是我要的那个链接**（zbar 是本机系统里的 libzbar，与生成端无关）。
 """
 import os
 import re
@@ -25,37 +31,41 @@ from PIL import Image, ImageDraw              # noqa: E402
 from pyzbar.pyzbar import decode              # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DEFAULT_PNG = os.path.join(HERE, "group-announce-2026-10-04.png")
-HTML = os.path.join(HERE, "group-announce.html")
+DEFAULT_PNG = os.path.join(HERE, "group-announce-2026-10-07.png")
+HTML = os.path.join(HERE, "group-announce.html")          # ← v4 版式（宋体标题那版）
 
-W, H = 1080, 1620
+W, H = 1080, 1440
 
-# 海报里两个二维码**白底方块**的屏幕坐标（x, y, w, h）
-#   来源：浏览器里量 .qr__box 的 getBoundingClientRect()（1080x1620 视口、无缩放）
-#   ⚠️ 改了海报版式就要重新量（量法：见本目录 README 或 git 提交说明里的那一行 JS）
+# 海报里两个二维码**白底小块**的屏幕坐标（x, y, w, h）
+#   来源：浏览器里量 .qb 的 getBoundingClientRect()（1080x1440 视口、无缩放）
+#   ⚠️ 改版式必须重新量，量法：page.evaluate 取 [...document.querySelectorAll('.qb')].map(getBoundingClientRect)
 QR_BOXES = [
-    ((811, 566, 176, 176), "https://aaa33839917.github.io/Deep-Space-Web/"),
-    ((795, 846, 192, 192), "https://aaa33839917.github.io/Deep-Space-Web/accelerator/download/"),
+    ((832, 519, 172, 172), "https://aaa33839917.github.io/Deep-Space-Web/"),
+    ((832, 765, 172, 188), "https://aaa33839917.github.io/Deep-Space-Web/accelerator/download/"),
 ]
 
-# ★ 权威清单 = 服主 2026-10-03 00:16 发来的那四条原文
+# ★ 权威清单 = 服主那条群公告（产品名按 2026-10-03 改名收口为「深空联机工具」）
 CANONICAL_URLS = [
     "https://aaa33839917.github.io/Deep-Space-Web/",
     "https://aaa33839917.github.io/Deep-Space-Web/accelerator/download/",
 ]
 ADDRESS = "10.144.144.1:25565"
-# ★ 改名后新加的**反向**断言：玩家可见文案里一个字都不许再出现「加速器」
-#   （注意只查中文词；下载地址路径里的英文 accelerator 是技术标识，URL 不动）
-MUST_NOT_APPEAR = ["加速器"]
 MUST_APPEAR = [
-    "梦之国度网络架构发生巨大变革",
+    "进服方式变更",
     "服务端内网穿透",
     "客户端「深空联机工具」组网连接",
     "深空工作室（DeepSpaceStudio）",
     "支持：安卓 / Windows",
     "仅限本服玩家",
     "梦之国度（Java）",
+    "服务器地址",
 ]
+# ★ 反向断言：改名后，玩家可见文案里不许再出现旧产品名
+#   （只查中文词；下载地址路径里的英文 accelerator 是技术标识，URL 不动）
+MUST_NOT_APPEAR = ["加速器"]
+
+# 只认 URL 安全字符：这样"CJK 紧跟在链接后面"时不会把中文也吞进 URL
+URL_RE = re.compile(r"https?://[A-Za-z0-9\-._~:/?#\[\]@!$&'()*+,;=%]+")
 
 
 def main():
@@ -93,30 +103,31 @@ def main():
     else:
         print(f"③ 负向对照：✅ 涂花后解出 {got_broken or '（解不出来）'}，与原文不同")
 
-    # ---------- ④ 正文里的链接 / 地址 / 文案 ----------
-    html = open(HTML, encoding="utf-8").read()
-    shown = re.findall(r'<span class="url">(.*?)</span>', html)
-    addr_m = re.search(r'<span class="addr__v">(.*?)</span>', html)
-    addr = addr_m.group(1) if addr_m else ""
-    # 正文可见文字（去掉标签），用于"关键文案在不在"的比对
-    text = re.sub(r"<[^>]+>", "", html)
+    # ---------- ④ 正文：链接 / 地址 / 关键文案 / 旧名残留 ----------
+    #   把标签全部剥掉再查 —— 这样"排版换行用的 <span>、<br>"都不会干扰比对
+    text = re.sub(r"<[^>]+>", "", open(HTML, encoding="utf-8").read())
 
-    print(f"④ 正文比对：链接 {len(shown)} 条 / 地址 1 条 / 关键文案 {len(MUST_APPEAR)} 条")
-    for u in shown:
+    found = URL_RE.findall(text)
+    print(f"④ 正文比对：链接 {len(found)} 条 / 地址 1 条 / 关键文案 {len(MUST_APPEAR)} 条 / 旧名 {len(MUST_NOT_APPEAR)} 个")
+    for u in found:
         good = u in CANONICAL_URLS
         print(f"   {'✅' if good else '❌'} 链接 {u}")
         if not good:
             fails.append(f"海报里的链接不在权威清单里: {u}")
-    if len(shown) != len(CANONICAL_URLS):
-        fails.append(f"链接条数 {len(shown)} ≠ 权威清单 {len(CANONICAL_URLS)}")
-    print(f"   {'✅' if addr == ADDRESS else '❌'} 地址 {addr}")
-    if addr != ADDRESS:
-        fails.append(f"服务器地址 {addr!r} ≠ {ADDRESS!r}")
+    if found != CANONICAL_URLS:
+        fails.append(f"链接清单不一致：{found}")
+
+    addr_ok = ADDRESS in text
+    print(f"   {'✅' if addr_ok else '❌'} 地址 {ADDRESS}")
+    if not addr_ok:
+        fails.append(f"正文里找不到服务器地址 {ADDRESS}")
+
     for key in MUST_APPEAR:
         good = key in text
         print(f"   {'✅' if good else '❌'} 文案「{key}」")
         if not good:
             fails.append(f"关键文案缺失: {key}")
+
     for bad in MUST_NOT_APPEAR:
         clean = bad not in text
         print(f"   {'✅' if clean else '❌'} 不该出现「{bad}」（改名前的旧产品名）")
@@ -130,7 +141,8 @@ def main():
             print("   -", f)
         sys.exit(1)
     print(f"✅ 自检通过：画布 {W}x{H}；二维码 {ok_qr}/{len(QR_BOXES)} 可扫且指向正确链接；"
-          f"正文 {len(shown)} 条链接 + 1 条地址 + {len(MUST_APPEAR)} 条关键文案全部对上，且已无旧名「{'/'.join(MUST_NOT_APPEAR)}」。")
+          f"正文 {len(found)} 条链接 + 1 条地址 + {len(MUST_APPEAR)} 条关键文案全部对上，"
+          f"且已无旧名「{'/'.join(MUST_NOT_APPEAR)}」。")
 
 
 if __name__ == "__main__":
