@@ -7,7 +7,7 @@
     python3 verify-poster.py [海报.png]
 
 查四件事：
-  ① 画布尺寸是不是 1080x1440（发出去就是这一张图，尺寸不能飘）；
+  ① 画布尺寸是不是 1080x1620（发出去就是这一张图，尺寸不能飘）；
   ② **从"要发出去的那张 PNG"里把两个二维码抠出来真解一遍** ——
      二维码是这张海报里唯一"错了也看不出来"的东西；
   ③ 海报正文里的链接 / 地址 / 关键文案，逐条对着权威清单比；
@@ -32,16 +32,16 @@ from pyzbar.pyzbar import decode              # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_PNG = os.path.join(HERE, "group-announce-2026-10-07.png")
-HTML = os.path.join(HERE, "group-announce.html")          # ← v4 版式（宋体标题那版）
+HTML = os.path.join(HERE, "group-announce.html")          # ← 服主 2026-10-07 定稿那版（FreeCloud 观感）
 
-W, H = 1080, 1440
+W, H = 1080, 1620
 
 # 海报里两个二维码**白底小块**的屏幕坐标（x, y, w, h）
-#   来源：浏览器里量 .qb 的 getBoundingClientRect()（1080x1440 视口、无缩放）
-#   ⚠️ 改版式必须重新量，量法：page.evaluate 取 [...document.querySelectorAll('.qb')].map(getBoundingClientRect)
+#   来源：浏览器里量 .qr__box 的 getBoundingClientRect()（1080x1620 视口、无缩放）
+#   ⚠️ 改版式必须重新量，量法：page.evaluate 取 [...document.querySelectorAll('.qr__box')].map(getBoundingClientRect)
 QR_BOXES = [
-    ((832, 519, 172, 172), "https://aaa33839917.github.io/Deep-Space-Web/"),
-    ((832, 765, 172, 188), "https://aaa33839917.github.io/Deep-Space-Web/accelerator/download/"),
+    ((811, 566, 176, 176), "https://aaa33839917.github.io/Deep-Space-Web/"),
+    ((795, 846, 192, 192), "https://aaa33839917.github.io/Deep-Space-Web/accelerator/download/"),
 ]
 
 # ★ 权威清单 = 服主那条群公告（产品名按 2026-10-03 改名收口为「深空联机工具」）
@@ -51,7 +51,7 @@ CANONICAL_URLS = [
 ]
 ADDRESS = "10.144.144.1:25565"
 MUST_APPEAR = [
-    "进服方式变更",
+    "重要公告",
     "服务端内网穿透",
     "客户端「深空联机工具」组网连接",
     "深空工作室（DeepSpaceStudio）",

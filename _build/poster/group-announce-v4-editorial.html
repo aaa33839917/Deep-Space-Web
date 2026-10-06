@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>深空工作室 · 进服方式变更公告</title>
+<style>
+/* ============================================================================
+   深空工作室 · 群公告海报 v4（1080 x 1440）
+
+   ★ v4 与 v3 的区别 = 一套"去 AI 味"的规矩（服主 2026-10-07：
+     「一下就能看出是 AI 做的，大标题特别难受」）：
+
+     1. ❌ 渐变大标题    → ✅ 标题宋体 + 平色单字强调，左对齐，不居中不发光
+     2. ❌ 彩色光斑背景  → ✅ 平色深底 + 一道极淡的品牌水印环
+     3. ❌ 胶囊/标签圆片 → ✅ 顿号分隔的纯文本（"安卓 / Windows · 仅限本服玩家"）
+     4. ❌ 渐变数字圆圈  → ✅ 中文数字当标题的一部分（"一、官网正式上线"）
+     5. ❌ 卡片套卡片    → ✅ 细分隔线 + 左侧竖标（编辑排版，不是 SaaS 组件）
+     6. ❌ 玻璃拟态模糊  → ✅ 实色 + 1px 描边，圆角收到 10-12px
+     7. ✅ 真实日期、①②③ 编号 —— 人对人写公告就是这个样子
+
+   ⚠️ 标题字体是这套设计的支点：换成黑体（Noto Sans CJK SC）会立刻变回
+      "官网 Hero 大标题"那种观感。要换请连着整版一起评估，别只换字体。
+   ========================================================================== */
+:root{
+  --bg:#0A101C;
+  --ink:#EEF3FB; --dim:#9AA8C2; --dim2:#6C7A9C;
+  --line:rgba(255,255,255,.11); --line-2:rgba(255,255,255,.055);
+  --accent:#4C7DFF;            /* 平色主色：全图不做任何渐变 */
+  --accent-2:#8CBAFF;
+  --title-font:"Noto Serif CJK SC","Songti SC",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1440px;overflow:hidden}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:"Noto Sans CJK SC","PingFang SC","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.canvas{position:fixed;inset:0;width:1080px;height:1440px;overflow:hidden;z-index:0;
+  background:linear-gradient(180deg,#0C1424 0%,var(--bg) 42%,#080D16 100%)}
+/* 品牌水印：深空之环，极淡，只作"这张图是深空出的"的底纹 */
+.canvas .mark{position:absolute;right:-150px;bottom:-210px;width:680px;height:680px;opacity:.05}
+
+.stage{position:relative;z-index:1;height:1440px;padding:60px 76px 54px;display:flex;flex-direction:column}
+
+/* ---------- 页眉 ---------- */
+.head{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{width:42px;height:42px;display:block}
+.brand b{font-size:30px;font-weight:900;letter-spacing:.5px}
+.brand span{font-size:19px;color:var(--dim2);letter-spacing:.6px;padding-left:14px;
+  margin-left:2px;border-left:1px solid var(--line)}
+.date{font-size:21px;color:var(--dim2);letter-spacing:.5px}
+.rule{height:1px;background:var(--line);margin-top:20px}
+
+/* ---------- 标题：左对齐、宋体、平色 ---------- */
+.title{margin-top:30px}
+.kicker{
+  font-size:23px;font-weight:700;color:var(--accent-2);letter-spacing:1.5px;
+  padding-left:14px;border-left:4px solid var(--accent);line-height:1.1;
+}
+h1{
+  margin-top:22px;font-family:var(--title-font);
+  font-size:100px;font-weight:900;line-height:1.06;letter-spacing:2px;color:var(--ink);
+}
+h1 .hl{color:var(--accent-2)}
+h1 small{display:block;font-size:26px;font-weight:400;color:var(--dim);letter-spacing:.5px;margin-top:16px;
+  font-family:"Noto Sans CJK SC",sans-serif}
+.sub{font-size:26px;color:var(--dim);line-height:1.5;margin-top:12px}
+
+/* ---------- 变更两条：左侧竖标 ---------- */
+.changes{margin-top:26px;border-left:4px solid var(--accent);padding-left:26px;display:grid;gap:13px}
+.changes p{font-size:25px;line-height:1.5;color:var(--dim)}
+.changes i{font-style:normal;display:inline-block;width:132px;color:var(--accent-2);font-weight:700}
+.changes b{color:var(--ink);font-weight:700}
+.ar{color:var(--accent-2);padding:0 9px}
+
+/* ---------- 三条正文 ---------- */
+.list{margin-top:28px}
+.item{display:flex;align-items:flex-start;gap:26px;padding:18px 0}
+.bd{flex:1;min-width:0}
+.t{font-size:30px;font-weight:800;letter-spacing:.3px}
+.t .n{color:var(--accent-2);font-weight:900;padding-right:10px}
+.u span{display:block}
+.u{
+  display:block;margin-top:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:23px;line-height:1.45;color:var(--accent-2);letter-spacing:.2px;word-break:break-all;
+}
+.meta{margin-top:12px;font-size:22px;color:var(--dim)}
+.meta b{color:var(--ink);font-weight:700}
+.hr{height:1px;background:var(--line-2)}
+
+/* 二维码：白底小块，不发光 */
+.qr{flex:none;width:172px;text-align:center}
+.qb{background:#fff;border-radius:10px;padding:12px;line-height:0}
+.qb img{display:block;margin:0 auto;width:auto;height:auto;image-rendering:pixelated}
+.qc{margin-top:10px;font-size:19px;color:var(--dim2)}
+
+/* 三步 + 地址 */
+.steps{margin-top:14px;display:grid;gap:11px}
+.steps p{font-size:24px;color:var(--dim);line-height:1.45}
+.steps em{font-style:normal;color:var(--accent-2);font-weight:700;padding-right:12px}
+.steps b{color:var(--ink);font-weight:700}
+.addr{
+  margin-top:20px;padding-top:18px;border-top:1px solid var(--line);
+  display:flex;align-items:baseline;gap:20px;
+}
+.addr span{font-size:21px;color:var(--dim2)}
+.addr b{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:38px;font-weight:700;color:var(--ink);letter-spacing:.5px;
+}
+
+/* ---------- 页脚 ---------- */
+.grow{flex:1}
+.foot{
+  display:flex;align-items:baseline;justify-content:space-between;
+  border-top:1px solid var(--line);padding-top:20px;font-size:21px;color:var(--dim2);
+}
+.foot b{color:var(--dim);font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <svg class="mark" viewBox="0 0 108 108" aria-hidden="true">
+    <circle cx="54" cy="54" r="15.5" fill="#FFFFFF"/>
+    <ellipse cx="54" cy="54" rx="30" ry="22.5" fill="none" stroke="#FFFFFF"
+             stroke-width="5.4" transform="rotate(-20 54 54)"/>
+  </svg>
+</div>
+
+<div class="stage">
+
+  <!-- ===== 页眉 ===== -->
+  <div class="head">
+    <div class="brand">
+      <!-- 品牌图引用唯一真源（不复制副本，见 项目规则Agent.md R2.4） -->
+      <img src="../../assets/mark-white.svg" alt="">
+      <b>深空工作室</b>
+      <span>DEEP SPACE</span>
+    </div>
+    <div class="date">2026 年 10 月</div>
+  </div>
+  <div class="rule"></div>
+
+  <!-- ===== 标题 ===== -->
+  <div class="title">
+    <div class="kicker">梦之国度 · 重要公告</div>
+    <h1>进服方式<span class="hl">变更</span></h1>
+    <div class="sub">客户端已更名为「深空联机工具」，装好后点连接即可，功能不变。</div>
+  </div>
+
+  <!-- ===== 变更 ===== -->
+  <div class="changes">
+    <p><i>入服方式</i>服务端内网穿透<span class="ar">→</span>客户端<b>「深空联机工具」</b>组网连接</p>
+    <p><i>工作室</i>正式更名为 <b>深空工作室（DeepSpaceStudio）</b></p>
+  </div>
+
+  <!-- ===== 三条 ===== -->
+  <div class="list">
+
+    <div class="item">
+      <div class="bd">
+        <div class="t"><span class="n">一、</span>官网正式上线</div>
+        <span class="u">https://aaa33839917.github.io/Deep-Space-Web/</span>
+        <div class="meta">手机、电脑都能打开；产品介绍与公告都在这儿。</div>
+      </div>
+      <div class="qr">
+        <div class="qb"><img src="qr-site.png" alt="官网二维码"></div>
+        <div class="qc">扫码打开官网</div>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="item">
+      <div class="bd">
+        <div class="t"><span class="n">二、</span>深空联机工具</div>
+        <span class="u"><span>https://aaa33839917.github.io/</span><span>Deep-Space-Web/accelerator/download/</span></span>
+        <div class="meta"><b>支持：安卓 / Windows</b> · 应用内自动更新 · 仅限本服玩家</div>
+      </div>
+      <div class="qr">
+        <div class="qb"><img src="qr-download.png" alt="联机工具下载二维码"></div>
+        <div class="qc">扫码下载联机工具</div>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="item">
+      <div class="bd">
+        <div class="t"><span class="n">三、</span>梦之国度（Java）· 进服三步</div>
+        <div class="steps">
+          <p><em>①</em>安装「深空联机工具」<b>并连接</b></p>
+          <p><em>②</em>游戏中<b>「添加服务器」</b></p>
+          <p><em>③</em>地址填下面这一行</p>
+        </div>
+        <div class="addr">
+          <span>服务器地址</span>
+          <b>10.144.144.1:25565</b>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="grow"></div>
+
+  <div class="foot">
+    <span>深空工作室 · 交流群 QQ 716121482</span>
+    <span><b>不收费 · 不删档</b></span>
+  </div>
+
+</div>
+</body>
+</html>
