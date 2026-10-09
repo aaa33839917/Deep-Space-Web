@@ -5,10 +5,10 @@
   "_校对": "url 必须是 http(s) 链接；同步脚本会核验页面与这里一致（不一致就报错，不会发半成品）。",
   "android": {
     "label": "安卓版",
-    "url": "https://share.fnnas.net/s/b9878f5c03874388a4"
+    "url": "https://share.fnnas.net/s/16097481ed8e4a388c"
   },
   "windows": {
     "label": "Windows 版",
-    "url": "https://share.fnnas.net/s/7569749d62824dcc9a"
+    "url": "https://share.fnnas.net/s/c2da30c7abd94cd19d"
   }
 }
