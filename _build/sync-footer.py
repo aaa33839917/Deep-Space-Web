@@ -4,7 +4,7 @@
 
     python3 _build/sync-footer.py
 
-唯一真源：`_build/footer.html`（普通页）与 `_build/footer-neutral.html`（异次元中性页）。
+唯一真源：`_build/footer.html`（普通页）与 `_build/footer-neutral.html`（永恒的旅途中性页）。
 注入位置：页面自己 `<footer …>` 的**内部末尾**（由 `<!-- FOOTER:START -->` / `<!-- FOOTER:END -->` 标记），
           所以每页只会有一个页脚条，不会出现"两个深色页脚叠在一起"。
 

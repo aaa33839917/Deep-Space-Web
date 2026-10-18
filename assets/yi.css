@@ -1,7 +1,7 @@
 /* ============================================================================
-   异次元 —— 独立的中性皮肤
+   永恒的旅途 —— 独立的中性皮肤
    ★ 为什么不用 assets/style.css：
-     异次元是两个工作室联合运营的项目，它的官方页**不应该长得像任何一家的站**。
+     永恒的旅途是两个工作室联合运营的项目，它的官方页**不应该长得像任何一家的站**。
      所以这里刻意用一套中性的灰阶，不带品牌色、不带背景图、不做毛玻璃特效。
      （2026-09-29 用户要求：「介绍页面写的中性一点，不要突出任何一个工作室，
        还有网页风格也要中性一点」）
@@ -60,7 +60,7 @@ ol.plain b{color:var(--fg)}
 .yi-foot{border-top:1px solid var(--line);padding:30px 24px 46px;color:var(--dim2);
          font-size:13px;text-align:center}
 
-/* ── 页脚里的「协议入口」条 · **中性版**（异次元专用，唯一真源 _build/footer-neutral.html）
+/* ── 页脚里的「协议入口」条 · **中性版**（永恒的旅途专用，唯一真源 _build/footer-neutral.html）
       只放两个协议链接、**不带任何一方署名** —— 这一页是两家联合运营的中性页。 ── */
 .yi-foot__legal{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);
                 font-size:12.5px;letter-spacing:.02em}
