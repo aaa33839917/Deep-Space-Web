@@ -37,6 +37,7 @@ FIELDS = {
     "cta": "了解更多 →",
     "home_desc": "",
     "about": "",
+    "icon": "",          # 卡片/首页产品表用的小图标（站点内相对路径，如 assets/xxx.png）
 }
 
 

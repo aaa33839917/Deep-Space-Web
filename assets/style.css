@@ -117,6 +117,11 @@ body::before {
   filter: drop-shadow(0 0 16px rgba(255,255,255,.30));
 }
 .brandmark--sm { width: 42px; height: 42px; margin: 0; flex: none; filter: none; }
+/* 服务器自己的方形 LOGO（永恒的旅途）：圆角 + 不拉伸 */
+.brandmark--logo { border-radius: 9px; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,.28); }
+/* 首页产品表里的 20px 小 LOGO —— 不改变表格行高 */
+.row-logo { width: 20px; height: 20px; border-radius: 5px; object-fit: cover;
+            vertical-align: -4px; margin-right: 8px; display: inline-block; }
 
 /* ---------- 毛玻璃卡片 ---------- */
 .card {

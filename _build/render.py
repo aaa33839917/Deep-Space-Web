@@ -57,11 +57,19 @@ def render_cards(projects, prefix):
         desc = "<br>\n      ".join(
             ln.strip() for ln in str(p.get("desc", "")).split("\n") if ln.strip()
         )
+        # 项目自己的方形图标（可选，card-meta 里的 "icon"）；没有就用深空小环。
+        # 路径按页面的真实层级拼 prefix —— 别手写 ../（本站栽过一次层级错位）。
+        if p.get("icon"):
+            mark = ('      <img class="brandmark--sm brandmark--logo" src="%s%s" '
+                    'alt="" width="42" height="42">\n' % (prefix, esc(p.get("icon"))))
+        else:
+            mark = ('      <img class="brandmark--sm" src="%sassets/mark-navy.svg" '
+                    'alt="" width="42" height="42">\n' % prefix)
         out.append(
             "  <!-- project: %s -->\n"
             '  <a class="entry" href="%s%s">\n'
             '    <div class="entry__top">\n'
-            '      <img class="brandmark--sm" src="%sassets/mark-navy.svg" alt="" width="42" height="42">\n'
+            "%s"
             "      <div>\n"
             '        <div class="entry__title">%s</div>\n'
             '        <div class="entry__en">%s</div>\n'
@@ -79,7 +87,7 @@ def render_cards(projects, prefix):
                 esc(it["id"]),
                 prefix,
                 safe_href(p.get("href") or (it["id"] + "/")),
-                prefix,
+                mark,
                 esc(p.get("name")),
                 esc(p.get("en")),
                 desc,
@@ -97,10 +105,19 @@ def render_names(projects):
     return " · ".join(names) if names else "暂未添加"
 
 
+def _table_name(p):
+    """首页产品表里的项目名：有 icon 就在前面加一枚 20px 小图标（不影响行高）。"""
+    name = esc(p.get("name"))
+    if p.get("icon"):
+        return ('<img class="row-logo" src="%s" alt="" width="20" height="20">%s'
+                % (esc(p.get("icon")), name))
+    return name
+
+
 def render_table(projects):
     rows = [
         "      <tr><th>%s</th><td>%s</td></tr>"
-        % (esc(it["meta"].get("name")), esc(it["meta"].get("home_desc")))
+        % (_table_name(it["meta"]), esc(it["meta"].get("home_desc")))
         for it in projects
     ]
     return "\n".join(rows) if rows else "      <tr><td>暂无内容</td></tr>"

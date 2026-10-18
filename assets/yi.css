@@ -25,11 +25,17 @@ a{color:inherit}
 
 .yi-top{border-bottom:1px solid var(--line);background:var(--card)}
 .yi-top .in{max-width:760px;margin:0 auto;padding:20px 24px;display:flex;align-items:center;gap:11px}
+.yi-top .logo{width:34px;height:34px;border-radius:8px;display:block;flex:none;
+             object-fit:cover;image-rendering:pixelated;
+             box-shadow:0 1px 6px rgba(0,0,0,.35)}
 .yi-top .dot{width:9px;height:9px;border-radius:50%;background:var(--fg);opacity:.85}
 .yi-top .nm{font-size:15px;font-weight:700;letter-spacing:.26em}
 .yi-top .en{font-size:11px;color:var(--dim2);letter-spacing:.22em}
 
 .yi-wrap{max-width:760px;margin:0 auto;padding:52px 24px 80px}
+.yi-hero-logo{display:block;width:84px;height:84px;border-radius:18px;margin:0 0 22px;
+              object-fit:cover;image-rendering:pixelated;
+              box-shadow:0 6px 22px rgba(0,0,0,.38)}
 .yi-wrap h1{font-size:clamp(30px,6vw,42px);margin:0 0 12px;letter-spacing:.1em;font-weight:700}
 .yi-sub{color:var(--dim);font-size:15px;margin:0 0 44px}
 
