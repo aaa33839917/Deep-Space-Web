@@ -8,7 +8,7 @@
 <title>深空联机工具 · 下载</title>
 <meta name="theme-color" content="#2B2B2B">
 <link rel="stylesheet" href="../../assets/style.css?v=d08a23ff">
-<meta name="dsv" content="216d1723da2f">
+<meta name="dsv" content="c96c57870257">
 </head>
 <body>
 
@@ -66,6 +66,25 @@
     </div>
   </div>
 
+  <div class="card">
+    <h2>Linux 版</h2>
+    <table>
+      <tr><th>版本</th><td><b>v1.0.3</b>（x86_64）</td></tr>
+      <tr><th>大小</th><td>AppImage 约 129 MB · deb 约 93 MB</td></tr>
+      <tr><th>适用系统</th><td>Ubuntu 22.04 / 24.04、Debian 10+、统信 UOS 20（x86_64）</td></tr>
+      <tr><th>更新方式</th><td>应用内自动更新<span class="tip">（清单 ECDSA 验签；AppImage 原子替换，deb 打开系统安装器）</span></td></tr>
+    </table>
+    <a class="btn" data-dl="appimage" href="https://share.fnnas.net/s/768a5d8b39484e0484"
+       target="_blank" rel="noopener">⬇️ 下载 AppImage（免安装）</a>
+    <a class="btn" data-dl="deb" href="https://share.fnnas.net/s/b859f937115f47448e"
+       target="_blank" rel="noopener" style="margin-left:10px">⬇️ 下载 .deb（推荐）</a>
+    <div class="note note--ok" style="margin-top:18px">
+      <b>推荐用 deb</b>：安装后自动装好 helper / polkit 策略，首次连接会弹一次系统授权。
+      AppImage 免安装，但需要 <code>chmod +x</code>；系统缺 <code>libfuse2</code> 时用
+      <code>--appimage-extract-and-run</code> 启动。
+    </div>
+  </div>
+
   <!--
     校验值：安卓端由 publish.sh 写进 www/index.html，本页需手工同步。
     ★ 2026-10-22 全面更新到 v3.2.23 / v2.1.0（由发版脚本自动同步） —— 上一版文字还停在 v2.7.5 / v1.0.0，
@@ -81,6 +100,10 @@
     <code style="display:block;padding:8px 10px">1c4405d388440fe1bc03ef14a2559cb325e13f59b10907be322a37503bf79e2f</code>
     <div class="tip small" style="margin:16px 0 5px">Windows 版 v2.1.0</div>
     <code style="display:block;padding:8px 10px">38a4e47d9944f528ac86776921ec53f09ef761a1ba30f1ecfdbd2524cc7fb5dc</code>
+    <div class="tip small" style="margin:16px 0 5px">Linux AppImage v1.0.3</div>
+    <code style="display:block;padding:8px 10px">97d1a0511b90c5d0fcc07076f532df2e229128b1492c0c990f317335d82b68a8</code>
+    <div class="tip small" style="margin:16px 0 5px">Linux deb v1.0.3</div>
+    <code style="display:block;padding:8px 10px">0fdd8c389770325f46769d9272927391b9763d12a00b2009bec2be320f1f6f34</code>
   </div>
 </div>
 

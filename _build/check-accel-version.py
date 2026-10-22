@@ -32,7 +32,7 @@ ACCEL = "/vol1/1000/Server_file_002/DeepSpaceProject/Deep_Space_Accelerator/www"
 
 # 「文件校验」卡片里的形状：<div class="tip small" ...>安卓版 v2.7.22</div>  <code ...>sha</code>
 SHA_BLOCK = re.compile(
-    r'class="tip small"[^>]*>\s*(安卓版|Windows 版)\s*(v[\d.]+)\s*</div>\s*'
+    r'class="tip small"[^>]*>\s*(安卓版|Windows 版|Linux AppImage|Linux deb)\s*(v[\d.]+)\s*</div>\s*'
     r'<code[^>]*>\s*([0-9a-f]{64})\s*</code>',
     re.S,
 )
@@ -58,6 +58,14 @@ def main():
         print("   ⏭  读不到加速器的版本清单（%s），跳过核对" % e)
         return 0
 
+    linux = None
+    linux_path = os.path.join(ACCEL, "version-linux.json")
+    if os.path.isfile(linux_path):
+        try:
+            linux = json.load(open(linux_path, encoding="utf-8"))
+        except Exception as e:
+            return fail("Linux 清单读不了：%s" % e)
+
     want = {
         "安卓版": (android["versionName"], android["sha256"], android.get("size")),
         "Windows 版": (
@@ -66,6 +74,12 @@ def main():
             windows["installer"].get("size"),
         ),
     }
+    if linux:
+        arts = {a["type"]: a for a in (linux.get("artifacts") or [])}
+        if "appimage" not in arts or "deb" not in arts:
+            return fail("Linux 清单缺少 appimage/deb 产物")
+        want["Linux AppImage"] = (linux["versionName"], arts["appimage"]["sha256"], arts["appimage"].get("size"))
+        want["Linux deb"] = (linux["versionName"], arts["deb"]["sha256"], arts["deb"].get("size"))
 
     html = open(PAGE, encoding="utf-8").read()
     rc = 0
@@ -87,8 +101,10 @@ def main():
     # ② 核对卡片顶部的「版本」行（顺序固定：先安卓后 Windows）
     rows = [v.lstrip("v") for v in VER_ROW.findall(html)]
     expect_rows = [want["安卓版"][0], want["Windows 版"][0]]
-    if rows[:2] != expect_rows:
-        rc |= fail("顶部「版本」行与清单不一致：页面 %s，实际 %s" % (rows[:2], expect_rows))
+    if linux:
+        expect_rows.append(want["Linux AppImage"][0])
+    if rows[:len(expect_rows)] != expect_rows:
+        rc |= fail("顶部「版本」行与清单不一致：页面 %s，实际 %s" % (rows[:len(expect_rows)], expect_rows))
 
     # ③ 任何一处残留的旧版本号都要揪出来（这正是上次漏掉的地方）
     #    ⚠️ 必须先去掉 HTML 注释：注释是写给维护者看的，里面**故意**会提旧版本号
@@ -101,8 +117,9 @@ def main():
         rc |= fail("页面里还有不在清单里的版本号：%s（很可能是没改干净的旧版本）" % ", ".join(leftover))
 
     if rc == 0:
-        print("   ✅ 下载页与加速器版本清单完全一致（安卓 v%s / Windows v%s）"
-              % (want["安卓版"][0], want["Windows 版"][0]))
+        tail = " / Linux v%s" % want["Linux AppImage"][0] if linux else ""
+        print("   ✅ 下载页与加速器版本清单完全一致（安卓 v%s / Windows v%s%s）"
+              % (want["安卓版"][0], want["Windows 版"][0], tail))
     return rc
 
 

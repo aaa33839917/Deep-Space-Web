@@ -59,6 +59,17 @@ def load_conf(path):
             print("❌ %s.url 不是 http(s) 链接：%r" % (key, url), file=sys.stderr)
             sys.exit(2)
         out[key] = {"label": label, "url": url}
+    # Linux 有两个产物（AppImage / deb），卡片里是两颗带 data-dl 的按钮。
+    node = d.get("linux")
+    if isinstance(node, dict):
+        label = str(node.get("label") or "Linux 版").strip()
+        app = str(node.get("url") or "").strip()
+        deb = str(node.get("deb") or "").strip()
+        for name, url in (("linux.url", app), ("linux.deb", deb)):
+            if not re.match(r"^https?://", url):
+                print("❌ %s 不是 http(s) 链接：%r" % (name, url), file=sys.stderr)
+                sys.exit(2)
+        out["linux"] = {"label": label, "appimage": app, "deb": deb}
     return out
 
 
@@ -71,6 +82,22 @@ def patch(html, want):
             print("❌ 下载页里找不到「%s」这张卡片（页面结构变了？）" % w["label"], file=sys.stderr)
             sys.exit(2)
         seg = html[b[0]:b[1]]
+        if key == "linux":
+            # Linux 卡片：按 data-dl=appimage / data-dl=deb 精确替换，避免只改到第一颗按钮。
+            for attr, url in (("appimage", w["appimage"]), ("deb", w["deb"])):
+                pat = re.compile(
+                    r'(<a\s+class="btn"[^>]*data-dl="%s"[^>]*href=")([^"]*)(")' % re.escape(attr), re.S)
+                mm = pat.search(seg)
+                if not mm:
+                    print("❌ 「%s」卡片里找不到 data-dl=\"%s\" 的按钮" % (w["label"], attr), file=sys.stderr)
+                    sys.exit(2)
+                cur = mm.group(2)
+                if cur == url:
+                    continue
+                seg = seg[:mm.start(2)] + url + seg[mm.end(2):]
+                changed.append(("%s（%s）" % (w["label"], attr), cur, url))
+            html = html[:b[0]] + seg + html[b[1]:]
+            continue
         m = BTN.search(seg)
         if not m:
             print("❌ 「%s」卡片里没有 <a class=\"btn\" href=…> 按钮" % w["label"], file=sys.stderr)
