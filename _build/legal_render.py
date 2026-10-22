@@ -328,11 +328,10 @@ PAGE_HEAD = """<!DOCTYPE html>
       <a href="../products/">产品</a>
       <a href="../servers/">服务器</a>
       <a href="../accelerator/download/">下载</a>
-      <a href="../how/">怎么用</a>
       <a href="../about/">关于</a>
       <a href="../thanks/">鸣谢</a>
     </nav>
-    <div class="nav__right"><a class="quiet" href="../terms/">服务条款</a><a class="btn btn--blue" href="../accelerator/download/">下载</a></div>
+    <div class="nav__right"><a class="quiet" href="../how/">帮助文档</a><a class="btn btn--blue" href="../accelerator/download/">下载</a></div>
   </div>
 </header>
 
