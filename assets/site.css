@@ -461,3 +461,11 @@ body{padding-top:0}
   .foot__grid{grid-template-columns:1fr 1fr;gap:32px 24px}
   .foot__brand{grid-column:1 / -1}
 }
+
+/* 关于页时间线 */
+.timeline{margin:88px 0 0;border-top:1px solid var(--line)}
+.tl{display:grid;grid-template-columns:150px 1fr;gap:32px;padding:34px 0;border-bottom:1px solid var(--line)}
+.tl time{font-family:ui-monospace,monospace;font-size:12.5px;color:#7FA8FF;letter-spacing:.08em;padding-top:4px}
+.tl h3{margin:0 0 8px;font-size:19px;font-weight:650}
+.tl p{margin:0;color:var(--dim);font-size:14.5px;line-height:1.8}
+@media (max-width:700px){.tl{grid-template-columns:1fr;gap:8px;padding:26px 0}}
