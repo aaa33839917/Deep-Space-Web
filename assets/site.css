@@ -392,3 +392,5 @@ body{padding-top:0}
   .docs__side{position:static;flex-direction:row;flex-wrap:wrap;gap:8px}
   .docs__side a{border-left:0;border-bottom:1px solid var(--line);padding:6px 0;margin-right:14px}
 }
+.hero__in::before{inset:-240px -40vw}
+.hero__in::before{inset:-120px -10vw;background:radial-gradient(ellipse 66% 56% at 50% 40%, rgba(5,11,22,.86) 0%, rgba(5,11,22,.34) 55%, rgba(5,11,22,0) 82%)}
