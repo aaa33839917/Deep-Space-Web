@@ -446,3 +446,18 @@ body{padding-top:0}
 .srv-hero{padding:150px 0 0;width:min(760px,calc(100% - 32px));margin:0 auto}
 .srv-hero h1{font-size:clamp(46px,6.4vw,84px);line-height:1.04;letter-spacing:-.035em;margin:16px 0 0;font-weight:750}
 @media (max-width:700px){.srv-hero{padding-top:100px}}
+
+/* 页脚：多列 + 版权/备案 + 回到顶部（参考 Trae 页脚结构） */
+.foot__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;
+  padding:8px 0 56px;border-top:1px solid var(--line)}
+.foot__brand p{margin:16px 0 0;color:var(--faint);font-size:12px;line-height:2}
+.foot__col h4{margin:0 0 14px;font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--faint)}
+.foot__col a{display:block;padding:4px 0;font-size:13.5px;color:var(--dim)}
+.foot__col a:hover{color:#fff}
+.foot__bottom{text-align:center;padding:20px 0 8px;border-top:1px solid var(--line)}
+.foot__bottom a{font-size:12.5px;color:var(--faint)}
+.foot__bottom a:hover{color:#fff}
+@media (max-width:700px){
+  .foot__grid{grid-template-columns:1fr 1fr;gap:32px 24px}
+  .foot__brand{grid-column:1 / -1}
+}

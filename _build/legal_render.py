@@ -317,7 +317,7 @@ PAGE_HEAD = """<!DOCTYPE html>
 <meta name="theme-color" content="#050B16">
 <link rel="stylesheet" href="../assets/site.css?v=6">
 </head>
-<body>
+<body id="top">
 <div class="bg" aria-hidden="true"></div>
 
 <header class="nav">
@@ -346,15 +346,23 @@ PAGE_HEAD = """<!DOCTYPE html>
 </main>
 
 <footer class="foot wrap">
-  <div class="foot__top">
-    <a class="logo" href="../" style="font-size:16px"><img src="../assets/mark-white.svg" alt="">深空</a>
-    <nav class="foot__links">
-      <a href="../products/">产品</a><a href="../servers/">服务器</a><a href="../accelerator/download/">下载</a>
-      <a href="../how/">原理</a><a href="../thanks/">鸣谢</a><a href="../terms/">服务条款</a><a href="../privacy/">隐私政策</a>
-    </nav>
+  <div class="foot__grid">
+    <div class="foot__brand">
+      <a class="logo" href="../" style="font-size:16px"><img src="../assets/mark-white.svg" alt="">深空</a>
+      <p>© <span class="v6-year">2026</span> 深空工作室 DEEP SPACE<br>本站不收集任何信息</p>
+    </div>
+    <div class="foot__col"><h4>法律</h4>
+      <a href="../terms/">服务条款</a><a href="../privacy/">隐私政策</a><a href="../thanks/">鸣谢</a>
+    </div>
+    <div class="foot__col"><h4>产品与文档</h4>
+      <a href="../products/">产品</a><a href="../servers/">服务器</a><a href="../accelerator/download/">下载</a><a href="../how/">原理</a>
+    </div>
+    <div class="foot__col"><h4>联系我们</h4>
+      <a href="https://qm.qq.com/cgi-bin/qm/qr?k=716121482">QQ 群 716121482</a><a href="mailto:starlightvgamevstudio@outlook.com">邮件反馈</a>
+    </div>
   </div>
-  <div class="foot__legal"><span>© <span class="v6-year">2026</span> 深空工作室 DEEP SPACE</span><span>本站不收集任何信息</span></div>
-<div class="wordmark" aria-hidden="true"><span>DEEP SPACE</span></div>
+  <div class="foot__bottom"><a href="#top">回到顶部 ↑</a></div>
+  <div class="wordmark" aria-hidden="true"><span>DEEP SPACE</span></div>
 </footer>
 <script src="../assets/site.js"></script>
 </body>
