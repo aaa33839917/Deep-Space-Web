@@ -5,20 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<title>深空联机工具 · 介绍</title>
-<meta name="description" content="一键组网，把外网的朋友拉回服务器。">
+<title>深空 · 免费、易用、高效的 MC 联机平台</title>
+<meta name="description" content="深空联机工具：免费、易用、高效的 MC 联机平台。不用公网 IP，不用端口映射。">
 <meta name="theme-color" content="#050B16">
 <link rel="stylesheet" href="../assets/site.css?v=6">
 </head>
 <body id="top">
 <div class="bg" aria-hidden="true"></div>
+
+<div class="announce">
+  <span>深空联机工具 v1.0.3 已发布</span>
+  <a href="../accelerator/download/">前往下载 →</a>
+</div>
+
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="../"><img src="../assets/mark-white.svg" alt="">深空</a>
+    <a class="logo" href=""><img src="../assets/mark-white.svg" alt="">深空</a>
     <nav class="links">
 <!-- NAV:START -->
-    <a href="../">首页</a>
-    <a class="on" href="../products/">产品</a>
+    <a class="on" href="../">首页</a>
+    <a href="../products/">产品</a>
     <a href="../servers/">服务器</a>
     <a href="../accelerator/download/">下载</a>
     <a href="../how/">怎么用</a>
@@ -32,27 +38,110 @@
     </div>
   </div>
 </header>
+
 <main>
-<section class="page" style="padding:170px 0 0">
-  <div class="label">[ DEEP SPACE LINK ]</div>
-  <h1 style="font-size:clamp(46px,6.4vw,84px);line-height:1.02;letter-spacing:-.035em;margin:18px 0 24px">让外网的朋友，<br>连回服务器。</h1>
-  <p class="lead" style="color:var(--dim);font-size:17px;max-width:560px">深空联机工具是一个组网客户端：点一下连接，手机和电脑就像在同一个局域网里。</p>
-  <div style="display:flex;gap:12px;margin-top:32px"><a class="btn btn--blue" href="download/">下载</a><a class="btn btn--line" href="tutorial/">怎么用</a></div>
-  <div class="win" style="max-width:900px;margin:72px auto 0">
-  <div class="win__bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win__title">深空联机工具 · 已连接</span></div>
-  <div class="win__body">
-    <div class="pane"><h3>连接状态</h3><div class="connected"><span class="pulse"></span>已连接</div>
-      <div class="rows"><span>虚拟 IP</span><b>10.144.144.3</b><span>城门</span><b>可进游戏</b></div></div>
-    <div class="pane"><h3>网络</h3><div class="rows" style="grid-template-columns:1fr 1fr;margin-top:0"><span>延迟</span><b>28 ms</b><span>节点</span><b>45+</b><span>配置</span><b>0 步</b><span>更新</span><b>自动</b></div></div>
-  </div>
-</div>
-  <div class="facts" style="max-width:900px;margin:96px auto 0">
-    <div class="fact"><b>零配置</b><span>网络名、密钥、节点全部内置</span></div>
-    <div class="fact"><b>P2P 直连</b><span>打洞失败自动落中继</span></div>
-    <div class="fact"><b>三端同网</b><span>Windows / 安卓 / Linux 共用一套账号</span></div>
-  </div>
-</section>
+  <section class="hero">
+    <canvas id="wave" class="wave" aria-hidden="true"></canvas>
+    <div class="wrap hero__in">
+      <div class="eyebrow">P2P · 零配置 · 三端同网</div>
+      <h1>免费，易用，高效的MC联机平台</h1>
+      <p>不用公网 IP，不用端口映射。点一下，就回到服务器。</p>
+      <div class="actions">
+        <a class="btn btn--blue" href="../accelerator/download/">下载深空联机工具</a>
+        <a class="btn btn--line" href="../how/">它是怎么工作的</a>
+      </div>
+      <div class="meta">Windows · 安卓 · Linux ｜ 免费 ｜ 自动更新</div>
+
+      <div class="shot">
+        <div class="win">
+          <div class="win__bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win__title">深空联机工具 · 已连接</span></div>
+          <div class="win__body">
+            <div class="pane">
+              <h3>连接状态</h3>
+              <div class="connected"><span class="pulse"></span>已连接</div>
+              <div class="rows">
+                <span>虚拟 IP</span><b>10.144.144.3</b>
+                <span>城门</span><b>可进游戏</b>
+                <span>设备码</span><b>CD15-8192-7DB5-15F0</b>
+              </div>
+            </div>
+            <div class="pane">
+              <h3>组网</h3>
+              <div class="rows" style="grid-template-columns:1fr 1fr;margin-top:0">
+                <span>延迟</span><b>28 ms</b>
+                <span>节点</span><b>45+</b>
+                <span>加密</span><b>端到端</b>
+                <span>配置</span><b>0 步</b>
+              </div>
+              <span class="badge">● 已接入深空网络</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="label">[ PRODUCT ]</div>
+    <h2>一个窗口，接管整条联机链路。</h2>
+    <p class="lead">连接、门票、节点、更新都在这里，不需要再开第二个工具。</p>
+    <div class="showcase">
+      <div class="win">
+        <div class="win__bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win__title">深空联机工具 · 服务器</span></div>
+        <div class="win__body">
+          <div class="pane">
+            <h3>我常去的服务器</h3>
+            <div class="rows" style="grid-template-columns:1fr auto;margin-top:0">
+              <b>梦之国度</b><span style="color:#9BF0C2">在线 · 28ms</span>
+              <b>永恒的旅途</b><span style="color:#9BF0C2">在线 · 34ms</span>
+              <b>朋友的整合包服</b><span style="color:var(--faint)">已收藏</span>
+            </div>
+          </div>
+          <div class="pane">
+            <h3>当前网络</h3>
+            <div class="rows" style="grid-template-columns:1fr 1fr;margin-top:0">
+              <span>虚拟 IP</span><b>10.144.144.3</b>
+              <span>节点</span><b>45+</b>
+              <span>延迟</span><b>28 ms</b>
+              <span>配置</span><b>0 步</b>
+            </div>
+            <span class="badge">● 已接入深空网络</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="label">[ WHY DEEP SPACE ]</div>
+    <h2>把复杂留给深空。</h2>
+    <div class="values">
+      <div class="value"><b>01</b><h3>零配置</h3><p>网络名、密钥、节点全部内置，装好就能用。</p></div>
+      <div class="value"><b>02</b><h3>P2P 直连</h3><p>能直连就直连，打洞失败自动落中继。</p></div>
+      <div class="value"><b>03</b><h3>三端同网</h3><p>Windows、安卓、Linux 共用一套账号。</p></div>
+    </div>
+    <p class="more"><a href="../how/">它是怎么工作的 →</a></p>
+  </section>
+
+  <section class="section wrap">
+    <div class="label">[ DOWNLOAD ]</div>
+    <h2>选你的系统。</h2>
+    <div class="dl-links">
+      <a href="../accelerator/download/"><span>WINDOWS · X64</span><strong>Windows</strong><em>→</em></a>
+      <a href="../accelerator/download/"><span>ANDROID · 通用包</span><strong>安卓</strong><em>→</em></a>
+      <a href="../accelerator/download/"><span>LINUX · X86_64</span><strong>Linux</strong><em>→</em></a>
+    </div>
+  </section>
+
+  <section class="final wrap">
+    <h2>现在，<span>回到世界里。</span></h2>
+    <div>
+      <a class="btn btn--blue" href="../accelerator/download/">下载深空联机工具 <span>→</span></a>
+      <small>Windows · 安卓 · Linux ｜ 免费</small>
+    </div>
+  </section>
 </main>
+
 <footer class="foot wrap">
   <div class="foot__grid">
     <div class="foot__brand">
@@ -72,6 +161,7 @@
   <div class="foot__bottom"><a href="#top">回到顶部 ↑</a></div>
   <div class="wordmark" aria-hidden="true"><span>DEEP SPACE</span></div>
 </footer>
+<script src="../assets/wave.js"></script>
 <script src="../assets/site.js"></script>
 </body>
 </html>

@@ -32,7 +32,7 @@ PAGES = {
     "index.html":              ("./",  "HOME"),
     "products/index.html":     ("../", "PRODUCTS"),
     "mzgd/index.html":         ("../", "PRODUCTS"),        # 产品详情页，「产品」保持高亮
-    "accelerator/index.html":          ("../",   "PRODUCTS"),
+    "accelerator/index.html":          ("../",   "HOME"),
     "accelerator/tutorial/index.html": ("../../", "PRODUCTS"),   # 加速器子页
     "accelerator/download/index.html": ("../../", "PRODUCTS"),
     "wordcard/index.html":     ("../", "PRODUCTS"),
