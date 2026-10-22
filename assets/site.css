@@ -421,3 +421,25 @@ body{padding-top:0}
 @keyframes ad-card-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (max-width:700px){.ad-area{padding:110px 0 60px}}
 @media (prefers-reduced-motion:reduce){.ad-card{animation:none}}
+
+/* 服务器公告卡：按 App 公告里的富卡片结构 */
+.ad-card.srv-card{padding:20px 20px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10)}
+.srv-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.srv-head .name{font-size:19px;font-weight:650;color:#eef4ff;letter-spacing:.02em}
+.srv-head img{height:26px;width:auto;opacity:.95}
+.srv-sub{margin-top:10px;font-size:14px;color:#8fa1bd}
+.srv-banner{position:relative;margin-top:16px;border:1px solid rgba(255,255,255,.12);
+  background-size:cover;background-position:center;overflow:hidden}
+.srv-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,16,32,.92) 0%,rgba(8,16,32,.55) 55%,rgba(8,16,32,.25) 100%)}
+.srv-banner__in{position:relative;z-index:1;display:flex;align-items:center;gap:14px;padding:16px}
+.srv-banner__in img{width:58px;height:58px;flex:none;object-fit:cover;border:1px solid rgba(255,255,255,.16)}
+.srv-banner__txt .t{font-size:20px;font-weight:650;color:#fff}
+.srv-banner__txt .e{margin-top:4px;font-size:12px;letter-spacing:.2em;color:#a9bcd8}
+.srv-addr{margin-top:16px;font-size:14.5px;line-height:1.9;color:#dfe7f5}
+.srv-addr span{color:#8fa1bd}
+@media (max-width:700px){.srv-head .name{font-size:17px}.srv-head img{height:22px}}
+.ad-card__body ul{list-style:none;margin:10px 0 0;padding:0}
+.ad-card__body li{margin:5px 0;color:#DFE7F5}
+.ad-area{padding-top:120px}
+.ad-area{width:min(760px,calc(100% - 32px));max-width:none;margin:0 auto}
+.ad-card{overflow:hidden}
