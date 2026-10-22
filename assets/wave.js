@@ -1,7 +1,7 @@
 /*
   深空官网背景：按 Trae 首页 EffectMaterial 的实际实现移植（2D 两段式）
   pass1: simplex FBM 流体纹理（绿 #32F08C → 白）
-  pass2: 5px 方块 + 2px 缝隙，按同一流场位移 35px，亮度阈值 0.87，随机双色
+  pass2: 5px 方块 + 2px 缝隙，采样点按流场偏移 35px（方块本身不动），亮度阈值 0.87，随机双色
   参数来自实测 uniform：speed .18 / density .5 / frequency 4 / greenRatio .49
 */
 (function () {

@@ -4,111 +4,90 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="../favicon.svg?v=7cb4466a" type="image/svg+xml">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <title>产品 · 深空</title>
-<meta name="theme-color" content="#2B2B2B">
-<link rel="stylesheet" href="../assets/style.css?v=d08a23ff">
-<meta name="dsv" content="ef2e002fcc58">
+<meta name="theme-color" content="#050B16">
+<link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
+<div class="bg" aria-hidden="true"></div>
 
-<header class="topbar">
-  <a class="topbar__logo" href="../"><img src="../assets/mark-white.svg" alt="" width="26" height="26">深空</a>
-  <nav class="topbar__links">
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="../"><img src="../assets/mark-white.svg" alt="">深空</a>
+    <nav class="links">
 <!-- NAV:START -->
     <a href="../">首页</a>
     <a class="on" href="../products/">产品</a>
+    <a href="../servers/">服务器</a>
+    <a href="../accelerator/download/">下载</a>
+    <a href="../how/">怎么用</a>
     <a href="../thanks/">鸣谢</a>
 <!-- NAV:END -->
-  </nav>
+    </nav>
+    <div class="nav__right">
+      <a class="quiet" href="../terms/">服务条款</a>
+      <a class="btn btn--blue" href="../accelerator/download/">下载</a>
+    </div>
+  </div>
 </header>
 
-<div class="wrap">
+<main>
+  <section class="wrap prod-hero">
+    <div class="label">[ PRODUCTS ]</div>
+    <h1>一个工具，<br>连回所有世界。</h1>
+    <p>深空目前只有一个客户端：把外网的朋友拉回服务器。</p>
+  </section>
 
-  <h1 class="page-title">产品</h1>
-  <p class="page-sub">
-<!-- PRODUCT_NAMES:START -->
-梦之国度 · 深空联机工具 · 永恒的旅途
-<!-- PRODUCT_NAMES:END -->
-  </p>
+  <section class="wrap">
+    <div class="pcards">
+      <a class="pcard pcard--wide" href="../accelerator/">
+        <div class="pcard__body">
+          <div class="pcard__head">
+            <span class="pcard__icon">◈</span>
+            <span class="pcard__kicker">组网客户端 · WINDOWS / 安卓 / LINUX</span>
+          </div>
+          <h2>深空联机工具</h2>
+          <p>让外网的朋友连回服务器的客户端。不用公网 IP、不用端口映射，点一下连接就能进游戏。</p>
+          <span class="pcard__more">了解工具 →</span>
+        </div>
+        <div class="pcard__visual">
+          <div class="win" style="width:100%;box-shadow:none">
+            <div class="win__bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win__title">深空联机工具 · 已连接</span></div>
+            <div class="win__body" style="grid-template-columns:1fr">
+              <div class="pane">
+                <div class="connected"><span class="pulse"></span>已连接</div>
+                <div class="rows">
+                  <span>虚拟 IP</span><b>10.144.144.3</b>
+                  <span>城门</span><b>可进游戏</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+</main>
 
-  <!-- PRODUCTS:START -->
-  <!-- project: mzgd -->
-  <a class="entry" href="../mzgd/">
-    <div class="entry__top">
-      <img class="brandmark--sm" src="../assets/mark-navy.svg" alt="" width="42" height="42">
-      <div>
-        <div class="entry__title">梦之国度</div>
-        <div class="entry__en">Java Edition</div>
-      </div>
-    </div>
-    <div class="entry__desc">
-      生存 · 生电 · 机器 · 建筑 · 工业 —— 纯公益、不删档。<br>
-      <b>Java 版 1.21.10</b>，纯原版玩法。
-    </div>
-    <div class="tagline">
-      <span class="tag tag--live">Java 1.21.10</span>
-      <span class="tag">纯原版</span>
-      <span class="tag">500 人上限</span>
-    </div>
-    <div class="entry__go">查看服务器详情 →</div>
-  </a>
-
-  <!-- project: accelerator -->
-  <a class="entry" href="../accelerator/">
-    <div class="entry__top">
-      <img class="brandmark--sm" src="../assets/mark-navy.svg" alt="" width="42" height="42">
-      <div>
-        <div class="entry__title">深空联机工具</div>
-        <div class="entry__en">Deep Space Link Tool</div>
-      </div>
-    </div>
-    <div class="entry__desc">
-      一键组网。P2P 打洞直连，让手机和电脑在外面也能连回服务器 ——<br>
-      能打通就设备之间直接连，流量不绕中心服务器。配置内置，不用导入任何文件。
-    </div>
-    <div class="tagline">
-      <span class="tag">安卓</span>
-      <span class="tag">Windows</span>
-      <span class="tag">P2P 直连</span>
-      <span class="tag">应用内自动更新</span>
-    </div>
-    <div class="entry__go">了解详情 →</div>
-  </a>
-
-  <!-- project: yonghengdelvtu -->
-  <a class="entry" href="../yonghengdelvtu/">
-    <div class="entry__top">
-      <img class="brandmark--sm brandmark--logo" src="../assets/server-logo-96.png" alt="" width="42" height="42">
-      <div>
-        <div class="entry__title">永恒的旅途</div>
-        <div class="entry__en">Bedrock Edition</div>
-      </div>
-    </div>
-    <div class="entry__desc">
-      基岩版专用服 —— <b>农夫乐事</b>全家桶 + BOSS 战 + 生存重置。<br>
-      全部附加包已中文化。
-    </div>
-    <div class="tagline">
-      <span class="tag tag--live">已开放</span>
-      <span class="tag">基岩版 1.26</span>
-      <span class="tag">20 人上限</span>
-    </div>
-    <div class="entry__go">查看服务器详情 →</div>
-  </a>
-<!-- PRODUCTS:END -->
-</div>
-
-<footer class="foot">
-  深空 · DEEP SPACE　|　<a href="../">首页</a>　·　<a href="../thanks/">鸣谢</a><br>
-  本站为静态页面，不收集任何信息。
-<!-- FOOTER:START -->
-<div class="foot__legal">
-  <a href="../terms/">《服务条款》</a>　·　<a href="../privacy/">《隐私政策》</a>　·　运营者：深空工作室（DEEP SPACE）
-</div>
-<!-- FOOTER:END -->
+<footer class="foot wrap">
+  <div class="foot__top">
+    <a class="logo" href="../" style="font-size:16px"><img src="../assets/mark-white.svg" alt="">深空</a>
+    <nav class="foot__links">
+      <a href="../products/">产品</a>
+      <a href="../servers/">服务器</a>
+      <a href="../accelerator/download/">下载</a>
+      <a href="../how/">原理</a>
+      <a href="../thanks/">鸣谢</a>
+      <a href="../terms/">服务条款</a>
+      <a href="../privacy/">隐私政策</a>
+    </nav>
+  </div>
+  <div class="foot__legal">
+    <span>© <span class="v6-year">2026</span> 深空工作室 DEEP SPACE</span>
+    <span>本站不收集任何信息</span>
+  </div>
 </footer>
-
-<script src="../assets/cache-check.js"></script>
+<script src="../assets/site.js"></script>
 </body>
 </html>

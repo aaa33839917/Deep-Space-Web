@@ -3,89 +3,162 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- ★ 曝光开关：删掉下面这一行，搜索引擎才会收录本页 -->
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="favicon.svg?v=7cb4466a" type="image/svg+xml">
-<title>深空 · DEEP SPACE</title>
-<meta name="description" content="深空 —— Minecraft 服务器与配套自研工具。">
-<meta name="theme-color" content="#2B2B2B">
-<link rel="stylesheet" href="assets/style.css?v=d08a23ff">
-<meta name="dsv" content="ef2e002fcc58">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>深空 · 连回你的世界</title>
+<meta name="description" content="深空联机工具：不用公网 IP，不用端口映射，点一下回到服务器。">
+<meta name="theme-color" content="#050B16">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<div class="bg" aria-hidden="true"></div>
 
-<header class="topbar">
-  <a class="topbar__logo" href="./"><img src="assets/mark-white.svg" alt="" width="26" height="26">深空</a>
-  <nav class="topbar__links">
+<div class="announce">
+  <span>深空联机工具 v1.0.3 已发布</span>
+  <a href="accelerator/download/">前往下载 →</a>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href=""><img src="assets/mark-white.svg" alt="">深空</a>
+    <nav class="links">
 <!-- NAV:START -->
     <a class="on" href="./">首页</a>
     <a href="./products/">产品</a>
+    <a href="./servers/">服务器</a>
+    <a href="./accelerator/download/">下载</a>
+    <a href="./how/">怎么用</a>
     <a href="./thanks/">鸣谢</a>
 <!-- NAV:END -->
-  </nav>
-</header>
-
-<div class="wrap">
-
-  <div class="brand">
-    <img class="brandmark" src="assets/mark-white.svg" alt="深空之环">
-    <div class="brand__name">深空</div>
-    <div class="brand__en">Deep Space</div>
-    <div class="brand__sub">游戏服务器 · 网络加速 · 学习工具</div>
-  </div>
-
-  <div class="card">
-    <h2>关于深空</h2>
-    <p style="margin:0 0 12px">
-      深空（DEEP SPACE）成立于 <b>2022 年 11 月 2 日</b>，最初名为<b>星光工作室</b>，
-      <b>2026 年 5 月 26 日</b>更名为深空。
-      主要方向是 <b>Minecraft 服务器的长期运营</b>，以及与之配套的<b>自研工具</b>。
-    </p>
-    <p style="margin:0">
-      <!-- ABOUT_PRODUCTS:START -->
-目前对外提供：一个纯公益、不删档的 Java 服务器「梦之国度」；一个让玩家从外网连回服务器的组网客户端「深空联机工具」；以及一个基岩版专用服「永恒的旅途」。
-<!-- ABOUT_PRODUCTS:END -->
-    
-    </p>
-    <div class="tagline" style="margin-top:16px">
-      <span class="tag">2022 年成立</span>
-      <span class="tag">纯公益服</span>
-      <span class="tag">不删档</span>
-      <span class="tag">页面不收集任何信息</span>
+    </nav>
+    <div class="nav__right">
+      <a class="quiet" href="terms/">服务条款</a>
+      <a class="btn btn--blue" href="accelerator/download/">下载</a>
     </div>
   </div>
+</header>
 
-  <div class="card">
-    <h2>我们在做的东西</h2>
-    <table>
-<!-- PRODUCTS_TABLE:START -->
-      <tr><th>梦之国度</th><td>Minecraft Java 服务器 —— 1.21.10，纯原版生电，不删档</td></tr>
-      <tr><th>深空联机工具</th><td>P2P 打洞组网客户端 —— 安卓 / Windows，应用内自动更新</td></tr>
-      <tr><th><img class="row-logo" src="assets/server-logo-96.png" alt="" width="20" height="20">永恒的旅途</th><td>Minecraft 基岩版服务器 —— 农夫乐事全家桶，全中文</td></tr>
-<!-- PRODUCTS_TABLE:END -->
-    </table>
-    <p style="margin:16px 0 0"><a class="plain" href="products/">查看全部产品 →</a></p>
+<main>
+  <section class="hero">
+    <canvas id="wave" class="wave" aria-hidden="true"></canvas>
+    <div class="wrap hero__in">
+      <div class="eyebrow">P2P · 零配置 · 三端同网</div>
+      <h1>连回你的世界。</h1>
+      <p>不用公网 IP，不用端口映射。点一下，就回到服务器。</p>
+      <div class="actions">
+        <a class="btn btn--blue" href="accelerator/download/">下载深空联机工具</a>
+        <a class="btn btn--line" href="how/">它是怎么工作的</a>
+      </div>
+      <div class="meta">Windows · 安卓 · Linux ｜ 免费 ｜ 自动更新</div>
+
+      <div class="shot">
+        <div class="win">
+          <div class="win__bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win__title">深空联机工具 · 已连接</span></div>
+          <div class="win__body">
+            <div class="pane">
+              <h3>连接状态</h3>
+              <div class="connected"><span class="pulse"></span>已连接</div>
+              <div class="rows">
+                <span>虚拟 IP</span><b>10.144.144.3</b>
+                <span>城门</span><b>可进游戏</b>
+                <span>设备码</span><b>CD15-8192-7DB5-15F0</b>
+              </div>
+            </div>
+            <div class="pane">
+              <h3>组网</h3>
+              <div class="rows" style="grid-template-columns:1fr 1fr;margin-top:0">
+                <span>延迟</span><b>28 ms</b>
+                <span>节点</span><b>45+</b>
+                <span>加密</span><b>端到端</b>
+                <span>配置</span><b>0 步</b>
+              </div>
+              <span class="badge">● 已接入深空网络</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="label">[ PRODUCT ]</div>
+    <h2>一个窗口，接管整条联机链路。</h2>
+    <p class="lead">连接、门票、节点、更新都在这里，不需要再开第二个工具。</p>
+    <div class="showcase">
+      <div class="win">
+        <div class="win__bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win__title">深空联机工具 · 服务器</span></div>
+        <div class="win__body">
+          <div class="pane">
+            <h3>我常去的服务器</h3>
+            <div class="rows" style="grid-template-columns:1fr auto;margin-top:0">
+              <b>梦之国度</b><span style="color:#9BF0C2">在线 · 28ms</span>
+              <b>永恒的旅途</b><span style="color:#9BF0C2">在线 · 34ms</span>
+              <b>朋友的整合包服</b><span style="color:var(--faint)">已收藏</span>
+            </div>
+          </div>
+          <div class="pane">
+            <h3>当前网络</h3>
+            <div class="rows" style="grid-template-columns:1fr 1fr;margin-top:0">
+              <span>虚拟 IP</span><b>10.144.144.3</b>
+              <span>节点</span><b>45+</b>
+              <span>延迟</span><b>28 ms</b>
+              <span>配置</span><b>0 步</b>
+            </div>
+            <span class="badge">● 已接入深空网络</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="label">[ WHY DEEP SPACE ]</div>
+    <h2>把复杂留给深空。</h2>
+    <div class="values">
+      <div class="value"><b>01</b><h3>零配置</h3><p>网络名、密钥、节点全部内置，装好就能用。</p></div>
+      <div class="value"><b>02</b><h3>P2P 直连</h3><p>能直连就直连，打洞失败自动落中继。</p></div>
+      <div class="value"><b>03</b><h3>三端同网</h3><p>Windows、安卓、Linux 共用一套账号。</p></div>
+    </div>
+    <p class="more"><a href="how/">它是怎么工作的 →</a></p>
+  </section>
+
+  <section class="section wrap">
+    <div class="label">[ DOWNLOAD ]</div>
+    <h2>选你的系统。</h2>
+    <div class="dl-links">
+      <a href="accelerator/download/"><span>WINDOWS · X64</span><strong>Windows</strong><em>→</em></a>
+      <a href="accelerator/download/"><span>ANDROID · 通用包</span><strong>安卓</strong><em>→</em></a>
+      <a href="accelerator/download/"><span>LINUX · X86_64</span><strong>Linux</strong><em>→</em></a>
+    </div>
+  </section>
+
+  <section class="final wrap">
+    <h2>现在，<span>回到世界里。</span></h2>
+    <div>
+      <a class="btn btn--blue" href="accelerator/download/">下载深空联机工具 <span>→</span></a>
+      <small>Windows · 安卓 · Linux ｜ 免费</small>
+    </div>
+  </section>
+</main>
+
+<footer class="foot wrap">
+  <div class="foot__top">
+    <a class="logo" href="" style="font-size:16px"><img src="assets/mark-white.svg" alt="">深空</a>
+    <nav class="foot__links">
+      <a href="products/">产品</a>
+      <a href="servers/">服务器</a>
+      <a href="accelerator/download/">下载</a>
+      <a href="how/">原理</a>
+      <a href="thanks/">鸣谢</a>
+      <a href="terms/">服务条款</a>
+      <a href="privacy/">隐私政策</a>
+    </nav>
   </div>
-
-  <div class="card">
-    <h2>交流与反馈</h2>
-    <p style="margin:0" class="tip">
-      服务器公告、开荒进度与活动安排，以 QQ 群 <code>716121482</code> 为准。
-    </p>
+  <div class="foot__legal">
+    <span>© <span class="v6-year">2026</span> 深空工作室 DEEP SPACE</span>
+    <span>本站不收集任何信息</span>
   </div>
-
-</div>
-
-<footer class="foot">
-  深空 · DEEP SPACE　|　<a href="products/">产品</a>　·　<a href="thanks/">鸣谢</a><br>
-  本站为静态页面，不收集任何信息。
-<!-- FOOTER:START -->
-<div class="foot__legal">
-  <a href="terms/">《服务条款》</a>　·　<a href="privacy/">《隐私政策》</a>　·　运营者：深空工作室（DEEP SPACE）
-</div>
-<!-- FOOTER:END -->
 </footer>
-
-<script src="assets/cache-check.js"></script>
+<script src="assets/site.js"></script>
 </body>
 </html>

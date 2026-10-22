@@ -7,21 +7,26 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <title>深空 · 它是怎么工作的</title>
 <meta name="theme-color" content="#050B16">
-<link rel="stylesheet" href="redesign.css">
+<link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
 <div class="bg" aria-hidden="true"></div>
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="./"><img src="../assets/mark-white.svg" alt="">深空</a>
+    <a class="logo" href="../"><img src="../assets/mark-white.svg" alt="">深空</a>
     <nav class="links">
-      <a href="./">首页</a>
-      <a href="../products/">产品</a>
-      <a href="../accelerator/download/">下载</a>
-      <a href="../thanks/">鸣谢</a>
+<!-- NAV:START -->
+    <a href="../">首页</a>
+    <a href="../products/">产品</a>
+    <a href="../servers/">服务器</a>
+    <a href="../accelerator/download/">下载</a>
+    <a class="on" href="../how/">怎么用</a>
+    <a href="../thanks/">鸣谢</a>
+<!-- NAV:END -->
     </nav>
     <div class="nav__right">
+      <a class="quiet" href="../terms/">服务条款</a>
       <a class="btn btn--blue" href="../accelerator/download/">下载</a>
     </div>
   </div>
@@ -52,12 +57,24 @@
   </section>
 </main>
 
-<footer class="foot wrap" style="padding-top:90px">
+<footer class="foot wrap">
+  <div class="foot__top">
+    <a class="logo" href="../" style="font-size:16px"><img src="../assets/mark-white.svg" alt="">深空</a>
+    <nav class="foot__links">
+      <a href="../products/">产品</a>
+      <a href="../servers/">服务器</a>
+      <a href="../accelerator/download/">下载</a>
+      <a href="../how/">原理</a>
+      <a href="../thanks/">鸣谢</a>
+      <a href="../terms/">服务条款</a>
+      <a href="../privacy/">隐私政策</a>
+    </nav>
+  </div>
   <div class="foot__legal">
-    <span>© <span id="year">2026</span> 深空工作室 DEEP SPACE</span>
+    <span>© <span class="v6-year">2026</span> 深空工作室 DEEP SPACE</span>
     <span>本站不收集任何信息</span>
   </div>
 </footer>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="../assets/site.js"></script>
 </body>
 </html>
