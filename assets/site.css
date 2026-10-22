@@ -394,3 +394,8 @@ body{padding-top:0}
 }
 .hero__in::before{inset:-240px -40vw}
 .hero__in::before{inset:-120px -10vw;background:radial-gradient(ellipse 66% 56% at 50% 40%, rgba(5,11,22,.86) 0%, rgba(5,11,22,.34) 55%, rgba(5,11,22,0) 82%)}
+
+/* 服主反馈：首页波浪看不见。恢复可见度，文字中心只压一层淡遮罩 */
+.wave{opacity:.92}
+.hero__in::before{inset:-140px -12vw;background:radial-gradient(ellipse 64% 54% at 50% 38%, rgba(5,11,22,.66) 0%, rgba(5,11,22,.22) 58%, rgba(5,11,22,0) 84%)}
+.hero__in::before{background:radial-gradient(ellipse 52% 46% at 50% 36%, rgba(5,11,22,.92) 0%, rgba(5,11,22,.52) 58%, rgba(5,11,22,0) 80%)}
