@@ -44,7 +44,7 @@ PAGES = {
     # ★ 协议页（2026-10-03 新增）：它们不属于任何导航项 ⇒ active="" 表示不高亮任何一项
     #   （加进这份 PAGES 是必须的 —— 否则新页面会**静默**没有导航，见交接文档 坑 1）
 }
-KEYS = ("HOME", "PRODUCTS", "SERVERS", "DOWNLOAD", "ABOUT", "THANKS")
+KEYS = ("HOME", "PRODUCTS", "SERVERS", "ABOUT", "THANKS")
 
 
 def render(prefix, active):
