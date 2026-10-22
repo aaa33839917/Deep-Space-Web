@@ -443,3 +443,6 @@ body{padding-top:0}
 .ad-area{padding-top:120px}
 .ad-area{width:min(760px,calc(100% - 32px));max-width:none;margin:0 auto}
 .ad-card{overflow:hidden}
+.srv-hero{padding:150px 0 0;width:min(760px,calc(100% - 32px));margin:0 auto}
+.srv-hero h1{font-size:clamp(46px,6.4vw,84px);line-height:1.04;letter-spacing:-.035em;margin:16px 0 0;font-weight:750}
+@media (max-width:700px){.srv-hero{padding-top:100px}}
