@@ -399,3 +399,6 @@ body{padding-top:0}
 .wave{opacity:.92}
 .hero__in::before{inset:-140px -12vw;background:radial-gradient(ellipse 64% 54% at 50% 38%, rgba(5,11,22,.66) 0%, rgba(5,11,22,.22) 58%, rgba(5,11,22,0) 84%)}
 .hero__in::before{background:radial-gradient(ellipse 52% 46% at 50% 36%, rgba(5,11,22,.92) 0%, rgba(5,11,22,.52) 58%, rgba(5,11,22,0) 80%)}
+/* 首页主标题较长：压到一行内 */
+.hero h1{font-size:clamp(34px,4.6vw,62px);line-height:1.08;letter-spacing:-.03em}
+.hero h1{font-size:clamp(22px,5.05vw,72px);line-height:1.06;letter-spacing:-.03em;text-wrap:balance}
