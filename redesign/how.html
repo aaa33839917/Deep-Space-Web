@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<title>深空 · 它是怎么工作的</title>
+<meta name="theme-color" content="#050B16">
+<link rel="stylesheet" href="redesign.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="./"><img src="../assets/mark-white.svg" alt="">深空</a>
+    <nav class="links">
+      <a href="./">首页</a>
+      <a href="../products/">产品</a>
+      <a href="../accelerator/download/">下载</a>
+      <a href="../thanks/">鸣谢</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--blue" href="../accelerator/download/">下载</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section wrap" style="padding-top:140px">
+    <div class="label">[ HOW IT WORKS ]</div>
+    <h2>三步，回到世界里。</h2>
+    <p class="lead">不需要公网 IP，不需要改路由器，也不需要问「我该填什么」。</p>
+    <div class="steps">
+      <div class="step"><b>01</b><h3>下载并安装</h3><p>选你当前的系统，装好打开。首次连接会弹一次系统授权，用来创建虚拟网卡。</p></div>
+      <div class="step"><b>02</b><h3>点「连接」</h3><p>客户端自动拉起组网核心、读取设备码、向城门换取放行。</p></div>
+      <div class="step"><b>03</b><h3>进游戏</h3><p>状态变绿、显示「可进游戏」后，启动 Minecraft 进入服务器。</p></div>
+    </div>
+  </section>
+
+  <section class="section section--center wrap">
+    <div class="label">[ PRIVACY &amp; SECURITY ]</div>
+    <h2>隐私与安全，是默认设置。</h2>
+    <p class="lead">联机工具只做它该做的事：建网、验证身份、把游戏流量送到该去的地方。</p>
+    <div class="sec-grid">
+      <div class="sec-card"><h3>不收集行为</h3><p>页面与客户端不接第三方统计，不记录你去了哪里。</p></div>
+      <div class="sec-card"><h3>设备码只做绑定</h3><p>用于账号绑定与封禁，不上传键盘、文件或聊天内容。</p></div>
+      <div class="sec-card"><h3>本地校验</h3><p>门票与更新清单离线验签，拒绝被篡改的包。</p></div>
+    </div>
+    <p class="more" style="text-align:center"><a href="./">← 回首页</a></p>
+  </section>
+</main>
+
+<footer class="foot wrap" style="padding-top:90px">
+  <div class="foot__legal">
+    <span>© <span id="year">2026</span> 深空工作室 DEEP SPACE</span>
+    <span>本站不收集任何信息</span>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
