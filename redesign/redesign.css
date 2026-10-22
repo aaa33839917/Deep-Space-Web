@@ -283,3 +283,23 @@ a{color:inherit;text-decoration:none}
 .pv-big{font-size:clamp(30px,3.4vw,44px);font-weight:700;letter-spacing:-.02em;color:var(--ink)}
 .pv-small{color:var(--faint);font-size:13px;letter-spacing:.04em}
 .pv-line{width:44px;height:2px;background:#2E6BFF;margin-bottom:6px}
+
+/* 服务器列表：仿加速器「公告与活动」的堆叠卡 */
+.srv-list{margin-top:120px;display:flex;flex-direction:column;gap:18px}
+.srv{display:block;border:1px solid var(--line);background:rgba(255,255,255,.025);padding:36px 38px;
+  transition:border-color .2s,background .2s}
+.srv:hover{border-color:var(--line-2);background:rgba(255,255,255,.04)}
+.srv__top{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.srv__tag{font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.16em;color:#9FC0FF}
+.srv__status{margin-left:auto;font-size:12.5px;color:#9BF0C2}
+.srv h2{font-size:clamp(26px,3vw,36px);margin:0 0 12px;font-weight:650;letter-spacing:-.02em}
+.srv p{margin:0;color:var(--dim);font-size:14.5px;line-height:1.85;max-width:620px}
+.srv__foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:26px;
+  padding-top:20px;border-top:1px solid var(--line);color:var(--faint);font-size:13px}
+.srv__foot em{font-style:normal;color:#9FC0FF}
+@media (max-width:700px){
+  .srv-list{margin-top:80px}
+  .srv{padding:24px 20px}
+  .srv__foot{flex-direction:column;align-items:flex-start;gap:10px}
+}
+.pcard--wide .pcard__body{justify-content:center}
