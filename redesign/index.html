@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <title>深空 · 连回你的世界</title>
-<meta name="description" content="深空联机工具：P2P 打洞 · 零配置 · 三端同网。一次点击，把朋友拉回同一个服务器。">
+<meta name="description" content="深空联机工具：不用公网 IP，不用端口映射，点一下回到服务器。">
 <meta name="theme-color" content="#050B16">
 <link rel="stylesheet" href="redesign.css">
 </head>
@@ -14,206 +14,97 @@
 <div class="bg" aria-hidden="true"></div>
 
 <div class="announce">
-  <b>深空联机工具 Linux v1.0.3 已发布</b>
-  <span>AppImage / deb 双包，应用内自动更新</span>
+  <span>深空联机工具 v1.0.3 已发布</span>
   <a href="../accelerator/download/">前往下载 →</a>
 </div>
 
 <header class="nav">
-  <div class="wrap nav__in">
+  <div class="wrap">
     <a class="logo" href="./"><img src="../assets/mark-white.svg" alt="">深空</a>
-    <nav class="nav__links">
+    <nav class="links">
       <a href="../products/">产品</a>
       <a href="../accelerator/download/">联机工具</a>
-      <a href="#how">怎么用</a>
       <a href="../thanks/">鸣谢</a>
     </nav>
-    <div class="nav__cta">
-      <a class="btn btn--ghost btn--sm" href="../terms/">服务条款</a>
-      <a class="btn btn--primary btn--sm" href="../accelerator/download/">下载中心</a>
+    <div class="nav__right">
+      <a class="quiet" href="../terms/">服务条款</a>
+      <a class="btn btn--blue" href="../accelerator/download/">下载</a>
     </div>
   </div>
 </header>
 
 <main>
   <section class="hero wrap">
-    <span class="eyebrow">P2P · ZERO CONFIG · 三端同网</span>
-    <h1>连回你的世界，<br><em>只要一次点击。</em></h1>
-    <p>深空联机工具把「开服、端口映射、公网 IP」这些麻烦事收进后台。你和朋友只需要点一下连接，就能回到同一个世界。</p>
-    <div class="hero__cta">
-      <a class="btn btn--primary" href="../accelerator/download/">下载深空联机工具</a>
-      <a class="btn btn--ghost" href="#how">它是怎么工作的</a>
+    <div class="eyebrow">P2P · 零配置 · 三端同网</div>
+    <h1>连回你的世界。</h1>
+    <p>不用公网 IP，不用端口映射。点一下，就回到服务器。</p>
+    <div class="actions">
+      <a class="btn btn--blue" href="../accelerator/download/">下载深空联机工具</a>
+      <a class="btn btn--line" href="../products/">查看产品</a>
     </div>
-    <div class="hero__note">Windows · 安卓 · Linux ｜ 免费使用 ｜ 应用内自动更新</div>
+    <div class="meta">Windows · 安卓 · Linux ｜ 免费 ｜ 自动更新</div>
 
-    <div class="hero__shot">
-      <div class="glow" aria-hidden="true"></div>
-      <div class="window">
-        <div class="window__bar">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="window__title">深空联机工具 · 已连接</span>
-        </div>
-        <div class="window__body">
-          <div class="panel">
+    <div class="shot">
+      <div class="win">
+        <div class="win__bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win__title">深空联机工具 · 已连接</span></div>
+        <div class="win__body">
+          <div class="pane">
             <h3>连接状态</h3>
-            <div class="status"><span class="pulse"></span>已连接</div>
-            <div class="kv">
+            <div class="connected"><span class="pulse"></span>已连接</div>
+            <div class="rows">
               <span>虚拟 IP</span><b>10.144.144.3</b>
-              <span>门票 / 城门</span><b>可进游戏 · 已放行</b>
+              <span>城门</span><b>可进游戏</b>
               <span>设备码</span><b>CD15-8192-7DB5-15F0</b>
-              <span>网络</span><b>深空联机网络</b>
             </div>
-            <div class="log">[00:00:01] helper 已启动（pkexec）
-[00:00:03] core connected · 10.144.144.3
-[00:00:04] 城门校验通过 · 可进游戏</div>
           </div>
-          <div class="panel">
+          <div class="pane">
             <h3>组网</h3>
-            <p style="margin:0 0 14px;color:var(--dim);font-size:13.5px">P2P 打洞优先，失败自动走中继。你不需要有公网 IP。</p>
-            <div class="pill">● 已接入深空网络</div>
-            <div class="kv" style="grid-template-columns:1fr 1fr;margin-top:18px">
+            <div class="rows" style="grid-template-columns:1fr 1fr;margin-top:0">
               <span>延迟</span><b>28 ms</b>
               <span>节点</span><b>45+</b>
               <span>加密</span><b>端到端</b>
               <span>配置</span><b>0 步</b>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="stats">
-      <div class="stat"><b>3</b><span>Windows / 安卓 / Linux</span></div>
-      <div class="stat"><b>45+</b><span>社区节点，自动选路</span></div>
-      <div class="stat"><b>0</b><span>端口映射 / 公网 IP</span></div>
-      <div class="stat"><b>1</b><span>次点击完成连接</span></div>
-    </div>
-  </section>
-
-  <section class="block wrap" id="features">
-    <div class="sec-head reveal">
-      <div class="idx">[ FEATURES ]</div>
-      <h2>把复杂留给深空，<br>把简单留给你。</h2>
-      <p>从客户端到组网、从门票到更新，整条链路都为「点一下就能连」设计。</p>
-    </div>
-    <div class="grid">
-      <div class="feature reveal">
-        <div class="icon">◎</div><div class="no">[00]</div>
-        <h3>零配置连接</h3>
-        <p>网络名、密钥、节点全部内置。装好、点连接，不用导入配置，也不用懂什么是 NAT。</p>
-      </div>
-      <div class="feature reveal">
-        <div class="icon">⇄</div><div class="no">[01]</div>
-        <h3>P2P 打洞，失败自动中继</h3>
-        <p>能直连就直连，流量不绕中心；打洞失败自动落中继，尽量不让「连不上」发生。</p>
-      </div>
-      <div class="feature reveal">
-        <div class="icon">▣</div><div class="no">[02]</div>
-        <h3>三端同一张网</h3>
-        <p>Windows、安卓、Linux 客户端共用同一套账号与网络；手机、电脑、服务器可以同时在网。</p>
-      </div>
-      <div class="feature reveal">
-        <div class="icon">✓</div><div class="no">[03]</div>
-        <h3>门票与城门</h3>
-        <p>版本、设备、封禁由服务端统一裁决；旧版本会被引导更新，而不是一头雾水地连不上。</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="block wrap" id="how">
-    <div class="sec-head reveal">
-      <div class="idx">[ HOW IT WORKS ]</div>
-      <h2>三步，回到世界里。</h2>
-      <p>不需要公网 IP，不需要改路由器，也不需要问「我该填什么」。</p>
-    </div>
-    <div class="steps">
-      <div class="step reveal"><div class="n">1</div><h3>下载并安装</h3><p>选你当前的系统，装好打开。首次连接会弹一次系统授权，用于创建虚拟网卡。</p></div>
-      <div class="step reveal"><div class="n">2</div><h3>点「连接」</h3><p>客户端自动拉起组网核心、读取设备码、向城门换取放行；你只需要等状态变绿。</p></div>
-      <div class="step reveal"><div class="n">3</div><h3>进游戏</h3><p>看到「可进游戏」后，启动 Minecraft，在服务器列表里进入深空的服务器。</p></div>
-    </div>
-  </section>
-
-  <section class="block wrap" id="platforms">
-    <div class="sec-head reveal">
-      <div class="idx">[ DOWNLOAD ]</div>
-      <h2>你的设备，都有位置。</h2>
-      <p>同一套账号，三端互通。安装包都会在应用内自动检查更新。</p>
-    </div>
-    <div class="platforms">
-      <div class="plat reveal">
-        <div class="os">WINDOWS · X64</div>
-        <h3>Windows</h3>
-        <p>安装包自带核心与网卡驱动，双击一路「下一步」。</p>
-        <a class="btn btn--ghost" href="../accelerator/download/">查看安装包</a>
-      </div>
-      <div class="plat reveal">
-        <div class="os">ANDROID · ARM64 / 32 位 / X86</div>
-        <h3>安卓</h3>
-        <p>一个通用包覆盖主流机型；应用内自动更新只下你需要的架构。</p>
-        <a class="btn btn--ghost" href="../accelerator/download/">查看安装包</a>
-      </div>
-      <div class="plat reveal">
-        <div class="os">LINUX · X86_64</div>
-        <h3>Linux</h3>
-        <p>AppImage 免安装，或 deb 一键安装 helper 与 polkit 策略。</p>
-        <a class="btn btn--primary" href="../accelerator/download/">下载 Linux 版</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="block wrap" id="security">
-    <div class="split">
-      <div class="reveal">
-        <div class="idx" style="font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.2em;color:#7FA8FF">[ PRIVACY &amp; SECURITY ]</div>
-        <h2>隐私与安全，<br>是默认设置。</h2>
-        <p>联机工具只做它该做的事：建网、验证身份、把游戏流量送到该去的地方。</p>
-        <ul class="check">
-          <li>页面与客户端不收集浏览行为，不接第三方统计</li>
-          <li>设备码仅用于账号绑定与封禁，不上传键盘/文件内容</li>
-          <li>门票与更新清单走离线签名校验，拒绝被篡改的包</li>
-          <li>断开连接即清理虚拟网卡与路由残留</li>
-        </ul>
-      </div>
-      <div class="window reveal" style="box-shadow:0 30px 90px rgba(0,0,0,.5)">
-        <div class="window__bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="window__title">深空联机工具 · 安全状态</span></div>
-        <div class="window__body" style="grid-template-columns:1fr">
-          <div class="panel">
-            <h3>连接边界</h3>
-            <div class="kv">
-              <span>只放行</span><b>10.144.144.1（服务器）</b>
-              <span>邻居隔离</span><b>已启用</b>
-              <span>更新校验</span><b>ECDSA P-256 + sha256</b>
-              <span>断开清理</span><b>网卡 / 路由 / 进程</b>
-            </div>
-            <div class="pill" style="margin-top:16px">● 所有校验在本地完成</div>
+            <span class="badge">● 已接入深空网络</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="final wrap reveal">
-    <h2>先一步，<span>回到世界里。</span></h2>
-    <div class="cta-balance">
-      <a class="btn btn--primary" href="../accelerator/download/">下载深空联机工具 <span>→</span></a>
-      <small>Windows · 安卓 · Linux ｜ 免费 ｜ 自动更新</small>
+  <section class="line wrap">
+    <h2>一次点击，三端同网。</h2>
+    <p>Windows、安卓、Linux 共用一套账号与网络。</p>
+    <div class="chips">
+      <span class="chip">零配置</span>
+      <span class="chip">P2P 直连</span>
+      <span class="chip">自动更新</span>
+    </div>
+  </section>
+
+  <section class="final wrap">
+    <h2>现在，<span>回到世界里。</span></h2>
+    <div>
+      <a class="btn btn--blue" href="../accelerator/download/">下载深空联机工具 <span>→</span></a>
+      <small>Windows · 安卓 · Linux ｜ 免费</small>
     </div>
   </section>
 </main>
 
 <footer class="foot wrap">
-  <div class="foot__cols">
-    <div>
-      <a class="logo" href="./" style="font-size:17px"><img src="../assets/mark-white.svg" alt="">深空</a>
-      <p style="margin:12px 0 0;color:var(--faint);font-size:13px;max-width:280px">深空工作室 · 游戏服务器与配套自研工具。纯公益、不删档。</p>
-    </div>
-    <div><h4>产品</h4><a href="../products/">全部产品</a><a href="../accelerator/download/">深空联机工具</a><a href="../products/">梦之国度</a><a href="../products/">永恒的旅途</a></div>
-    <div><h4>社区</h4><a href="../thanks/">鸣谢</a><a href="../thanks/">玩家群 716121482</a><a href="../products/">更新记录</a></div>
-    <div><h4>法律</h4><a href="../terms/">服务条款</a><a href="../privacy/">隐私政策</a><a href="../thanks/">友情链接</a></div>
+  <div class="foot__top">
+    <a class="logo" href="./" style="font-size:16px"><img src="../assets/mark-white.svg" alt="">深空</a>
+    <nav class="foot__links">
+      <a href="../products/">产品</a>
+      <a href="../accelerator/download/">下载</a>
+      <a href="../thanks/">鸣谢</a>
+      <a href="../terms/">服务条款</a>
+      <a href="../privacy/">隐私政策</a>
+    </nav>
   </div>
   <div class="foot__legal">
-    <span>© 2026 深空工作室 DEEP SPACE</span>
-    <span>本站为静态页面，不收集任何信息。</span>
+    <span>© <span id="year">2026</span> 深空工作室 DEEP SPACE</span>
+    <span>本站不收集任何信息</span>
   </div>
   <div class="wordmark" aria-hidden="true"><span>DEEP SPACE</span></div>
 </footer>
