@@ -315,7 +315,7 @@ PAGE_HEAD = """<!DOCTYPE html>
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <title>{title}</title>
 <meta name="theme-color" content="#050B16">
-<link rel="stylesheet" href="../assets/site.css?v=3">
+<link rel="stylesheet" href="../assets/site.css?v=6">
 </head>
 <body>
 <div class="bg" aria-hidden="true"></div>
