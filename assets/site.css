@@ -402,3 +402,22 @@ body{padding-top:0}
 /* 首页主标题较长：压到一行内 */
 .hero h1{font-size:clamp(34px,4.6vw,62px);line-height:1.08;letter-spacing:-.03em}
 .hero h1{font-size:clamp(22px,5.05vw,72px);line-height:1.06;letter-spacing:-.03em;text-wrap:balance}
+
+/* 服务器页：完全沿用 App「公告与活动」组件样式（AdArea.vue），仅去掉圆角 */
+.ad-area{max-width:760px;margin:0 auto;padding:150px 0 80px;text-align:left}
+.ad-area__head{display:flex;align-items:baseline;gap:.6rem;margin-bottom:.75rem}
+.ad-area__title{font-size:.95rem;font-weight:600;color:#cfe0ff;letter-spacing:.5px}
+.ad-area__dim{font-size:.78rem;color:#7f8ea8}
+.ad-list{display:block}
+.ad-card{display:block;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);
+  padding:.9rem 1rem;margin-bottom:.75rem;
+  animation:ad-card-in 260ms cubic-bezier(.22,.61,.36,1) both;
+  animation-delay:min(calc(var(--ad-i,0) * 40ms),400ms)}
+.ad-card:hover{border-color:rgba(255,255,255,.18)}
+.ad-card__title{font-size:.92rem;font-weight:600;color:#e8eefc;margin-bottom:.45rem}
+.ad-card__body{font-size:.88rem;line-height:1.65;color:#dfe7f5;word-break:break-word}
+.ad-card__body a{color:#8ab4ff}
+.ad-card__meta{margin-top:.45rem;font-size:.8rem;color:#7f8ea8}
+@keyframes ad-card-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (max-width:700px){.ad-area{padding:110px 0 60px}}
+@media (prefers-reduced-motion:reduce){.ad-card{animation:none}}
