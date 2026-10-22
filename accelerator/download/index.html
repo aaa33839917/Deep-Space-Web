@@ -1,237 +1,70 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="../../favicon.svg?v=7cb4466a" type="image/svg+xml">
-<title>深空联机工具 · 下载</title>
-<meta name="theme-color" content="#2B2B2B">
-<link rel="stylesheet" href="../../assets/style.css?v=d08a23ff">
-<style>
-/* 2026-10-22 下载页自适应：桌面双列、推荐卡横跨、手机单列 + 底部固定条 */
-.dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch;margin-bottom:18px}
-.dl-grid > .card{margin:0;display:flex;flex-direction:column}
-.dl-grid > .card .dl-actions{margin-top:auto}
-.dl-note--ok{border-color:rgba(34,197,94,.45);background:rgba(34,197,94,.10);color:#bbf7d0}
-.dl-grid > .card.is-recommended{grid-column:1 / -1;border-color:rgba(34,197,94,.55);box-shadow:0 0 0 1px rgba(34,197,94,.25),0 18px 45px rgba(0,0,0,.25)}
-.dl-badge{display:inline-flex;align-self:flex-start;align-items:center;gap:6px;font-size:12px;color:#bbf7d0;background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.45);border-radius:999px;padding:3px 10px;margin:0 0 10px}
-.dl-note{border:1px solid rgba(251,191,36,.45);background:rgba(251,191,36,.10);color:#fde68a;border-radius:12px;padding:12px 14px;margin:0 0 16px;font-size:13.5px;line-height:1.6}
-.dl-note a{color:#fde68a;text-decoration:underline}
-.dl-sticky{display:none}
-.dl-sticky[hidden]{display:none}
-@media (max-width:700px){
-  .dl-grid{grid-template-columns:1fr}
-  .dl-grid > .card.is-recommended{grid-column:auto}
-  .dl-sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;align-items:center;
-    padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(18,18,20,.97);
-    border-top:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px)}
-  .dl-sticky span{flex:1;min-width:0;font-size:13px;line-height:1.35;opacity:.92;color:#f5f5f5}
-  .dl-sticky .btn{flex:0 0 auto;width:auto;margin:0;padding:11px 16px;white-space:nowrap;font-size:15px}
-  body{padding-bottom:96px}
-}
-/* 桌面紧凑：减少品牌区/表格留白，hero 两个按钮并排，校验值两列 */
-.dl-page .wrap{margin-top:20px}
-.dl-page .brand{display:flex;align-items:center;justify-content:center;gap:14px;margin:8px 0 14px;text-align:left}
-.dl-page .brandmark{width:56px;height:56px;margin:0;flex:none}
-.dl-page .brand__name{font-size:26px;letter-spacing:.12em;text-indent:0}
-.dl-page .brand__sub{display:none}
-.dl-page .subnav{margin:0 0 14px}
-.dl-page .dl-actions{display:flex;gap:10px;flex-wrap:wrap}
-.dl-page .dl-actions .btn{flex:1 1 220px;margin:0}
-@media (max-width:700px){.dl-page .dl-actions .btn{flex:1 1 100%}}
-.dl-page .card{padding:18px 20px}
-.dl-page th,.dl-page td{padding:7px 10px}
-.dl-page .btn{margin:16px 0 8px;padding:14px;font-size:16px}
-.dl-sums{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;align-items:start}
-@media (max-width:700px){
-  .dl-sums{grid-template-columns:1fr}
-  .dl-page .brandmark{width:64px;height:64px}
-}
-</style>
-<meta name="dsv" content="ef2e002fcc58">
-</head>
-<body class="dl-page">
-
-<header class="topbar">
-  <a class="topbar__logo" href="../../"><img src="../../assets/mark-white.svg" alt="" width="26" height="26">深空</a>
-  <nav class="topbar__links">
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<title>深空联机工具 · 下载</title><meta name="description" content="下载 Windows / 安卓 / Linux 客户端。"><meta name="theme-color" content="#050B16">
+<link rel="stylesheet" href="../../assets/site.css?v=6"></head>
+<body id="top"><div class="bg" aria-hidden="true"></div><header class="nav"><div class="wrap">
+    <a class="logo" href="../../"><img src="../../assets/mark-white.svg" alt="">深空</a>
+    <nav class="links">
 <!-- NAV:START -->
     <a href="../../">首页</a>
     <a class="on" href="../../products/">产品</a>
+    <a href="../../servers/">服务器</a>
+    <a href="../../accelerator/download/">下载</a>
+    <a href="../../how/">怎么用</a>
     <a href="../../thanks/">鸣谢</a>
 <!-- NAV:END -->
-  </nav>
-</header>
+    </nav>
+    <div class="nav__right"><a class="quiet" href="../../terms/">服务条款</a><a class="btn btn--blue" href="../../accelerator/download/">下载</a></div>
+  </div></header><main><section class="dl-hero">
+  <div class="label" style="font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.22em;color:#8FB6FF">[ DOWNLOAD ]</div>
+  <h1>下载深空联机工具</h1>
+  <p class="lead">三个平台，一个账号。安装包会在应用内自动更新。</p>
+</section>
 
-<div class="wrap narrow">
-
-  <div class="brand">
-    <img class="brandmark" src="../../assets/mark-white.svg" alt="深空之环">
-    <div class="brand__name">深空联机工具</div>
-    <div class="brand__sub">处于内测阶段的 MC 服务器联机组网工具</div>
+<section class="dl-rows">
+  <div class="dl-item">
+    <div><h2>安卓版</h2><p class="sub">通用包 · arm64 / 32 位 / x86</p></div>
+    <div class="meta"><table><tr><th>版本</th><td><b>v3.2.23</b></td></tr><tr><th>大小</th><td>约 110 MB</td></tr><tr><th>更新</th><td>应用内自动更新</td></tr></table></div>
+    <div class="acts"><a class="btn" href="https://share.fnnas.net/s/a53cdf892b6b429e84" target="_blank" rel="noopener">下载安卓版</a></div>
   </div>
+  <div class="dl-item">
+    <div><h2>Windows 版</h2><p class="sub">64 位安装包 · 自带核心与网卡驱动</p></div>
+    <div class="meta"><table><tr><th>版本</th><td><b>v2.1.0</b></td></tr><tr><th>大小</th><td>约 11 MB</td></tr><tr><th>更新</th><td>启动时自动校验签名</td></tr></table></div>
+    <div class="acts"><a class="btn" href="https://share.fnnas.net/s/c2da30c7abd94cd19d" target="_blank" rel="noopener">下载 Windows 版</a></div>
+  </div>
+  <div class="dl-item">
+    <div><h2>Linux 版</h2><p class="sub">Ubuntu / Debian / 统信 UOS 20（x86_64）</p></div>
+    <div class="meta"><table><tr><th>版本</th><td><b>v1.0.3</b>（x86_64）</td></tr><tr><th>大小</th><td>AppImage 约 129 MB · deb 约 93 MB</td></tr><tr><th>更新</th><td>应用内自动更新</td></tr></table></div>
+    <div class="acts"><a class="btn" data-dl="appimage" href="https://share.fnnas.net/s/768a5d8b39484e0484" target="_blank" rel="noopener">AppImage</a><a class="btn" data-dl="deb" href="https://share.fnnas.net/s/b859f937115f47448e" target="_blank" rel="noopener">.deb</a></div>
+  </div>
+</section>
 
-  <nav class="subnav">
-    <a href="../../accelerator/" >介绍</a>
-    <a href="../../accelerator/tutorial/" >使用教程</a>
-    <a href="../../accelerator/download/" class="on">下载</a>
-  </nav>
-
-  <div class="dl-note" id="os-note" hidden></div>
-
-  <div class="dl-grid" id="dl-grid">
-  <div class="card" data-os="android">
-    <h2>安卓版</h2>
-    <table>
-      <tr><th>版本</th><td><b>v3.2.23</b></td></tr>
-      <tr><th>大小</th><td>约 110 MB · 通用包（arm64 / 32 位 / x86 都能装）</td></tr>
-      <tr><th>文件名</th><td><code>EasyTier-MC.apk</code></td></tr>
-      <tr><th>更新方式</th><td>应用内自动更新<span class="tip">（只下你这台手机的架构，约 20～35 MB，比装的时候小得多）</span></td></tr>
-    </table>
-    <div class="dl-actions">
-      <a class="btn" href="https://share.fnnas.net/s/a53cdf892b6b429e84"
-         target="_blank" rel="noopener">⬇️ 下载安卓版</a>
+<details class="dl-checks">
+  <summary>文件校验（sha256）</summary>
+  <div class="sum">
+    <div><div class="tip small">安卓版 v3.2.23</div><code>1c4405d388440fe1bc03ef14a2559cb325e13f59b10907be322a37503bf79e2f</code></div>
+    <div><div class="tip small">Windows 版 v2.1.0</div><code>38a4e47d9944f528ac86776921ec53f09ef761a1ba30f1ecfdbd2524cc7fb5dc</code></div>
+    <div><div class="tip small">Linux AppImage v1.0.3</div><code>97d1a0511b90c5d0fcc07076f532df2e229128b1492c0c990f317335d82b68a8</code></div>
+    <div><div class="tip small">Linux deb v1.0.3</div><code>0fdd8c389770325f46769d9272927391b9763d12a00b2009bec2be320f1f6f34</code></div>
+  </div>
+</details></main><footer class="foot wrap">
+  <div class="foot__grid">
+    <div class="foot__brand">
+      <a class="logo" href="../../" style="font-size:16px"><img src="../../assets/mark-white.svg" alt="">深空</a>
+      <p>© <span class="v6-year">2026</span> 深空工作室 DEEP SPACE<br>本站不收集任何信息</p>
+    </div>
+    <div class="foot__col"><h4>法律</h4>
+      <a href="../../terms/">服务条款</a><a href="../../privacy/">隐私政策</a><a href="../../thanks/">鸣谢</a>
+    </div>
+    <div class="foot__col"><h4>产品与文档</h4>
+      <a href="../../products/">产品</a><a href="../../servers/">服务器</a><a href="../../accelerator/download/">下载</a><a href="../../how/">原理</a>
+    </div>
+    <div class="foot__col"><h4>联系我们</h4>
+      <a href="https://qm.qq.com/cgi-bin/qm/qr?k=716121482">QQ 群 716121482</a><a href="mailto:starlightvgamevstudio@outlook.com">邮件反馈</a>
     </div>
   </div>
-
-  <div class="card" data-os="windows">
-    <h2>Windows 版</h2>
-    <table>
-      <tr><th>版本</th><td><b>v2.1.0</b></td></tr>
-      <tr><th>大小</th><td>约 11 MB · 64 位安装包</td></tr>
-      <tr><th>文件名</th><td><code>DeepSpace-Setup.exe</code></td></tr>
-      <tr><th>更新方式</th><td>启动时自动检查更新（自动下载安装包并校验签名）</td></tr>
-    </table>
-    <div class="dl-actions">
-      <a class="btn" href="https://share.fnnas.net/s/c2da30c7abd94cd19d"
-         target="_blank" rel="noopener">⬇️ 下载 Windows 版</a>
-    </div>
-  </div>
-
-  <div class="card" data-os="linux">
-    <h2>Linux 版</h2>
-    <table>
-      <tr><th>版本</th><td><b>v1.0.3</b>（x86_64）</td></tr>
-      <tr><th>大小</th><td>AppImage 约 129 MB · deb 约 93 MB</td></tr>
-      <tr><th>适用系统</th><td>Ubuntu 22.04 / 24.04、Debian 10+、统信 UOS 20（x86_64）</td></tr>
-      <tr><th>更新方式</th><td>应用内自动更新<span class="tip">（清单 ECDSA 验签；AppImage 原子替换，deb 打开系统安装器）</span></td></tr>
-    </table>
-    <div class="dl-actions">
-      <a class="btn" data-dl="appimage" href="https://share.fnnas.net/s/768a5d8b39484e0484"
-         target="_blank" rel="noopener">⬇️ 下载 AppImage（免安装）</a>
-      <a class="btn" data-dl="deb" href="https://share.fnnas.net/s/b859f937115f47448e"
-         target="_blank" rel="noopener">⬇️ 下载 .deb（推荐）</a>
-    </div>
-    <div class="note note--ok" style="margin-top:18px">
-      <b>推荐用 deb</b>：安装后自动装好 helper / polkit 策略，首次连接会弹一次系统授权。
-      AppImage 免安装，但需要 <code>chmod +x</code>；系统缺 <code>libfuse2</code> 时用
-      <code>--appimage-extract-and-run</code> 启动。
-    </div>
-  </div>
-  </div>
-
-  <div class="dl-note dl-note--ok">
-    <b>Windows 版安装说明</b>：双击一路「下一步」就行 —— 安装包已自带 EasyTier 核心、网卡驱动和界面文件，
-    <b>不需要</b>再单独下 EasyTier，也<b>不需要</b>把文件凑到同一个文件夹。装完桌面上会出现「深空联机工具」图标。
-  </div>
-
-  <!--
-    校验值：安卓端由 publish.sh 写进 www/index.html，本页需手工同步。
-    ★ 2026-10-22 全面更新到 v3.2.23 / v2.1.0（由发版脚本自动同步） —— 上一版文字还停在 v2.7.5 / v1.0.0，
-      落后了 17 个安卓版本、13 个 Windows 版本，而且 Windows 那段「不含 EasyTier 核心」
-      的说法从 v1.2.0 起就不再成立了（现在是自带核心的安装包）。
-      两个网盘链接本身没变、内容也已核对是最新的（飞牛分享页显示的就是当天构建）。
-    安卓 sha256 与 www/version.json 的通用包一致；Windows 与 www/version-win.json 的 installer 一致。
-  -->
-  <div class="card">
-    <h2>文件校验</h2>
-    <div class="tip" style="margin-bottom:14px">如需确认文件完整性，可核对以下校验值：</div>
-    <div class="dl-sums">
-      <div><div class="tip small" style="margin-bottom:5px">安卓版 v3.2.23</div>
-      <code style="display:block;padding:8px 10px;word-break:break-all">1c4405d388440fe1bc03ef14a2559cb325e13f59b10907be322a37503bf79e2f</code></div>
-      <div><div class="tip small" style="margin-bottom:5px">Windows 版 v2.1.0</div>
-      <code style="display:block;padding:8px 10px;word-break:break-all">38a4e47d9944f528ac86776921ec53f09ef761a1ba30f1ecfdbd2524cc7fb5dc</code></div>
-      <div><div class="tip small" style="margin-bottom:5px">Linux AppImage v1.0.3</div>
-      <code style="display:block;padding:8px 10px;word-break:break-all">97d1a0511b90c5d0fcc07076f532df2e229128b1492c0c990f317335d82b68a8</code></div>
-      <div><div class="tip small" style="margin-bottom:5px">Linux deb v1.0.3</div>
-      <code style="display:block;padding:8px 10px;word-break:break-all">0fdd8c389770325f46769d9272927391b9763d12a00b2009bec2be320f1f6f34</code></div>
-    </div>
-  </div>
-</div>
-
-<div class="dl-sticky" id="dl-sticky" hidden>
-  <span id="dl-sticky-label">推荐给你的设备</span>
-  <a class="btn" id="dl-sticky-link" href="https://share.fnnas.net/s/a53cdf892b6b429e84" target="_blank" rel="noopener">下载</a>
-</div>
-
-<footer class="foot">
-  深空联机工具　|　<a href="../../thanks/">鸣谢</a><br>
-  本页为静态页面，不收集任何信息。
-<!-- FOOTER:START -->
-<div class="foot__legal">
-  <a href="../../terms/">《服务条款》</a>　·　<a href="../../privacy/">《隐私政策》</a>　·　运营者：深空工作室（DEEP SPACE）
-</div>
-<!-- FOOTER:END -->
+  <div class="foot__bottom"><a href="#top">回到顶部 ↑</a></div>
+  <div class="wordmark" aria-hidden="true"><span>DEEP SPACE</span></div>
 </footer>
-
-<script>
-(function(){
-  var ua = navigator.userAgent || '';
-  var os = 'other';
-  if (/android/i.test(ua)) os = 'android';
-  else if (/iphone|ipad|ipod/i.test(ua)) os = 'ios';
-  else if (/windows/i.test(ua)) os = 'windows';
-  else if (/macintosh|mac os x/i.test(ua)) os = 'mac';
-  else if (/linux|x11/i.test(ua)) os = 'linux';
-
-  var cards = {};
-  var grid = document.getElementById('dl-grid');
-  var all = grid ? grid.querySelectorAll('.card[data-os]') : [];
-  for (var i = 0; i < all.length; i++) cards[all[i].getAttribute('data-os')] = all[i];
-  function hrefOf(card){ var a = card && card.querySelector('a.btn'); return a ? a.getAttribute('href') : ''; }
-
-  var chosen = cards[os] || null;
-  if (chosen) {
-    chosen.classList.add('is-recommended');
-    chosen.style.order = '0';
-    var badge = document.createElement('div');
-    badge.className = 'dl-badge';
-    badge.textContent = '✓ 推荐给你的设备';
-    chosen.insertBefore(badge, chosen.firstChild);
-    for (var k in cards) if (cards[k] !== chosen) cards[k].style.order = '1';
-  }
-
-  var note = document.getElementById('os-note');
-  if (note && (os === 'mac' || os === 'ios')) {
-    if (os === 'mac') {
-      note.innerHTML = '这台设备是 macOS：<b>暂无 macOS 客户端</b>。可以下载 <a data-note="linux" href="#">Linux 版</a>，或 <a data-note="windows" href="#">Windows 版</a>（需虚拟机）。';
-    } else {
-      note.innerHTML = '这台设备是 iOS：<b>暂不支持 iOS</b>。安卓版需要安卓手机安装；电脑端可看 <a data-note="linux" href="#">Linux 版</a> 或 <a data-note="windows" href="#">Windows 版</a>。';
-    }
-    note.querySelectorAll('a[data-note]').forEach(function(a){
-      var t = cards[a.getAttribute('data-note')];
-      var h = hrefOf(t);
-      if (h) a.href = h;
-    });
-    note.hidden = false;
-  }
-
-  var bar = document.getElementById('dl-sticky');
-  var label = document.getElementById('dl-sticky-label');
-  var link = document.getElementById('dl-sticky-link');
-  var target = chosen || cards.android || cards.windows || cards.linux;
-  if (bar && target) {
-    var btn = target.querySelector('a.btn');
-    if (btn) {
-      link.href = btn.getAttribute('href');
-      link.textContent = '下载 ' + (target.querySelector('h2') ? target.querySelector('h2').textContent : '');
-      label.textContent = '推荐给你的设备 · ' + (target.querySelector('h2') ? target.querySelector('h2').textContent : '');
-      bar.hidden = false;
-    }
-  }
-})();
-</script>
-<script src="../../assets/cache-check.js"></script>
-</body>
-</html>
+<script src="../../assets/site.js"></script></body></html>
