@@ -8,14 +8,14 @@
 <title>深空 · 免费、易用、高效的 MC 联机平台</title>
 <meta name="description" content="深空联机工具：免费、易用、高效的 MC 联机平台。不用公网 IP，不用端口映射。">
 <meta name="theme-color" content="#050B16">
-<link rel="stylesheet" href="assets/site.css?v=a6e645b0">
-<meta name="dsv" content="0c880e3186be">
+<link rel="stylesheet" href="assets/site.css?v=792d3fab">
+<meta name="dsv" content="e6d53941cf21">
 </head>
 <body id="top">
 <div class="bg" aria-hidden="true"></div>
 
 <div class="announce">
-  <span>深空联机工具已完成本轮更新</span>
+  <span>深空联机工具 v1.0.3 已发布</span>
   <a href="accelerator/download/">前往下载 →</a>
 </div>
 
@@ -60,17 +60,15 @@
     <h2>一个窗口，接管整条联机链路。</h2>
     <p class="lead">连接、门票、节点、更新都在这里，不需要再开第二个工具。</p>
     <div class="showcase">
-      <!-- ★ 2026-10-23（服主）：展示区只放**单纯的界面图**（不要窗口框、不要边框）。
-           同一处放两张，用图下面那排按钮切换；同一时刻只有一张可见。
-           ⚠️ 「藏起来」用 hidden 属性表达，CSS 里必须有 `.shots [hidden]{display:none!important}` 兜底
-              —— 否则 display:block 会把它压掉，两张图会一起显示（今天真发生了）。 -->
+      <!-- ★ 2026-10-23（服主）：这里只放**单纯的界面图**，不要再套"窗口框"。
+           可切换（上一张 / 下一张），照 TRAE 官网那种做法。 -->
       <div class="shots">
-        <img class="shot" data-shot-view="win" src="./assets/app/windows-connected.png?v=52e0ef45" alt="深空联机工具 Windows 端界面（已连接）" width="760">
-        <img class="shot" data-shot-view="android" src="./assets/app/android-connected.png?v=9b7bc53d" alt="深空联机工具安卓端界面（已连接）" width="390" hidden>
+        <img class="shot" src="./assets/app/windows-connected.png?v=52e0ef45" alt="深空联机工具 Windows 端界面（已连接）" width="760">
+        <img class="shot" src="./assets/app/android-connected.png?v=9b7bc53d" alt="深空联机工具安卓端界面（已连接）" width="390" hidden>
       </div>
-      <div class="shots__nav" role="tablist" aria-label="切换界面图">
-        <button type="button" class="shots__btn is-on" data-shot="win" role="tab" aria-selected="true">Windows</button>
-        <button type="button" class="shots__btn" data-shot="android" role="tab" aria-selected="false">安卓</button>
+      <div class="shots__nav">
+        <button type="button" class="shots__btn" data-shot="prev" aria-label="上一张界面图">←</button>
+        <button type="button" class="shots__btn" data-shot="next" aria-label="下一张界面图">→</button>
       </div>
     </div>
   </section>
@@ -81,6 +79,9 @@
     <div class="dl-links">
       <a href="accelerator/download/"><span>WINDOWS · X64</span><strong>Windows</strong><em>→</em></a>
       <a href="accelerator/download/"><span>ANDROID · 通用包</span><strong>安卓</strong><em>→</em></a>
+      <a href="accelerator/download/"><span>LINUX · X86_64</span><strong>Linux</strong><em>→</em></a>
+    </div>
+  </section></div>安卓</strong><em>→</em></a>
       <a href="accelerator/download/"><span>LINUX · X86_64</span><strong>Linux</strong><em>→</em></a>
     </div>
   </section>
@@ -116,7 +117,7 @@
   <div class="wordmark" aria-hidden="true"><span>DEEP SPACE</span></div>
 </footer>
 <script src="./assets/wave.js"></script>
-<script src="./assets/site.js?v=468b1547"></script>
+<script src="./assets/site.js?v=29ba64e1"></script>
 <script src="assets/cache-check.js"></script>
 </body>
 </html>
