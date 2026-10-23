@@ -8,8 +8,8 @@
 <title>深空 · 免费、易用、高效的 MC 联机平台</title>
 <meta name="description" content="深空联机工具：免费、易用、高效的 MC 联机平台。不用公网 IP，不用端口映射。">
 <meta name="theme-color" content="#050B16">
-<link rel="stylesheet" href="../assets/site.css?v=792d3fab">
-<meta name="dsv" content="e6d53941cf21">
+<link rel="stylesheet" href="../assets/site.css?v=af94ee17">
+<meta name="dsv" content="81910326dd3e">
 </head>
 <body id="top">
 <!-- CARD-META:START -->
@@ -80,30 +80,51 @@
     <div class="label">[ PRODUCT ]</div>
     <h2>一个窗口，接管整条联机链路。</h2>
     <p class="lead">连接、门票、节点、更新都在这里，不需要再开第二个工具。</p>
-    <div class="showcase">
-    <div class="win">
-    <div class="win__bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win__title">深空联机工具 · 服务器</span></div>
-    <div class="win__body">
-    <div class="pane">
-    <h3>我常去的服务器</h3>
-    <div class="rows" style="grid-template-columns:1fr auto;margin-top:0">
-    <b>梦之国度</b><span style="color:#9BF0C2">在线 · 28ms</span>
-    <b>永恒的旅途</b><span style="color:#9BF0C2">在线 · 34ms</span>
-    <b>朋友的整合包服</b><span style="color:var(--faint)">已收藏</span>
-    </div>
-    </div>
-    <div class="pane">
-    <h3>当前网络</h3>
-    <div class="rows" style="grid-template-columns:1fr 1fr;margin-top:0">
-    <span>虚拟 IP</span><b>10.144.144.3</b>
-    <span>节点</span><b>45+</b>
-    <span>延迟</span><b>28 ms</b>
-    <span>配置</span><b>0 步</b>
-    </div>
-    <span class="badge">● 已接入深空网络</span>
-    </div>
-    </div>
-    </div>
+    <div class="pc" data-pc>
+      <div class="pc__bar">
+        <div class="pc__btns">
+          <button class="pc__btn" type="button" data-pc-prev aria-label="上一张">
+            <svg viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true"><path stroke="currentColor" stroke-linecap="square" stroke-width="1.6" d="m11.5 4.5-5.5 5.5 5.5 5.5M6 10h9"/></svg>
+          </button>
+          <button class="pc__btn pc__btn--next" type="button" data-pc-next aria-label="下一张">
+            <svg viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true"><path stroke="currentColor" stroke-linecap="square" stroke-width="1.6" d="m8.5 4.5 5.5 5.5-5.5 5.5M14 10H5"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="pc__rule"></div>
+      <div class="pc__viewport">
+        <div class="pc__track">
+          <div class="pc__slide">
+            <div class="pc__media pc__media--duo">
+              <img src="../assets/app/android-connecting.png?v=b4749a11" alt="安卓客户端：正在连接" loading="lazy" draggable="false">
+              <img src="../assets/app/android-connected-shot.png?v=f4904ddc" alt="安卓客户端：已连接" loading="lazy" draggable="false">
+            </div>
+            <div class="pc__caption">
+              <div class="pc__title">点一下，<br>开始连接</div>
+              <p class="pc__desc">不用填 IP、不用开端口。主按钮就是全部操作，连接进度就在星球下面。</p>
+            </div>
+          </div>
+          <div class="pc__slide">
+            <div class="pc__media pc__media--solo">
+              <img src="../assets/app/windows-connected-shot.png?v=0d96b89b" alt="Windows 客户端：已连接" loading="lazy" draggable="false">
+            </div>
+            <div class="pc__caption">
+              <div class="pc__title">电脑上，<br>也只要一个按钮</div>
+              <p class="pc__desc">Windows 端同样的操作：点一下连接，底部随时看日志、查更新。</p>
+            </div>
+          </div>
+          <div class="pc__slide">
+            <div class="pc__media pc__media--mix">
+              <img class="pc__win" src="../assets/app/windows-connected-shot.png?v=0d96b89b" alt="Windows 客户端：已连接" loading="lazy" draggable="false">
+              <img class="pc__phone" src="../assets/app/android-connected-shot.png?v=f4904ddc" alt="安卓客户端：已连接" loading="lazy" draggable="false">
+            </div>
+            <div class="pc__caption">
+              <div class="pc__title">三端，<br>同一张网</div>
+              <p class="pc__desc">Windows、安卓、Linux 共用一张网，朋友用手机也能直接进来。</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -159,7 +180,7 @@
   <div class="wordmark" aria-hidden="true"><span>DEEP SPACE</span></div>
 </footer>
 <script src="../assets/wave.js"></script>
-<script src="../assets/site.js?v=29ba64e1"></script>
+<script src="../assets/site.js?v=0ebfe3a2"></script>
 <script src="../assets/cache-check.js"></script>
 </body>
 </html>
