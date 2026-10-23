@@ -89,3 +89,27 @@
   window.addEventListener('resize', function(){ measure(); paint(false); });
   measure(); paint(false);
 })();
+
+
+/* ---------- 帮助文档：目录高亮（2026-10-23） ---------- */
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.docs__side a[href^="#"], .docs__toc a[href^="#"]'));
+  if (!links.length) return;
+  var heads = [].slice.call(document.querySelectorAll('.docs__body h1[id], .docs__body h2[id]'));
+  if (!heads.length) return;
+  var ticking = false;
+  function paint(){
+    ticking = false;
+    var y = window.scrollY + 120;
+    var cur = heads[0];
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top + window.scrollY <= y) cur = heads[i];
+    }
+    var id = cur ? cur.id : '';
+    links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#' + id); });
+  }
+  window.addEventListener('scroll', function(){
+    if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+  }, { passive: true });
+  paint();
+})();
