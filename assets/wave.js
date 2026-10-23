@@ -174,7 +174,12 @@
   var t0 = performance.now(), raf = 0, visible = true, lastDraw = 0;
 
   function frame(now) {
-    if (!visible || document.hidden) return;
+    if (!visible) return;
+    /* ★ 2026-10-23：切到别的标签页再切回来，格子会卡死。
+       原因：Chrome 在页面转入后台时还会跑完最后一帧，这一帧命中 document.hidden
+       直接 return 而没有再 requestAnimationFrame ⇒ 循环就此断掉，回来也没人重启。
+       ⇒ 后台时仍然排下一帧（后台 rAF 不触发，成本为零），并在 visibilitychange 里重启。 */
+    if (document.hidden) { raf = requestAnimationFrame(frame); return; }
     if (now - lastDraw < 32) { raf = requestAnimationFrame(frame); return; }
     lastDraw = now;
     var time = reduced ? 3.2 : (now - t0) / 1000;
@@ -209,6 +214,19 @@
   }
 
   function start() { cancelAnimationFrame(raf); lastDraw = 0; raf = requestAnimationFrame(frame); }
+
+  // 标签页隐藏/恢复：恢复时重启循环，并把隐藏期间的时间从动画时钟里扣掉（避免画面突然跳一下）
+  var hiddenAt = 0;
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      hiddenAt = performance.now();
+      cancelAnimationFrame(raf);
+    } else {
+      if (hiddenAt) { t0 += performance.now() - hiddenAt; hiddenAt = 0; }
+      lastDraw = 0;
+      start();
+    }
+  });
 
   if ('ResizeObserver' in window) new ResizeObserver(resize).observe(hero);
   else window.addEventListener('resize', resize);
