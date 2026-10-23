@@ -8,8 +8,8 @@
 <title>深空 · 免费、易用、高效的 MC 联机平台</title>
 <meta name="description" content="深空联机工具：免费、易用、高效的 MC 联机平台。不用公网 IP，不用端口映射。">
 <meta name="theme-color" content="#050B16">
-<link rel="stylesheet" href="../assets/site.css?v=5450e5aa">
-<meta name="dsv" content="2d2d7a79c654">
+<link rel="stylesheet" href="../assets/site.css?v=a6e645b0">
+<meta name="dsv" content="0c880e3186be">
 </head>
 <body id="top">
 <!-- CARD-META:START -->
@@ -70,64 +70,77 @@
       </div>
       <div class="meta">Windows · 安卓 · Linux ｜ 免费 ｜ 自动更新</div>
 
-      <div class="shot">
-        <div class="win">
-          <div class="win__bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win__title">深空联机工具 · 已连接</span></div>
-          <div class="win__body">
-            <div class="pane">
-              <h3>连接状态</h3>
-              <div class="connected"><span class="pulse"></span>已连接</div>
-              <div class="rows">
-                <span>虚拟 IP</span><b>10.144.144.3</b>
-                <span>城门</span><b>可进游戏</b>
-                <span>设备码</span><b>CD15-8192-7DB5-15F0</b>
-              </div>
+        <!-- =============================================================================
+             加速器页面里的「客户端界面」模拟 —— 2026-10-23 重写（服主指令）；原来那两块是手画的假面板（虚拟 IP 10.144.144.3 / 节点 45+ / 城门 可进游戏 等），和真实客户端长得完全不一样。
+             现在这份**逐项照抄真实客户端**（src/客户端研发/ui/index.html）：窗口 760×560、标题栏 36px、左侧图标栏 64px、大圆按钮 176px、品牌 46px 图标、底部一行 11.5px 灰字 + 四个文字链。
+             颜色也照抄（服主 10-23 定的）：背景 #050B16、蓝 #2E6BFF、白 #F7FAFF；失败态不再是红色。
+             ⚠️ 这是**展示用的静态复刻**，按钮不接任何逻辑；真客户端由安装包提供。-->
+        <div class="shot">
+<div class="appwin" role="img" aria-label="深空联机工具 Windows 客户端界面（已连接状态）">
+          <div class="appwin__bar">
+            <span class="appwin__name">深空联机工具</span>
+            <span class="appwin__btns"><span class="appwin__btn">—</span><span class="appwin__btn appwin__btn--x">✕</span></span>
+          </div>
+          <div class="appwin__shell">
+            <div class="appwin__rail">
+              <span class="appwin__railbtn appwin__railbtn--on">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="appwin__railbtn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L14 5.6v12.8L7.2 14.5H4z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M17.2 9a4.4 4.4 0 0 1 0 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+              </span>
+              <span class="appwin__railbtn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="9.5" cy="7" r="2.1" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="15" cy="12" r="2.1" fill="none" stroke="currentColor" stroke-width="2.1"/><circle cx="9.5" cy="17" r="2.1" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+              </span>
             </div>
-            <div class="pane">
-              <h3>组网</h3>
-              <div class="rows" style="grid-template-columns:1fr 1fr;margin-top:0">
-                <span>延迟</span><b>28 ms</b>
-                <span>节点</span><b>45+</b>
-                <span>加密</span><b>端到端</b>
-                <span>配置</span><b>0 步</b>
+            <div class="appwin__stage">
+              <div class="appwin__brand">
+                <svg class="appwin__mark" viewBox="0 0 108 108" aria-hidden="true"><circle cx="54" cy="54" r="15.5" fill="#FFFFFF"/><ellipse cx="54" cy="54" rx="30" ry="22.5" fill="none" stroke="#FFFFFF" stroke-width="5.4" transform="rotate(-20 54 54)"/></svg>
+                <div class="appwin__titles">
+                  <h3>深空联机工具</h3>
+                  <p>用于深空旗下的游戏服务器加速以及其他服务加速</p>
+                </div>
               </div>
-              <span class="badge">● 已接入深空网络</span>
+              <div class="appwin__orb appwin__orb--on">已连接</div>
+              <div class="appwin__readout">
+                <div class="appwin__hint">点一下按钮，即可进入游戏内网</div>
+                <div class="appwin__sub">已连接 · 10.144.144.3</div>
+              </div>
             </div>
           </div>
+          <div class="appwin__foot">
+            <span>EasyTier 核心 v2.6.4 · 本站不收集任何信息</span>
+            <span class="appwin__links"><span>反馈问题</span><span>查看日志</span><span>导出日志到桌面</span><span>检查更新</span></span>
+          </div>
         </div>
-      </div>
+        <!-- ★ 2026-10-23（服主指令）：手机端照抄真实安卓界面（与官网那张安卓截图是同一个界面）。
+             结构：品牌圆环图标 → 「深空联机工具」→ 蓝色实心圆 + 白色轨道（已连接 = 只有轨道、没有卫星点）→ 一行灰字。
+             ⚠️ 静态复刻，不接逻辑。 -->
+        <div class="appph" role="img" aria-label="深空联机工具 安卓客户端界面（已连接状态）">
+          <svg class="appph__mark" viewBox="0 0 108 108" aria-hidden="true">
+            <circle cx="54" cy="54" r="15.5" fill="#FFFFFF"/>
+            <ellipse cx="54" cy="54" rx="30" ry="22.5" fill="none" stroke="#FFFFFF" stroke-width="5.4" transform="rotate(-20 54 54)"/>
+          </svg>
+          <div class="appph__name">深空联机工具</div>
+          <div class="appph__orbwrap">
+            <span class="appph__orbit appph__orbit--a"></span>
+            <span class="appph__orbit appph__orbit--b"></span>
+            <span class="appph__orb">已连接</span>
+          </div>
+          <div class="appph__sub">已连接 · 10.144.144.3</div>
+        </div>
     </div>
+      </div>
   </section>
 
   <section class="section wrap">
     <div class="label">[ PRODUCT ]</div>
     <h2>一个窗口，接管整条联机链路。</h2>
     <p class="lead">连接、门票、节点、更新都在这里，不需要再开第二个工具。</p>
-    <div class="showcase">
-      <div class="win">
-        <div class="win__bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win__title">深空联机工具 · 服务器</span></div>
-        <div class="win__body">
-          <div class="pane">
-            <h3>我常去的服务器</h3>
-            <div class="rows" style="grid-template-columns:1fr auto;margin-top:0">
-              <b>梦之国度</b><span style="color:#9BF0C2">在线 · 28ms</span>
-              <b>永恒的旅途</b><span style="color:#9BF0C2">在线 · 34ms</span>
-              <b>朋友的整合包服</b><span style="color:var(--faint)">已收藏</span>
-            </div>
-          </div>
-          <div class="pane">
-            <h3>当前网络</h3>
-            <div class="rows" style="grid-template-columns:1fr 1fr;margin-top:0">
-              <span>虚拟 IP</span><b>10.144.144.3</b>
-              <span>节点</span><b>45+</b>
-              <span>延迟</span><b>28 ms</b>
-              <span>配置</span><b>0 步</b>
-            </div>
-            <span class="badge">● 已接入深空网络</span>
-          </div>
-        </div>
-      </div>
-    </div>
+      <!-- ★ 2026-10-23：这一段原来还有一块手画的"服务器列表"假面板，已按服主指令删掉。
+           真实客户端里没有"我常去的服务器/当前网络"这种两栏面板 —— 那是虚构的。
+           首屏展示的电脑端与手机端就是真实界面本身。 -->
+      <p class="lead">上面那个窗口就是电脑端本身；手机上同一个按钮、同一套颜色（窄屏会自动换成手机版）。</p>
   </section>
 
   <section class="section wrap">

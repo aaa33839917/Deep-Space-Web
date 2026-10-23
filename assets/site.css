@@ -19,12 +19,9 @@ a{color:inherit;text-decoration:none}
   mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 65%)}
 .wrap{width:min(var(--max),calc(100% - 48px));margin:0 auto}
 
-/* ★ 2026-10-23：原来是一条整幅渐变的纯蓝横条，压在深色首页顶上非常扎眼（第七节红线也禁渐变）。
-   改成深底 + 细分隔线，只有"前往下载"那个链接用品牌蓝。 */
-.announce{display:flex;justify-content:center;align-items:center;gap:10px;padding:9px 16px;
-  background:rgba(46,107,255,.06);border-bottom:1px solid rgba(46,107,255,.16);
-  font-size:13px;color:rgba(247,250,255,.82)}
-.announce a{color:#9FC0FF}
+.announce{display:flex;justify-content:center;align-items:center;gap:10px;padding:8px 16px;
+  background:#2E6BFF;font-size:13px;color:#fff}
+.announce a{text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 .announce a{text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 
 .nav{position:sticky;top:0;z-index:50;height:64px;display:flex;align-items:center;
@@ -501,3 +498,72 @@ body{padding-top:0}
 .tl h3{margin:0 0 8px;font-size:19px;font-weight:650}
 .tl p{margin:0;color:var(--dim);font-size:14.5px;line-height:1.8}
 @media (max-width:700px){.tl{grid-template-columns:1fr;gap:8px;padding:26px 0}}
+
+
+/* =============================================================================
+   加速器页「客户端界面」模拟 —— ★ 2026-10-23（服主：把虚构的假界面换成照真实客户端复刻）。
+   数值全部照抄真实客户端（实测）：窗口 760x560、标题栏 36px、左侧图标栏 64px、
+   大圆按钮 176px / 19px 700 / 字距 .08em、底部 11.5px opacity .5。
+   颜色：#050B16 背景、#2E6BFF 蓝、#F7FAFF 白（服主定的三个值，别改）。
+   这里只做"长得一样"，不接任何交互。 */
+.appwin{width:100%;max-width:760px;margin:0 auto;border:1px solid rgba(255,255,255,.10);
+  border-radius:12px;overflow:hidden;background:radial-gradient(circle at 50% 30%,#050B16 0%,#050B16 70%);
+  color:#F7FAFF;text-align:left;font-family:"Microsoft YaHei UI","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.appwin__bar{height:36px;display:flex;align-items:center;padding-left:14px;font-size:12px;
+  letter-spacing:.06em;color:rgba(247,250,255,.38);border-bottom:1px solid rgba(255,255,255,.06)}
+.appwin__btns{margin-left:auto;display:flex;height:100%}
+.appwin__btn{width:46px;display:grid;place-items:center;font-size:13px;color:rgba(247,250,255,.55)}
+.appwin__btn--x{font-size:12px}
+.appwin__shell{display:flex;min-height:470px}
+.appwin__rail{flex:0 0 64px;display:flex;flex-direction:column;align-items:center;gap:6px;
+  padding:10px 0;border-right:1px solid rgba(255,255,255,.08)}
+.appwin__railbtn{width:48px;height:44px;display:flex;align-items:center;justify-content:center;
+  border-radius:10px;color:rgba(232,238,252,.62)}
+.appwin__railbtn svg{width:22px;height:22px}
+.appwin__railbtn--on{background:rgba(79,124,255,.18);color:#FFF}
+.appwin__stage{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:26px;padding:0 32px 8px}
+.appwin__brand{display:flex;align-items:center;gap:14px}
+.appwin__mark{width:46px;height:46px;flex:0 0 46px;opacity:.95}
+.appwin__titles h3{margin:0;font-size:21px;font-weight:600;letter-spacing:.1em;color:#F7FAFF}
+.appwin__titles p{margin:5px 0 0;font-size:12px;opacity:.64;letter-spacing:.02em}
+/* ⚠️ 用 .appwin .appwin__orb（双类 + 父级）：站点别处也有以 orb 命名的规则，
+   单类选择器会被盖掉 —— 第一版就是被盖成了方块。 */
+.appwin .appwin__orb{width:176px;height:176px;min-width:176px;border-radius:50% !important;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
+  font-size:19px;font-weight:700;letter-spacing:.08em;color:#fff;background:#050B16;
+  box-shadow:inset 0 0 0 2px rgba(46,107,255,.55),0 0 0 10px rgba(46,107,255,.10),0 16px 40px rgba(0,0,0,.45)}
+.appwin .appwin__orb--on{background:#2E6BFF;box-shadow:0 0 0 10px rgba(46,107,255,.16),0 16px 40px rgba(0,0,0,.45)}
+.appwin__readout{text-align:center;min-height:46px}
+.appwin__hint{font-size:14px;line-height:1.5;opacity:.92}
+.appwin__sub{margin-top:7px;font-size:12px;line-height:1.6;opacity:.55}
+.appwin__foot{padding:10px 22px 14px;display:flex;align-items:center;gap:14px;font-size:11.5px;opacity:.5}
+.appwin__links{margin-left:auto;display:flex;gap:4px}
+.appwin__links span{padding:4px 8px}
+.appph{width:100%;max-width:390px;margin:0 auto;border-radius:22px;overflow:hidden;
+  background:#050B16;color:#F7FAFF;padding:96px 0 64px;display:flex;flex-direction:column;align-items:center;
+  font-family:"PingFang SC","Noto Sans CJK SC",system-ui,sans-serif;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.appph__mark{width:38px;height:38px;opacity:.95}
+.appph__name{margin-top:18px;font-size:16px;letter-spacing:.04em}
+.appph__orbwrap{position:relative;width:280px;height:280px;margin-top:26px;display:grid;place-items:center}
+.appph .appph__orb{width:170px;height:170px;min-width:170px;border-radius:50%!important;aspect-ratio:1/1;display:grid;place-items:center;font-size:17px;
+  background:#2E6BFF;box-shadow:0 0 46px rgba(46,107,255,.35)}
+/* 照真实安卓截图：两条椭圆轨道不同倾角，交叉环绕在球上（球直径 176，轨道盒 280） */
+/* ⚠️ 同样要用 .appph .appph__orbit：站点别处有影响 border-radius 的规则，单类会被盖成方框 */
+.appph .appph__orbit{position:absolute;left:50%;top:50%;width:300px;height:300px;margin:-150px 0 0 -150px;
+  border-radius:50% !important;border:1px solid rgba(255,255,255,.62);pointer-events:none}
+.appph .appph__orbit--a{transform:rotate(-32deg) scaleY(.40)}
+.appph .appph__orbit--b{transform:rotate(-8deg) scaleY(.62);opacity:.85}
+.appph__sub{margin-top:30px;font-size:12.5px;opacity:.55}
+
+/* ★ 2026-10-23 展示位规则（服主：电脑和手机都要在官网重现）：
+   · 首屏 .shot 里放**电脑端**复刻（真实窗口就是 760×560，所以最大宽度 760）；
+   · 窄屏（≤760）时首屏改放**手机端**复刻（电脑窗口塞进手机没有意义）。
+   ⚠️ 只切"显示哪一个"，两套 DOM 都在页面里，不靠 JS。 */
+.shot{margin-top:48px}
+.shot .appwin{margin:0 auto}
+.shot .appph{display:none;margin:0 auto}
+@media (max-width:760px){
+  .shot .appwin{display:none}
+  .shot .appph{display:flex}
+}
