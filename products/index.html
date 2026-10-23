@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.svg?v=7cb4466a" type="image/svg+xml">
 <title>产品 · 深空</title>
 <meta name="theme-color" content="#050B16">
-<link rel="stylesheet" href="../assets/site.css?v=6">
+<link rel="stylesheet" href="../assets/site.css?v=792d3fab">
+<meta name="dsv" content="e6d53941cf21">
 </head>
 <body id="top">
 <div class="bg" aria-hidden="true"></div>
@@ -35,36 +36,32 @@
   <section class="wrap prod-hero">
     <div class="label">[ PRODUCTS ]</div>
     <h1>一个工具，<br>连回所有世界。</h1>
-    <p>深空目前只有一个客户端：把外网的朋友拉回服务器。</p>
+    <!-- ★ 2026-10-23：这一句里的项目名是**生成器写回来的**（真源在每个项目详情页的 card-meta），
+         手抄版本号/项目名是本站的红线（R8.4 里那条"过期的文档比没有文档更坏"）。 -->
+    <p>深空目前只有一个客户端：<!-- PRODUCT_NAMES:START -->
+深空联机工具
+<!-- PRODUCT_NAMES:END -->（把外网的朋友拉回服务器）。</p>
   </section>
 
   <section class="wrap">
     <div class="pcards">
-      <a class="pcard pcard--wide" href="../accelerator/">
-        <div class="pcard__body">
-          <div class="pcard__head">
-            <span class="pcard__icon">◈</span>
-            <span class="pcard__kicker">组网客户端 · WINDOWS / 安卓 / LINUX</span>
-          </div>
-          <h2>深空联机工具</h2>
-          <p>让外网的朋友连回服务器的客户端。不用公网 IP、不用端口映射，点一下连接就能进游戏。</p>
-          <span class="pcard__more">了解工具 →</span>
-        </div>
-        <div class="pcard__visual">
-          <div class="win" style="width:100%;box-shadow:none">
-            <div class="win__bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win__title">深空联机工具 · 已连接</span></div>
-            <div class="win__body" style="grid-template-columns:1fr">
-              <div class="pane">
-                <div class="connected"><span class="pulse"></span>已连接</div>
-                <div class="rows">
-                  <span>虚拟 IP</span><b>10.144.144.3</b>
-                  <span>城门</span><b>可进游戏</b>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
+      <!-- ★ 2026-10-23（服主拍板）：这块由生成器写回来，真源是每个项目详情页里的 card-meta
+           （站点没有配置文件）。视觉用真客户端界面截图，不再手画 mock 面板。 -->
+<!-- PRODUCTS:START -->
+  <!-- project: accelerator -->
+  <a class="pcard pcard--wide" href="../accelerator/">
+    <div class="pcard__body">
+      <div class="pcard__head">
+        <span class="pcard__icon">◈</span>
+        <span class="pcard__kicker">组网客户端 · WINDOWS / 安卓 / LINUX</span>
+      </div>
+      <h2>深空联机工具</h2>
+      <p>让外网的朋友连回服务器的客户端。不用公网 IP、不用端口映射，点一下连接就能进游戏。</p>
+      <span class="pcard__more">了解工具 →</span>
+    </div>
+    <div class="pcard__visual"><img class="pcard__shot" src="../assets/app/windows-connected.png?v=52e0ef45" alt="深空联机工具 的客户端界面（已连接）" width="760" loading="lazy"></div>
+  </a>
+<!-- PRODUCTS:END --></a>
     </div>
   </section>
 </main>
@@ -75,9 +72,11 @@
       <a class="logo" href="../" style="font-size:16px"><img src="../assets/mark-white.svg" alt="">深空</a>
       <p>© <span class="v6-year">2026</span> 深空工作室 DEEP SPACE<br>本站不收集任何信息</p>
     </div>
+    <!-- FOOTER:START -->
     <div class="foot__col"><h4>法律</h4>
       <a href="../terms/">服务条款</a><a href="../privacy/">隐私政策</a><a href="../thanks/">鸣谢</a>
     </div>
+<!-- FOOTER:END -->
     <div class="foot__col"><h4>产品与文档</h4>
       <a href="../products/">产品</a><a href="../servers/">服务器</a><a href="../accelerator/download/">下载</a><a href="../how/">原理</a>
     </div>
@@ -88,6 +87,7 @@
   <div class="foot__bottom"><a href="#top">回到顶部 ↑</a></div>
   <div class="wordmark" aria-hidden="true"><span>DEEP SPACE</span></div>
 </footer>
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=29ba64e1"></script>
+<script src="../assets/cache-check.js"></script>
 </body>
 </html>

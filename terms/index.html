@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.svg?v=7cb4466a" type="image/svg+xml">
 <title>服务条款 · 深空</title>
 <meta name="theme-color" content="#050B16">
-<link rel="stylesheet" href="../assets/site.css?v=6">
+<link rel="stylesheet" href="../assets/site.css?v=792d3fab">   <!-- 缓存指纹由 deploy.sh 那一步加，这里不手写版本号 -->
+<meta name="dsv" content="e6d53941cf21">
 </head>
 <body id="top">
 <div class="bg" aria-hidden="true"></div>
@@ -76,9 +77,14 @@
       <a class="logo" href="../" style="font-size:16px"><img src="../assets/mark-white.svg" alt="">深空</a>
       <p>© <span class="v6-year">2026</span> 深空工作室 DEEP SPACE<br>本站不收集任何信息</p>
     </div>
+    <!-- ★ 2026-10-23（服主拍板「写成一处」）：这一列不在这里写。
+         页脚那一列只有一份真源，由构建流程按页面的真实层级写回来；这里只留标记。
+         ⚠️ 只跑本页的渲染、不跑页脚同步，这一列会是空的 —— 发布一律走那条完整流程。 -->
+    <!-- FOOTER:START -->
     <div class="foot__col"><h4>法律</h4>
-      <a href="../terms/">服务条款</a><a href="../privacy/">隐私政策</a><a href="../thanks/">鸣谢</a>
+      <a href="./">服务条款</a><a href="../privacy/">隐私政策</a><a href="../thanks/">鸣谢</a>
     </div>
+<!-- FOOTER:END -->
     <div class="foot__col"><h4>产品与文档</h4>
       <a href="../products/">产品</a><a href="../servers/">服务器</a><a href="../accelerator/download/">下载</a><a href="../how/">原理</a>
     </div>
@@ -89,6 +95,7 @@
   <div class="foot__bottom"><a href="#top">回到顶部 ↑</a></div>
   <div class="wordmark" aria-hidden="true"><span>DEEP SPACE</span></div>
 </footer>
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=29ba64e1"></script>
+<script src="../assets/cache-check.js"></script>
 </body>
 </html>

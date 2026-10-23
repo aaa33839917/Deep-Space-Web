@@ -58,9 +58,16 @@ a{color:inherit;text-decoration:none}
 .hero .actions{display:flex;gap:12px;justify-content:center;margin-top:30px}
 .hero .meta{margin-top:16px;font-size:12.5px;color:var(--faint)}
 
-.shot{margin:56px auto 0;max-width:960px;position:relative}
-.shot::before{content:"";position:absolute;inset:-6% 8% 14%;z-index:-1;
-  background:radial-gradient(closest-side,rgba(46,107,255,.45),transparent 72%);filter:blur(24px)}
+/* ★ 2026-10-23（服主）：展示区只放**单纯的界面图**，不再套窗口框；首屏不放图。
+   图是客户端界面在浏览器里的真实渲染（Windows 760×560 / 安卓 390×844），可切换。
+   ⚠️ 这里不许出现边框、圆角、底色 —— 那正是被否掉的"框"。
+   顺带把旧的 `.shot` / `.shot::before`（首屏图 + 它的光晕）删掉：首屏现在不放图，
+   留着就是**死规则**，下次接手会以为首页还有图。 */
+.shots img{display:block;width:100%;max-width:760px}
+.shots__nav{display:flex;gap:8px;margin-top:14px}
+.shots__btn{font:inherit;font-size:13px;padding:6px 12px;color:var(--ink);
+  background:transparent;border:1px solid var(--line-2)}
+.pcard__shot{display:block;width:100%;max-width:760px}
 .win{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;
   background:linear-gradient(180deg,#0A1830,#081326);box-shadow:0 36px 110px rgba(0,0,0,.62);text-align:left}
 .win__bar{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
@@ -97,6 +104,11 @@ a{color:inherit;text-decoration:none}
 .foot__legal{border-top:1px solid var(--line);padding:16px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--faint);font-size:12px}
 .wordmark{margin-top:18px;border-radius:16px 16px 0 0;overflow:hidden;
   background:linear-gradient(120deg,#0B1E3F,#1E4FD8 55%,#0B1E3F)}
+/* ★ 2026-10-23（服主）：底部那个大「DEEP SPACE」要顶到页面两边。
+   页脚写在 .foot.wrap 里（max-width 1080 + 左右 24px），所以两头留白。
+   这里只让 wordmark 突破容器（经典 full-bleed 写法），页脚其余内容仍在 .wrap 里
+   —— 不然正文会顶到边、读不了。 */
+.foot.wrap > .wordmark{width:100vw;margin-left:calc(50% - 50vw);border-radius:0}
 .wordmark span{display:block;text-align:center;font-weight:900;letter-spacing:-.035em;
   font-size:clamp(44px,11.6vw,148px);line-height:.88;padding:34px 8px 24px;white-space:nowrap;color:rgba(255,255,255,.95)}
 
@@ -256,7 +268,7 @@ a{color:inherit;text-decoration:none}
 .pcard h2{font-size:clamp(26px,3vw,36px);line-height:1.1;margin:20px 0 12px;font-weight:650;letter-spacing:-.02em}
 .pcard p{margin:0;color:var(--dim);font-size:14px;line-height:1.85;max-width:430px}
 .pcard__more{margin:20px 0 26px;color:#9FC0FF;font-size:13.5px}
-.pcard__visual{margin-top:auto;border-top:1px solid var(--line);padding:22px 0 26px;min-height:190px;display:flex;align-items:center;justify-content:center;gap:10px;background:rgba(0,0,0,.14)}
+.pcard__visual{margin-top:auto;padding:22px 0 26px;min-height:190px;display:flex;align-items:center;justify-content:center;gap:10px}
 .pcard--wide{grid-column:1 / -1;min-height:0;display:grid;grid-template-columns:1fr 1.05fr;gap:40px;padding:40px 40px 0}
 .pcard--wide .pcard__visual{margin:0;border-top:0;border-left:1px solid var(--line);padding:8px 0 40px 40px;background:transparent;min-height:0}
 .pcard--wide .pcard__body{display:flex;flex-direction:column;padding-bottom:40px}

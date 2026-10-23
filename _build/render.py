@@ -45,56 +45,51 @@ def safe_href(h):
     return "#"
 
 
+def shot(p, prefix):
+    """★ 2026-10-23（服主：展示区换成真客户端界面图）——卡片的视觉块。
+
+    card-meta 里没有 image ⇒ 这块整体不出现（不是"画个假的顶上"）。
+    路径按页面真实层级拼 prefix（R4.9：手写 ../ 出过 404）。"""
+    if not p.get("image"):
+        return ""
+    return ('<img class="pcard__shot" src="%s%s" alt="%s 的客户端界面（已连接）" '
+            'width="760" loading="lazy">' % (prefix, esc(p.get("image")), esc(p.get("name"))))
+
 def render_cards(projects, prefix):
+    """卡片区的形状必须与站点当前版式一致。
+
+    ★ 2026-10-23（服主拍板）：卡片区交回生成器，视觉块用真客户端界面图。
+    site.css 里现在只有 `.pcard` 这一套规则（`.entry` 那套已经不存在）——
+    生成器若继续输出 `.entry`，卡片会没有样式（这种错不报错、只有肉眼看得出）。
+    所以这里输出 `.pcard`，字段全部来自 card-meta（没有配置文件）。
+    """
     out = []
     for it in projects:
         p = it["meta"]
-        tags = "".join(
-            '      <span class="%s">%s</span>\n'
-            % (TAG_CLASS.get(t.get("kind", ""), "tag"), esc(t.get("text", "")))
-            for t in (p.get("tags") or [])
-        )
+        kicker = " · ".join(
+            str(t.get("text", "")).strip() for t in (p.get("tags") or [])
+            if str(t.get("text", "")).strip())
         desc = "<br>\n      ".join(
             ln.strip() for ln in str(p.get("desc", "")).split("\n") if ln.strip()
         )
-        # 项目自己的方形图标（可选，card-meta 里的 "icon"）；没有就用深空小环。
-        # 路径按页面的真实层级拼 prefix —— 别手写 ../（本站栽过一次层级错位）。
-        if p.get("icon"):
-            mark = ('      <img class="brandmark--sm brandmark--logo" src="%s%s" '
-                    'alt="" width="42" height="42">\n' % (prefix, esc(p.get("icon"))))
-        else:
-            mark = ('      <img class="brandmark--sm" src="%sassets/mark-navy.svg" '
-                    'alt="" width="42" height="42">\n' % prefix)
+        icon = ('<span class="pcard__icon"><img src="%s%s" alt="" width="42" height="42"></span>'
+                % (prefix, esc(p.get("icon")))) if p.get("icon") else '<span class="pcard__icon">◈</span>'
         out.append(
             "  <!-- project: %s -->\n"
-            '  <a class="entry" href="%s%s">\n'
-            '    <div class="entry__top">\n'
-            "%s"
-            "      <div>\n"
-            '        <div class="entry__title">%s</div>\n'
-            '        <div class="entry__en">%s</div>\n'
-            "      </div>\n"
-            "    </div>\n"
-            '    <div class="entry__desc">\n'
-            "      %s\n"
-            "    </div>\n"
-            '    <div class="tagline">\n'
-            "%s"
-            "    </div>\n"
-            '    <div class="entry__go">%s</div>\n'
-            "  </a>"
-            % (
-                esc(it["id"]),
-                prefix,
-                safe_href(p.get("href") or (it["id"] + "/")),
-                mark,
-                esc(p.get("name")),
-                esc(p.get("en")),
-                desc,
-                tags,
-                esc(p.get("cta")),
-            )
-        )
+            '  <a class="pcard pcard--wide" href="%s%s">\n'
+            '    <div class="pcard__body">\n'
+            '      <div class="pcard__head">\n'
+            '        %s\n'
+            '        <span class="pcard__kicker">%s</span>\n'
+            '      </div>\n'
+            '      <h2>%s</h2>\n'
+            '      <p>%s</p>\n'
+            '      <span class="pcard__more">%s</span>\n'
+            '    </div>\n'
+            '    <div class="pcard__visual">%s</div>\n'
+            '  </a>'
+            % (esc(it["id"]), prefix, safe_href(p.get("href") or (it["id"] + "/")),
+               icon, esc(kicker), esc(p.get("name")), desc, esc(p.get("cta")), shot(p, prefix)))
     if not out:
         out.append('  <div class="card"><div class="tip">暂无项目。</div></div>')
     return "\n\n".join(out)
@@ -155,6 +150,22 @@ def inject(path, start, end, body):
     return False
 
 
+def inject_optional(path, start, end, body):
+    """★ 2026-10-23（服主拍板）：首页那两个区块在改版后的版式里没有位置了。
+
+    ⚠️ 这里**只**允许"整页没有这个标记"这一种情况跳过，并且必须打印；
+    标记还在但形状不对（少 END、匹配 0/2 处）照旧报错 —— 判据不能变软，
+    否则就成了 R4.2 说的假绿（空集合永远通过）。
+    """
+    if not os.path.exists(path):
+        raise SystemExit("❌ 缺页面：%s" % path)
+    src = open(path, encoding="utf-8").read()
+    if start not in src:
+        print("   ·  %s 没有 %s（该页版式里已无此区块）⇒ 跳过" % (path, start))
+        return False
+    return inject(path, start, end, body)
+
+
 def main():
     allp = cardmeta.scan(ROOT)
     shown = [it for it in allp if it["meta"].get("visible", True)]
@@ -166,18 +177,22 @@ def main():
             print("     · 隐藏：%s（详情页仍可访问 /%s）" % (it["id"], it["meta"].get("href")))
 
     changed = []
+    areas = 0
     if inject("products/index.html", "<!-- PRODUCTS:START -->", "<!-- PRODUCTS:END -->",
               render_cards(shown, "../")):
-        changed.append("products/index.html 的卡片区")
+        changed.append("products/index.html 的卡片区"); areas += 1
     if inject("products/index.html", "<!-- PRODUCT_NAMES:START -->", "<!-- PRODUCT_NAMES:END -->",
               render_names(shown)):
-        changed.append("products/index.html 的副标题")
-    if inject("index.html", "<!-- PRODUCTS_TABLE:START -->", "<!-- PRODUCTS_TABLE:END -->",
-              render_table(shown)):
-        changed.append("index.html 的产品表")
-    if inject("index.html", "<!-- ABOUT_PRODUCTS:START -->", "<!-- ABOUT_PRODUCTS:END -->",
-              render_about(shown)):
-        changed.append("index.html 的「关于深空」产品句")
+        changed.append("products/index.html 的副标题"); areas += 1
+    # ★ 2026-10-23：首页两处按「该页没有这个区块 ⇒ 打印跳过」（服主拍板）；
+    #   判据数量照旧打印，不静默。
+    if inject_optional("index.html", "<!-- PRODUCTS_TABLE:START -->", "<!-- PRODUCTS_TABLE:END -->",
+                       render_table(shown)):
+        changed.append("index.html 的产品表"); areas += 1
+    if inject_optional("index.html", "<!-- ABOUT_PRODUCTS:START -->", "<!-- ABOUT_PRODUCTS:END -->",
+                       render_about(shown)):
+        changed.append("index.html 的「关于深空」产品句"); areas += 1
+    print("   区块判据跑了 4 处（注入 %d 处，其中已一致/跳过的不计入改动）" % areas)
 
     for c in changed:
         print("   ✏️  %s" % c)

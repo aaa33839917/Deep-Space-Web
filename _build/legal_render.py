@@ -315,7 +315,7 @@ PAGE_HEAD = """<!DOCTYPE html>
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <title>{title}</title>
 <meta name="theme-color" content="#050B16">
-<link rel="stylesheet" href="../assets/site.css?v=6">
+<link rel="stylesheet" href="../assets/site.css">   <!-- 缓存指纹由 deploy.sh 那一步加，这里不手写版本号 -->
 </head>
 <body id="top">
 <div class="bg" aria-hidden="true"></div>
@@ -350,9 +350,11 @@ PAGE_HEAD = """<!DOCTYPE html>
       <a class="logo" href="../" style="font-size:16px"><img src="../assets/mark-white.svg" alt="">深空</a>
       <p>© <span class="v6-year">2026</span> 深空工作室 DEEP SPACE<br>本站不收集任何信息</p>
     </div>
-    <div class="foot__col"><h4>法律</h4>
-      <a href="../terms/">服务条款</a><a href="../privacy/">隐私政策</a><a href="../thanks/">鸣谢</a>
-    </div>
+    <!-- ★ 2026-10-23（服主拍板「写成一处」）：这一列不在这里写。
+         页脚那一列只有一份真源，由构建流程按页面的真实层级写回来；这里只留标记。
+         ⚠️ 只跑本页的渲染、不跑页脚同步，这一列会是空的 —— 发布一律走那条完整流程。 -->
+    <!-- FOOTER:START -->
+    <!-- FOOTER:END -->
     <div class="foot__col"><h4>产品与文档</h4>
       <a href="../products/">产品</a><a href="../servers/">服务器</a><a href="../accelerator/download/">下载</a><a href="../how/">原理</a>
     </div>
@@ -408,7 +410,10 @@ def norm_for_gate(s):
     """
     s = re.sub(r'<meta name="dsv" content="[^"]*">\n?', "", s)
     s = re.sub(r'<script src="[^"]*assets/cache-check\.js[^"]*"></script>\n?', "", s)
-    s = re.sub(r"\?v=[0-9a-f]{8}", "", s)
+    # ★ 2026-10-23：这里原来只抹 8 位 hex，于是模板里手写的版本号（?v=6）抹不掉 ——
+    #   渲染侧留着 ?v=6、盘上被指纹改成 8 位 ⇒ 两边必然不等（自己把自己判红，假阳性）。
+    #   改成抹任意长度的 ?v=，并且模板不再手写版本号（版本号是发布时算出来的）。
+    s = re.sub(r"\?v=[0-9a-f]+", "", s)
     s = re.sub(r"<!-- NAV:START -->.*?<!-- NAV:END -->", "<!-- NAV -->", s, flags=re.S)
     s = re.sub(r"<!-- FOOTER:START -->.*?<!-- FOOTER:END -->", "<!-- FOOTER -->", s, flags=re.S)
     return s

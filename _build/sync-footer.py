@@ -53,6 +53,8 @@ def render(tpl_text, page):
     body = re.sub(r"<!--.*?-->", "", tpl_text, flags=re.S)          # 去掉模板里的说明注释
     body = body.replace("{TERMS}", target(page, "terms"))
     body = body.replace("{PRIVACY}", target(page, "privacy"))
+    # ★ 2026-10-23（服主拍板「写成一处」）：页脚那一列由这一份模板写，所以加 {THANKS}。
+    body = body.replace("{THANKS}", target(page, "thanks"))
     lines = [ln.rstrip() for ln in body.split("\n") if ln.strip()]
     return "\n".join(lines)
 
