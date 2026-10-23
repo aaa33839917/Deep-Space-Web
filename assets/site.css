@@ -41,7 +41,7 @@ a{color:inherit;text-decoration:none}
 .btn--line:hover{background:rgba(255,255,255,.07)}
 
 /* 一屏一件事：hero 占满首屏 */
-.hero{position:relative;overflow:hidden;min-height:calc(100svh - 64px - 34px);
+.hero{position:relative;overflow:hidden;min-height:calc(100vh - 64px - 34px);min-height:calc(100svh - 64px - 34px);
   display:flex;flex-direction:column;justify-content:center;padding:72px 0 40px;text-align:center}
 .hero > *{position:relative;z-index:1}
 .hero__in{position:relative}
@@ -124,7 +124,7 @@ a{color:inherit;text-decoration:none}
   .nav__right .quiet{display:none}
   .announce{font-size:12px;padding:7px 12px;gap:6px}
   .announce .more{display:none}
-  .hero{padding:56px 0 20px;min-height:0}
+  .hero{padding:56px 0 20px}
   .hero p{font-size:15.5px}
   .hero .actions .btn{flex:1}
   .shot{margin-top:36px}
@@ -597,3 +597,8 @@ body{padding-top:0}
 
 /* 移动端留边：.article 原来只有上下 padding，390 宽时正文贴边（2026-10-23） */
 @media (max-width:900px){.article{padding:120px 20px 90px}}
+
+/* 手机端 hero 恢复满屏后，文字区那层暗底要压过后面两条全局规则（2026-10-23） */
+@media (max-width:640px){
+  .hero__in::before{inset:-48px -22px;background:radial-gradient(ellipse 96% 86% at 50% 52%, rgba(5,11,22,.94) 0%, rgba(5,11,22,.72) 58%, rgba(5,11,22,0) 88%)}
+}
