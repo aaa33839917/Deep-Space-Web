@@ -609,3 +609,6 @@ body{padding-top:0}
 .hero .wave-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,#050B16 0%,rgba(5,11,22,.6) 30%,rgba(5,11,22,.6) 60%,#050B16 100%);
 }
+
+/* 导航下载按钮：仿 trae.cn 的比例（32 高、左右 14、字重 500、无外发光），颜色仍用站点蓝（2026-10-25） */
+.nav__right .btn{height:32px;padding:0 14px;font-weight:500;font-size:14px;box-shadow:none}
