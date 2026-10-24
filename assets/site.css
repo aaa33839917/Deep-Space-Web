@@ -48,8 +48,8 @@ a{color:inherit;text-decoration:none}
 .hero__in::before{content:"";position:absolute;inset:-48px -24px;z-index:-1;pointer-events:none;
   background:radial-gradient(ellipse 70% 58% at 50% 40%, rgba(5,11,22,.97) 0%, rgba(5,11,22,.86) 50%, rgba(5,11,22,.10) 82%)}
 .wave{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.75;
-  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 42%,#000 100%);
-  mask-image:linear-gradient(180deg,transparent 0%,#000 42%,#000 100%);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 42%,#000 74%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0%,#000 42%,#000 74%,transparent 100%);
   opacity:.62}
 .hero .eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:.22em;
   color:#8FB6FF;text-transform:uppercase}
