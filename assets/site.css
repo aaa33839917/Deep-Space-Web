@@ -602,3 +602,10 @@ body{padding-top:0}
 @media (max-width:640px){
   .hero__in::before{inset:-48px -22px;background:radial-gradient(ellipse 96% 86% at 50% 52%, rgba(5,11,22,.94) 0%, rgba(5,11,22,.72) 58%, rgba(5,11,22,0) 88%)}
 }
+
+/* 波浪压暗蒙版：逆向自 trae.cn 首页的同款遮罩
+   line-gradient(#0C0C0C 0%, rgba(12,12,12,.6) 30%, rgba(12,12,12,.6) 60%, #0C0C0C 100%)
+   这里换成站点底色 #050B16，几何与 alpha 不变（2026-10-24） */
+.hero .wave-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,#050B16 0%,rgba(5,11,22,.6) 30%,rgba(5,11,22,.6) 60%,#050B16 100%);
+}
