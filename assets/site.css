@@ -612,3 +612,11 @@ body{padding-top:0}
 
 /* 导航下载按钮：仿 trae.cn 的比例（32 高、左右 14、字重 500、无外发光），颜色仍用站点蓝（2026-10-25） */
 .nav__right .btn{height:32px;padding:0 14px;font-weight:500;font-size:14px;box-shadow:none}
+
+/* 鸣谢页：已解散组织的作废标记（2026-10-26） */
+.thanks-off{position:relative;display:flex;flex-direction:column;align-items:stretch;gap:12px}
+.thanks-off img{opacity:.5;filter:grayscale(1)}
+.thanks-off::after{content:"已解散";position:absolute;top:10px;right:10px;
+  background:#FF4D4F;color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;
+  line-height:1.6;padding:2px 7px}
+.thanks-off-note{margin:0;color:#FF4D4F;font-size:12.5px;line-height:1.55;text-align:center}
